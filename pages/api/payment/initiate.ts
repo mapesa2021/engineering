@@ -8,6 +8,12 @@ const ZENOPAY_CONFIG = {
   ENDPOINT: '/api/payments/mobile_money_tanzania'
 };
 
+// Debug environment variables
+console.log('🔍 Environment Variables Debug:');
+console.log('ZENOPAY_API_KEY:', process.env.ZENOPAY_API_KEY ? 'SET' : 'MISSING');
+console.log('NODE_ENV:', process.env.NODE_ENV);
+console.log('All env vars:', Object.keys(process.env).filter(key => key.includes('ZENO') || key.includes('SUPABASE')));
+
 interface PaymentRequest {
   amount: number;
   currency: string;
@@ -82,6 +88,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     };
 
     console.log('Initiating payment with payload:', payload);
+    console.log('🔍 Payment API Debug:');
+    console.log('API Key being used:', ZENOPAY_CONFIG.API_KEY ? 'SET' : 'MISSING');
+    console.log('API Key length:', ZENOPAY_CONFIG.API_KEY?.length || 0);
+    console.log('Full URL:', `${ZENOPAY_CONFIG.BASE_URL}${ZENOPAY_CONFIG.ENDPOINT}`);
 
     // Make request to ZenoPay
     const response = await axios.post(
