@@ -22,6 +22,7 @@ const TreePackages = () => {
     // Load tree packages from admin data
     const loadPackages = () => {
       const data = getTreePackages();
+      console.log('TreePackages: Loaded packages:', data);
       setPackages(data.sort((a, b) => a.order - b.order));
     };
 
@@ -37,7 +38,14 @@ const TreePackages = () => {
   }, []);
 
   const handleDonateClick = (treePackage: TreePackage) => {
+    console.log('TreePackages: Donate button clicked for package:', treePackage);
     setPaymentModal({
+      isOpen: true,
+      amount: treePackage.price,
+      title: `${treePackage.name} - ${treePackage.treeCount} Trees`,
+      description: `${treePackage.description} - Plant ${treePackage.treeCount} trees for ${treePackage.currency} ${treePackage.price.toLocaleString()}`
+    });
+    console.log('TreePackages: Payment modal state set:', {
       isOpen: true,
       amount: treePackage.price,
       title: `${treePackage.name} - ${treePackage.treeCount} Trees`,

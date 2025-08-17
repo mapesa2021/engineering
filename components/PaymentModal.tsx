@@ -18,6 +18,8 @@ export default function PaymentModal({
   title, 
   description 
 }: PaymentModalProps) {
+  console.log('PaymentModal: Props received:', { isOpen, amount, title, description });
+  
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [paymentStatus, setPaymentStatus] = useState<'idle' | 'processing' | 'success' | 'error'>('idle');
@@ -105,7 +107,12 @@ export default function PaymentModal({
     }
   };
 
-  if (!isOpen) return null;
+  if (!isOpen) {
+    console.log('PaymentModal: Modal is closed, not rendering');
+    return null;
+  }
+
+  console.log('PaymentModal: Modal is open, rendering content');
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
