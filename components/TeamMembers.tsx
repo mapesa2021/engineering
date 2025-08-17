@@ -14,7 +14,7 @@ export default function TeamMembers() {
     } catch (error) {
       console.error('Error loading team members:', error);
     }
-  };
+    };
 
     loadTeamMembers();
 
