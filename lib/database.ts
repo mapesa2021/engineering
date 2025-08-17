@@ -1,0 +1,201 @@
+import { supabase, TABLES } from './supabase'
+import type { 
+  BlogPost, 
+  TeamMember, 
+  Testimonial, 
+  HeroImage, 
+  TreePackage, 
+  Button, 
+  NewsletterSubscriber, 
+  ContactMessage 
+} from '../utils/adminData'
+
+// Blog Posts Database Operations
+export const blogService = {
+  async getAll(): Promise<BlogPost[]> {
+    const { data, error } = await supabase
+      .from(TABLES.BLOG_POSTS)
+      .select('*')
+      .order('created_at', { ascending: false })
+    
+    if (error) throw error
+    return data || []
+  },
+
+  async getById(id: number): Promise<BlogPost | null> {
+    const { data, error } = await supabase
+      .from(TABLES.BLOG_POSTS)
+      .select('*')
+      .eq('id', id)
+      .single()
+    
+    if (error) throw error
+    return data
+  },
+
+  async create(post: Omit<BlogPost, 'id' | 'createdAt' | 'updatedAt'>): Promise<BlogPost> {
+    const { data, error } = await supabase
+      .from(TABLES.BLOG_POSTS)
+      .insert([post])
+      .select()
+      .single()
+    
+    if (error) throw error
+    return data
+  },
+
+  async update(id: number, updates: Partial<BlogPost>): Promise<BlogPost | null> {
+    const { data, error } = await supabase
+      .from(TABLES.BLOG_POSTS)
+      .update({ ...updates, updated_at: new Date().toISOString() })
+      .eq('id', id)
+      .select()
+      .single()
+    
+    if (error) throw error
+    return data
+  },
+
+  async delete(id: number): Promise<boolean> {
+    const { error } = await supabase
+      .from(TABLES.BLOG_POSTS)
+      .delete()
+      .eq('id', id)
+    
+    if (error) throw error
+    return true
+  }
+}
+
+// Team Members Database Operations
+export const teamService = {
+  async getAll(): Promise<TeamMember[]> {
+    const { data, error } = await supabase
+      .from(TABLES.TEAM_MEMBERS)
+      .select('*')
+      .order('order', { ascending: true })
+    
+    if (error) throw error
+    return data || []
+  },
+
+  async getActive(): Promise<TeamMember[]> {
+    const { data, error } = await supabase
+      .from(TABLES.TEAM_MEMBERS)
+      .select('*')
+      .eq('is_active', true)
+      .order('order', { ascending: true })
+    
+    if (error) throw error
+    return data || []
+  },
+
+  async create(member: Omit<TeamMember, 'id'>): Promise<TeamMember> {
+    const { data, error } = await supabase
+      .from(TABLES.TEAM_MEMBERS)
+      .insert([member])
+      .select()
+      .single()
+    
+    if (error) throw error
+    return data
+  },
+
+  async update(id: string, updates: Partial<TeamMember>): Promise<TeamMember | null> {
+    const { data, error } = await supabase
+      .from(TABLES.TEAM_MEMBERS)
+      .update({ ...updates, updated_at: new Date().toISOString() })
+      .eq('id', id)
+      .select()
+      .single()
+    
+    if (error) throw error
+    return data
+  },
+
+  async delete(id: string): Promise<boolean> {
+    const { error } = await supabase
+      .from(TABLES.TEAM_MEMBERS)
+      .delete()
+      .eq('id', id)
+    
+    if (error) throw error
+    return true
+  }
+}
+
+// Contact Messages Database Operations
+export const contactService = {
+  async getAll(): Promise<ContactMessage[]> {
+    const { data, error } = await supabase
+      .from(TABLES.CONTACT_MESSAGES)
+      .select('*')
+      .order('submitted_at', { ascending: false })
+    
+    if (error) throw error
+    return data || []
+  },
+
+  async create(message: Omit<ContactMessage, 'id' | 'submittedAt' | 'status'>): Promise<ContactMessage> {
+    const { data, error } = await supabase
+      .from(TABLES.CONTACT_MESSAGES)
+      .insert([message])
+      .select()
+      .single()
+    
+    if (error) throw error
+    return data
+  },
+
+  async updateStatus(id: string, status: 'new' | 'read' | 'replied'): Promise<boolean> {
+    const { error } = await supabase
+      .from(TABLES.CONTACT_MESSAGES)
+      .update({ status })
+      .eq('id', id)
+    
+    if (error) throw error
+    return true
+  },
+
+  async delete(id: string): Promise<boolean> {
+    const { error } = await supabase
+      .from(TABLES.CONTACT_MESSAGES)
+      .delete()
+      .eq('id', id)
+    
+    if (error) throw error
+    return true
+  }
+}
+
+// Newsletter Subscribers Database Operations
+export const newsletterService = {
+  async getAll(): Promise<NewsletterSubscriber[]> {
+    const { data, error } = await supabase
+      .from(TABLES.NEWSLETTER_SUBSCRIBERS)
+      .select('*')
+      .order('subscribed_at', { ascending: false })
+    
+    if (error) throw error
+    return data || []
+  },
+
+  async subscribe(email: string, source: string = 'homepage'): Promise<boolean> {
+    const { error } = await supabase
+      .from(TABLES.NEWSLETTER_SUBSCRIBERS)
+      .upsert([{ email, source }], { onConflict: 'email' })
+    
+    if (error) throw error
+    return true
+  },
+
+  async unsubscribe(email: string): Promise<boolean> {
+    const { error } = await supabase
+      .from(TABLES.NEWSLETTER_SUBSCRIBERS)
+      .update({ is_active: false })
+      .eq('email', email)
+    
+    if (error) throw error
+    return true
+  }
+} 
