@@ -13,9 +13,6 @@ export default function PaymentSuccess() {
     // Get payment details from URL parameters
     const { orderId, amount, name, email, phone } = router.query;
     
-    console.log('URL Parameters:', { orderId, amount, name, email, phone });
-    console.log('Router query object:', router.query);
-    
     if (orderId) {
       setPaymentDetails({
         orderId: orderId,
@@ -24,17 +21,10 @@ export default function PaymentSuccess() {
         email: email,
         phone: phone
       });
-      console.log('Payment details set:', { orderId, amount, name, email, phone });
-    } else {
-      console.log('No orderId found in URL parameters');
-      // Check if we're on the success page but no parameters
-      if (router.pathname === '/payment/success') {
-        console.log('On success page but no parameters - this might be a direct visit');
-      }
     }
     
     setIsLoading(false);
-  }, [router.query, router.pathname]);
+  }, [router.query]);
 
   if (isLoading) {
     return (
@@ -146,20 +136,6 @@ export default function PaymentSuccess() {
               View Our Projects
             </Link>
           </div>
-
-          {/* Debug Info (remove in production) */}
-          {process.env.NODE_ENV === 'development' && (
-            <div className="mt-8 p-4 bg-gray-100 rounded-lg text-left">
-              <h4 className="font-semibold text-gray-700 mb-2">Debug Info:</h4>
-              <pre className="text-xs text-gray-600 overflow-auto">
-                {JSON.stringify({ 
-                  paymentDetails, 
-                  routerQuery: router.query,
-                  routerPathname: router.pathname 
-                }, null, 2)}
-              </pre>
-            </div>
-          )}
         </div>
       </div>
     </>

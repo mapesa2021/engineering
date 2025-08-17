@@ -18,8 +18,6 @@ export default function PaymentModal({
   title, 
   description 
 }: PaymentModalProps) {
-  console.log('PaymentModal: Props received:', { isOpen, amount, title, description });
-  
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [paymentStatus, setPaymentStatus] = useState<'idle' | 'processing' | 'success' | 'error'>('idle');
@@ -108,11 +106,8 @@ export default function PaymentModal({
   };
 
   if (!isOpen) {
-    console.log('PaymentModal: Modal is closed, not rendering');
     return null;
   }
-
-  console.log('PaymentModal: Modal is open, rendering content');
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
@@ -128,7 +123,7 @@ export default function PaymentModal({
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+                </svg>
             </button>
           </div>
         </div>
@@ -166,9 +161,10 @@ export default function PaymentModal({
                 <input
                   type="text"
                   id="customerName"
+                  name="customerName"
                   required
                   value={formData.customerName}
-                  onChange={(e) => setFormData({ ...formData, customerName: e.target.value })}
+                  onChange={handleInputChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-eco-green focus:border-transparent"
                   placeholder="Enter your full name"
                 />
@@ -181,9 +177,10 @@ export default function PaymentModal({
                 <input
                   type="email"
                   id="customerEmail"
+                  name="customerEmail"
                   required
                   value={formData.customerEmail}
-                  onChange={(e) => setFormData({ ...formData, customerEmail: e.target.value })}
+                  onChange={handleInputChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-eco-green focus:border-transparent"
                   placeholder="Enter your email address"
                 />
@@ -196,9 +193,10 @@ export default function PaymentModal({
                 <input
                   type="tel"
                   id="customerPhone"
+                  name="customerPhone"
                   required
                   value={formData.customerPhone}
-                  onChange={(e) => setFormData({ ...formData, customerPhone: e.target.value })}
+                  onChange={handleInputChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-eco-green focus:border-transparent"
                   placeholder="Enter your phone number"
                 />

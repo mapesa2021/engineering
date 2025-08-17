@@ -22,7 +22,6 @@ const TreePackages = () => {
     // Load tree packages from admin data
     const loadPackages = () => {
       const data = getTreePackages();
-      console.log('TreePackages: Loaded packages:', data);
       setPackages(data.sort((a, b) => a.order - b.order));
     };
 
@@ -38,9 +37,6 @@ const TreePackages = () => {
   }, []);
 
   const handleDonateClick = (treePackage: TreePackage) => {
-    console.log('TreePackages: Donate button clicked for package:', treePackage);
-    console.log('TreePackages: Current paymentModal state before update:', paymentModal);
-    
     const newModalState = {
       isOpen: true,
       amount: treePackage.price,
@@ -48,24 +44,7 @@ const TreePackages = () => {
       description: `${treePackage.description} - Plant ${treePackage.treeCount} trees for ${treePackage.currency} ${treePackage.price.toLocaleString()}`
     };
     
-    console.log('TreePackages: Setting new modal state:', newModalState);
     setPaymentModal(newModalState);
-    
-    // Force a re-render check
-    setTimeout(() => {
-      console.log('TreePackages: PaymentModal state after 100ms:', paymentModal);
-    }, 100);
-  };
-
-  // Test function to manually open modal
-  const testOpenModal = () => {
-    console.log('TreePackages: Test function called');
-    setPaymentModal({
-      isOpen: true,
-      amount: 50000,
-      title: 'Test Package - 10 Trees',
-      description: 'This is a test package for debugging'
-    });
   };
 
   return (
@@ -78,14 +57,6 @@ const TreePackages = () => {
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Choose your package and help restore our planet.
           </p>
-          
-          {/* Test Button for Debugging */}
-          <button
-            onClick={testOpenModal}
-            className="mt-4 bg-red-500 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-600 transition-colors duration-300"
-          >
-            🧪 Test Modal (Debug)
-          </button>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -159,16 +130,6 @@ const TreePackages = () => {
             <p className="text-gray-500 text-lg">No tree packages available yet.</p>
           </div>
         )}
-        
-        {/* Debug Info */}
-        <div className="mt-8 p-4 bg-gray-100 rounded-lg">
-          <h3 className="font-semibold mb-2">Debug Info:</h3>
-          <p>Packages loaded: {packages.length}</p>
-          <p>Modal isOpen: {paymentModal.isOpen ? 'true' : 'false'}</p>
-          <p>Modal amount: {paymentModal.amount}</p>
-          <p>Modal title: {paymentModal.title}</p>
-          <p>Modal description: {paymentModal.description}</p>
-        </div>
       </div>
       <PaymentModal
         isOpen={paymentModal.isOpen}
