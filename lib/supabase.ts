@@ -2,8 +2,9 @@ import { createClient } from '@supabase/supabase-js'
 
 // Only create client if environment variables are available
 const createSupabaseClient = () => {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  // Try both client-side and server-side environment variables
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY
   
   if (!supabaseUrl || !supabaseAnonKey) {
     console.warn('Supabase environment variables not found. Client will not be initialized.')
