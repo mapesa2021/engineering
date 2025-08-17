@@ -10,10 +10,19 @@ import type {
   ContactMessage 
 } from '../utils/adminData'
 
+// Helper function to check if Supabase is available and return the client
+const checkSupabase = () => {
+  if (!supabase) {
+    throw new Error('Supabase client not available. Environment variables may be missing.')
+  }
+  return supabase
+}
+
 // Blog Posts Database Operations
 export const blogService = {
   async getAll(): Promise<BlogPost[]> {
-    const { data, error } = await supabase
+    const client = checkSupabase()
+    const { data, error } = await client
       .from(TABLES.BLOG_POSTS)
       .select('*')
       .order('created_at', { ascending: false })
@@ -23,7 +32,8 @@ export const blogService = {
   },
 
   async getById(id: number): Promise<BlogPost | null> {
-    const { data, error } = await supabase
+    const client = checkSupabase()
+    const { data, error } = await client
       .from(TABLES.BLOG_POSTS)
       .select('*')
       .eq('id', id)
@@ -34,6 +44,7 @@ export const blogService = {
   },
 
   async create(post: Omit<BlogPost, 'id' | 'createdAt' | 'updatedAt'>): Promise<BlogPost> {
+    checkSupabase()
     const { data, error } = await supabase
       .from(TABLES.BLOG_POSTS)
       .insert([post])
@@ -45,6 +56,7 @@ export const blogService = {
   },
 
   async update(id: number, updates: Partial<BlogPost>): Promise<BlogPost | null> {
+    checkSupabase()
     const { data, error } = await supabase
       .from(TABLES.BLOG_POSTS)
       .update({ ...updates, updated_at: new Date().toISOString() })
@@ -57,6 +69,7 @@ export const blogService = {
   },
 
   async delete(id: number): Promise<boolean> {
+    checkSupabase()
     const { error } = await supabase
       .from(TABLES.BLOG_POSTS)
       .delete()
@@ -70,6 +83,7 @@ export const blogService = {
 // Team Members Database Operations
 export const teamService = {
   async getAll(): Promise<TeamMember[]> {
+    checkSupabase()
     const { data, error } = await supabase
       .from(TABLES.TEAM_MEMBERS)
       .select('*')
@@ -80,6 +94,7 @@ export const teamService = {
   },
 
   async getActive(): Promise<TeamMember[]> {
+    checkSupabase()
     const { data, error } = await supabase
       .from(TABLES.TEAM_MEMBERS)
       .select('*')
@@ -91,6 +106,7 @@ export const teamService = {
   },
 
   async create(member: Omit<TeamMember, 'id'>): Promise<TeamMember> {
+    checkSupabase()
     const { data, error } = await supabase
       .from(TABLES.TEAM_MEMBERS)
       .insert([member])
@@ -102,6 +118,7 @@ export const teamService = {
   },
 
   async update(id: string, updates: Partial<TeamMember>): Promise<TeamMember | null> {
+    checkSupabase()
     const { data, error } = await supabase
       .from(TABLES.TEAM_MEMBERS)
       .update({ ...updates, updated_at: new Date().toISOString() })
@@ -114,6 +131,7 @@ export const teamService = {
   },
 
   async delete(id: string): Promise<boolean> {
+    checkSupabase()
     const { error } = await supabase
       .from(TABLES.TEAM_MEMBERS)
       .delete()
@@ -127,6 +145,7 @@ export const teamService = {
 // Contact Messages Database Operations
 export const contactService = {
   async getAll(): Promise<ContactMessage[]> {
+    checkSupabase()
     const { data, error } = await supabase
       .from(TABLES.CONTACT_MESSAGES)
       .select('*')
@@ -137,6 +156,7 @@ export const contactService = {
   },
 
   async create(message: Omit<ContactMessage, 'id' | 'submittedAt' | 'status'>): Promise<ContactMessage> {
+    checkSupabase()
     const { data, error } = await supabase
       .from(TABLES.CONTACT_MESSAGES)
       .insert([message])
@@ -148,6 +168,7 @@ export const contactService = {
   },
 
   async updateStatus(id: string, status: 'new' | 'read' | 'replied'): Promise<boolean> {
+    checkSupabase()
     const { error } = await supabase
       .from(TABLES.CONTACT_MESSAGES)
       .update({ status })
@@ -158,6 +179,7 @@ export const contactService = {
   },
 
   async delete(id: string): Promise<boolean> {
+    checkSupabase()
     const { error } = await supabase
       .from(TABLES.CONTACT_MESSAGES)
       .delete()
@@ -171,6 +193,7 @@ export const contactService = {
 // Newsletter Subscribers Database Operations
 export const newsletterService = {
   async getAll(): Promise<NewsletterSubscriber[]> {
+    checkSupabase()
     const { data, error } = await supabase
       .from(TABLES.NEWSLETTER_SUBSCRIBERS)
       .select('*')
@@ -181,6 +204,7 @@ export const newsletterService = {
   },
 
   async subscribe(email: string, source: string = 'homepage'): Promise<boolean> {
+    checkSupabase()
     const { error } = await supabase
       .from(TABLES.NEWSLETTER_SUBSCRIBERS)
       .upsert([{ email, source }], { onConflict: 'email' })
@@ -190,6 +214,7 @@ export const newsletterService = {
   },
 
   async unsubscribe(email: string): Promise<boolean> {
+    checkSupabase()
     const { error } = await supabase
       .from(TABLES.NEWSLETTER_SUBSCRIBERS)
       .update({ is_active: false })
@@ -204,6 +229,7 @@ export const newsletterService = {
 export const paymentService = {
   // Get all payments
   async getAll(): Promise<any[]> {
+    checkSupabase()
     try {
       const { data, error } = await supabase
         .from('payments')
@@ -220,6 +246,7 @@ export const paymentService = {
 
   // Get payment by order ID
   async getByOrderId(orderId: string): Promise<any | null> {
+    checkSupabase()
     try {
       const { data, error } = await supabase
         .from('payments')
@@ -245,6 +272,7 @@ export const paymentService = {
     buyerPhone: string;
     zenoPayResponse?: any;
   }): Promise<any> {
+    checkSupabase()
     try {
       const { data, error } = await supabase
         .from('payments')
@@ -271,6 +299,7 @@ export const paymentService = {
 
   // Update payment status
   async updateStatus(orderId: string, status: string, zenoPayResponse?: any): Promise<any> {
+    checkSupabase()
     try {
       const { data, error } = await supabase
         .from('payments')
@@ -293,6 +322,7 @@ export const paymentService = {
 
   // Update payment with callback data
   async updateWithCallback(orderId: string, callbackData: any): Promise<any> {
+    checkSupabase()
     try {
       const { data, error } = await supabase
         .from('payments')

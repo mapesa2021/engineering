@@ -1,9 +1,20 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+// Only create client if environment variables are available
+const createSupabaseClient = () => {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  
+  if (!supabaseUrl || !supabaseAnonKey) {
+    console.warn('Supabase environment variables not found. Client will not be initialized.')
+    return null
+  }
+  
+  return createClient(supabaseUrl, supabaseAnonKey)
+}
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+// Initialize client only when needed
+export const supabase = createSupabaseClient()
 
 // Database table names
 export const TABLES = {
@@ -20,6 +31,11 @@ export const TABLES = {
 
 // Row Level Security (RLS) policies
 export const enableRLS = async () => {
+  if (!supabase) {
+    console.warn('Supabase client not available. Skipping RLS setup.')
+    return
+  }
+  
   // Enable RLS on all tables
   const tables = Object.values(TABLES)
   
