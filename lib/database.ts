@@ -44,8 +44,8 @@ export const blogService = {
   },
 
   async create(post: Omit<BlogPost, 'id' | 'createdAt' | 'updatedAt'>): Promise<BlogPost> {
-    checkSupabase()
-    const { data, error } = await supabase
+    const client = checkSupabase()
+    const { data, error } = await client
       .from(TABLES.BLOG_POSTS)
       .insert([post])
       .select()
@@ -56,8 +56,8 @@ export const blogService = {
   },
 
   async update(id: number, updates: Partial<BlogPost>): Promise<BlogPost | null> {
-    checkSupabase()
-    const { data, error } = await supabase
+    const client = checkSupabase()
+    const { data, error } = await client
       .from(TABLES.BLOG_POSTS)
       .update({ ...updates, updated_at: new Date().toISOString() })
       .eq('id', id)
@@ -69,8 +69,8 @@ export const blogService = {
   },
 
   async delete(id: number): Promise<boolean> {
-    checkSupabase()
-    const { error } = await supabase
+    const client = checkSupabase()
+    const { error } = await client
       .from(TABLES.BLOG_POSTS)
       .delete()
       .eq('id', id)
@@ -83,8 +83,8 @@ export const blogService = {
 // Team Members Database Operations
 export const teamService = {
   async getAll(): Promise<TeamMember[]> {
-    checkSupabase()
-    const { data, error } = await supabase
+    const client = checkSupabase()
+    const { data, error } = await client
       .from(TABLES.TEAM_MEMBERS)
       .select('*')
       .order('order', { ascending: true })
@@ -94,8 +94,8 @@ export const teamService = {
   },
 
   async getActive(): Promise<TeamMember[]> {
-    checkSupabase()
-    const { data, error } = await supabase
+    const client = checkSupabase()
+    const { data, error } = await client
       .from(TABLES.TEAM_MEMBERS)
       .select('*')
       .eq('is_active', true)
@@ -106,8 +106,8 @@ export const teamService = {
   },
 
   async create(member: Omit<TeamMember, 'id'>): Promise<TeamMember> {
-    checkSupabase()
-    const { data, error } = await supabase
+    const client = checkSupabase()
+    const { data, error } = await client
       .from(TABLES.TEAM_MEMBERS)
       .insert([member])
       .select()
@@ -118,8 +118,8 @@ export const teamService = {
   },
 
   async update(id: string, updates: Partial<TeamMember>): Promise<TeamMember | null> {
-    checkSupabase()
-    const { data, error } = await supabase
+    const client = checkSupabase()
+    const { data, error } = await client
       .from(TABLES.TEAM_MEMBERS)
       .update({ ...updates, updated_at: new Date().toISOString() })
       .eq('id', id)
@@ -131,8 +131,8 @@ export const teamService = {
   },
 
   async delete(id: string): Promise<boolean> {
-    checkSupabase()
-    const { error } = await supabase
+    const client = checkSupabase()
+    const { error } = await client
       .from(TABLES.TEAM_MEMBERS)
       .delete()
       .eq('id', id)
@@ -145,8 +145,8 @@ export const teamService = {
 // Contact Messages Database Operations
 export const contactService = {
   async getAll(): Promise<ContactMessage[]> {
-    checkSupabase()
-    const { data, error } = await supabase
+    const client = checkSupabase()
+    const { data, error } = await client
       .from(TABLES.CONTACT_MESSAGES)
       .select('*')
       .order('submitted_at', { ascending: false })
@@ -156,8 +156,8 @@ export const contactService = {
   },
 
   async create(message: Omit<ContactMessage, 'id' | 'submittedAt' | 'status'>): Promise<ContactMessage> {
-    checkSupabase()
-    const { data, error } = await supabase
+    const client = checkSupabase()
+    const { data, error } = await client
       .from(TABLES.CONTACT_MESSAGES)
       .insert([message])
       .select()
@@ -168,8 +168,8 @@ export const contactService = {
   },
 
   async updateStatus(id: string, status: 'new' | 'read' | 'replied'): Promise<boolean> {
-    checkSupabase()
-    const { error } = await supabase
+    const client = checkSupabase()
+    const { error } = await client
       .from(TABLES.CONTACT_MESSAGES)
       .update({ status })
       .eq('id', id)
@@ -179,8 +179,8 @@ export const contactService = {
   },
 
   async delete(id: string): Promise<boolean> {
-    checkSupabase()
-    const { error } = await supabase
+    const client = checkSupabase()
+    const { error } = await client
       .from(TABLES.CONTACT_MESSAGES)
       .delete()
       .eq('id', id)
@@ -193,8 +193,8 @@ export const contactService = {
 // Newsletter Subscribers Database Operations
 export const newsletterService = {
   async getAll(): Promise<NewsletterSubscriber[]> {
-    checkSupabase()
-    const { data, error } = await supabase
+    const client = checkSupabase()
+    const { data, error } = await client
       .from(TABLES.NEWSLETTER_SUBSCRIBERS)
       .select('*')
       .order('subscribed_at', { ascending: false })
@@ -204,8 +204,8 @@ export const newsletterService = {
   },
 
   async subscribe(email: string, source: string = 'homepage'): Promise<boolean> {
-    checkSupabase()
-    const { error } = await supabase
+    const client = checkSupabase()
+    const { error } = await client
       .from(TABLES.NEWSLETTER_SUBSCRIBERS)
       .upsert([{ email, source }], { onConflict: 'email' })
     
@@ -214,8 +214,8 @@ export const newsletterService = {
   },
 
   async unsubscribe(email: string): Promise<boolean> {
-    checkSupabase()
-    const { error } = await supabase
+    const client = checkSupabase()
+    const { error } = await client
       .from(TABLES.NEWSLETTER_SUBSCRIBERS)
       .update({ is_active: false })
       .eq('email', email)
@@ -229,9 +229,9 @@ export const newsletterService = {
 export const paymentService = {
   // Get all payments
   async getAll(): Promise<any[]> {
-    checkSupabase()
+    const client = checkSupabase()
     try {
-      const { data, error } = await supabase
+      const { data, error } = await client
         .from('payments')
         .select('*')
         .order('created_at', { ascending: false });
@@ -246,9 +246,9 @@ export const paymentService = {
 
   // Get payment by order ID
   async getByOrderId(orderId: string): Promise<any | null> {
-    checkSupabase()
+    const client = checkSupabase()
     try {
-      const { data, error } = await supabase
+      const { data, error } = await client
         .from('payments')
         .select('*')
         .eq('order_id', orderId)
@@ -272,9 +272,9 @@ export const paymentService = {
     buyerPhone: string;
     zenoPayResponse?: any;
   }): Promise<any> {
-    checkSupabase()
+    const client = checkSupabase()
     try {
-      const { data, error } = await supabase
+      const { data, error } = await client
         .from('payments')
         .insert([{
           order_id: paymentData.orderId,
@@ -299,9 +299,9 @@ export const paymentService = {
 
   // Update payment status
   async updateStatus(orderId: string, status: string, zenoPayResponse?: any): Promise<any> {
-    checkSupabase()
+    const client = checkSupabase()
     try {
-      const { data, error } = await supabase
+      const { data, error } = await client
         .from('payments')
         .update({
           status,
@@ -322,9 +322,9 @@ export const paymentService = {
 
   // Update payment with callback data
   async updateWithCallback(orderId: string, callbackData: any): Promise<any> {
-    checkSupabase()
+    const client = checkSupabase()
     try {
-      const { data, error } = await supabase
+      const { data, error } = await client
         .from('payments')
         .update({
           callback_data: callbackData,
