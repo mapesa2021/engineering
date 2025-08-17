@@ -10,6 +10,14 @@ interface PaymentHistoryResponse {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
+    // Check environment variables
+    console.log('Environment check:', {
+      supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL ? 'Set' : 'Missing',
+      supabaseKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ? 'Set' : 'Missing',
+      nodeEnv: process.env.NODE_ENV,
+      allEnvVars: Object.keys(process.env).filter(key => key.includes('SUPABASE'))
+    });
+
     if (req.method === 'GET') {
       // Get payment history from Supabase
       const payments = await paymentService.getAll();
@@ -26,6 +34,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Add new payment record to Supabase
       const { orderId, amount, currency, buyerEmail, buyerName, buyerPhone, zenoPayResponse } = req.body;
 
+      console.log('Received payment data:', { orderId, amount, currency, buyerEmail, buyerName, buyerPhone });
+
       if (!orderId || !amount || !currency || !buyerEmail || !buyerName || !buyerPhone) {
         return res.status(400).json({
           success: false,
@@ -34,23 +44,42 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         });
       }
 
-      const newPayment = await paymentService.create({
-        orderId,
-        amount,
-        currency,
-        buyerEmail,
-        buyerName,
-        buyerPhone,
-        zenoPayResponse
-      });
+      try {
+        const newPayment = await paymentService.create({
+          orderId,
+          amount,
+          currency,
+          buyerEmail,
+          buyerName,
+          buyerPhone,
+          zenoPayResponse
+        });
 
-      console.log('Payment record created in Supabase:', newPayment);
+        console.log('Payment record created in Supabase:', newPayment);
 
-      return res.status(201).json({
-        success: true,
-        message: 'Payment record created successfully',
-        data: newPayment
-      });
+        return res.status(201).json({
+          success: true,
+          message: 'Payment record created successfully',
+          data: newPayment
+        });
+      } catch (dbError: any) {
+        console.error('Database error when creating payment:', dbError);
+        
+        // Check if it's a Supabase connection error
+        if (dbError.message && dbError.message.includes('Supabase client not available')) {
+          return res.status(500).json({
+            success: false,
+            message: 'Database connection failed',
+            error: 'Supabase client not available. Please check environment variables.'
+          });
+        }
+        
+        return res.status(500).json({
+          success: false,
+          message: 'Failed to create payment record',
+          error: dbError.message || 'Database operation failed'
+        });
+      }
 
     } else if (req.method === 'PUT') {
       // Update payment status in Supabase
@@ -83,7 +112,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(500).json({
       success: false,
       message: 'Internal server error',
-      error: 'An unexpected error occurred while processing payment history'
+      error: error.message || 'An unexpected error occurred while processing payment history'
     });
   }
 } 
