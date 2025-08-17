@@ -2,9 +2,21 @@
 import { useState, useEffect } from 'react';
 import { getTreePackages, TreePackage } from '../utils/adminData';
 import AnimatedCard from './AnimatedCard';
+import PaymentModal from './PaymentModal';
 
 const TreePackages = () => {
   const [packages, setPackages] = useState<TreePackage[]>([]);
+  const [paymentModal, setPaymentModal] = useState<{
+    isOpen: boolean;
+    amount: number;
+    title: string;
+    description: string;
+  }>({
+    isOpen: false,
+    amount: 0,
+    title: '',
+    description: ''
+  });
 
   useEffect(() => {
     // Load tree packages from admin data
@@ -23,6 +35,15 @@ const TreePackages = () => {
     window.addEventListener('storage', handleStorageChange);
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
+
+  const handleDonateClick = (treePackage: TreePackage) => {
+    setPaymentModal({
+      isOpen: true,
+      amount: treePackage.price,
+      title: `${treePackage.name} - ${treePackage.treeCount} Trees`,
+      description: `${treePackage.description} - Plant ${treePackage.treeCount} trees for ${treePackage.currency} ${treePackage.price.toLocaleString()}`
+    });
+  };
 
   return (
     <section className="section-padding bg-white">
@@ -90,9 +111,9 @@ const TreePackages = () => {
                   </div>
                   
                   {/* Donate Button */}
-                  <button 
-                    onClick={() => console.log(`${treePackage.name} selected - ${treePackage.currency} ${treePackage.price.toLocaleString()}`)}
-                    className="w-full bg-eco-green hover:bg-eco-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
+                  <button
+                    onClick={() => handleDonateClick(treePackage)}
+                    className="w-full bg-eco-green text-white py-3 px-6 rounded-lg font-semibold hover:bg-eco-dark transition-colors duration-300"
                   >
                     Donate Now
                   </button>
@@ -108,6 +129,13 @@ const TreePackages = () => {
           </div>
         )}
       </div>
+      <PaymentModal
+        isOpen={paymentModal.isOpen}
+        onClose={() => setPaymentModal({ ...paymentModal, isOpen: false })}
+        amount={paymentModal.amount}
+        title={paymentModal.title}
+        description={paymentModal.description}
+      />
     </section>
   );
 };
