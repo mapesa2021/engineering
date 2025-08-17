@@ -3,13 +3,8 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { 
-  getTeamMembers, 
-  addTeamMember, 
-  updateTeamMember, 
-  deleteTeamMember, 
-  TeamMember 
-} from '../../utils/adminData';
+import { teamService } from '../../lib/database';
+import type { TeamMember } from '../../utils/adminData';
 
 const TeamManagement = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -51,9 +46,13 @@ const TeamManagement = () => {
     }
   }, [isAuthenticated]);
 
-  const loadTeamMembers = () => {
-    const members = getTeamMembers();
-    setTeamMembers(members);
+  const loadTeamMembers = async () => {
+    try {
+      const members = await teamService.getAll();
+      setTeamMembers(members);
+    } catch (error) {
+      console.error('Error loading team members:', error);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -80,19 +79,23 @@ const TeamManagement = () => {
     setShowAddForm(false);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (editingMember) {
-      // Update existing member
-      updateTeamMember(editingMember.id, formData);
-    } else {
-      // Add new member
-      addTeamMember(formData);
+    try {
+      if (editingMember) {
+        // Update existing member
+        await teamService.update(editingMember.id, formData);
+      } else {
+        // Add new member
+        await teamService.create(formData);
+      }
+      
+      await loadTeamMembers();
+      resetForm();
+    } catch (error) {
+      console.error('Error saving team member:', error);
     }
-    
-    loadTeamMembers();
-    resetForm();
   };
 
   const handleEdit = (member: TeamMember) => {
@@ -111,16 +114,24 @@ const TeamManagement = () => {
     setShowAddForm(true);
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = async (id: string) => {
     if (confirm('Are you sure you want to delete this team member?')) {
-      deleteTeamMember(id);
-      loadTeamMembers();
+      try {
+        await teamService.delete(id);
+        await loadTeamMembers();
+      } catch (error) {
+        console.error('Error deleting team member:', error);
+      }
     }
   };
 
-  const toggleActive = (id: string, currentStatus: boolean) => {
-    updateTeamMember(id, { isActive: !currentStatus });
-    loadTeamMembers();
+  const toggleActive = async (id: string, currentStatus: boolean) => {
+    try {
+              await teamService.update(id, { isActive: !currentStatus });
+      await loadTeamMembers();
+    } catch (error) {
+      console.error('Error updating team member:', error);
+    }
   };
 
   if (isLoading) {

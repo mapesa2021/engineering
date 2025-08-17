@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import AnimatedButton from './AnimatedButton';
 import { getButtonsBySection, Button } from '../utils/adminData';
+import PaymentModal from './PaymentModal';
 
 interface DynamicButtonProps {
   section: string;
@@ -10,6 +11,17 @@ interface DynamicButtonProps {
 
 export default function DynamicButton({ section, className = '' }: DynamicButtonProps) {
   const [buttons, setButtons] = useState<Button[]>([]);
+  const [paymentModal, setPaymentModal] = useState<{
+    isOpen: boolean;
+    amount: number;
+    title: string;
+    description: string;
+  }>({
+    isOpen: false,
+    amount: 0,
+    title: '',
+    description: ''
+  });
 
   useEffect(() => {
     const loadButtons = () => {
@@ -45,7 +57,19 @@ export default function DynamicButton({ section, className = '' }: DynamicButton
           variant={button.variant}
           className="text-lg px-8 py-4"
           onClick={() => {
-            if (button.url.startsWith('http')) {
+            // Check if this is a donation button
+            if (button.text.toLowerCase().includes('donate') || button.text.toLowerCase().includes('give')) {
+                       // Extract amount from button text or use default
+         const amountMatch = button.text.match(/\d+/);
+         const amount = amountMatch ? parseInt(amountMatch[0]) : 1000; // Default 1000 TZS
+              
+              setPaymentModal({
+                isOpen: true,
+                amount: amount,
+                title: button.text,
+                description: `Donation to CareThePlanet - ${button.text}`
+              });
+            } else if (button.url.startsWith('http')) {
               window.open(button.url, '_blank');
             } else if (button.url.startsWith('#')) {
               // Handle anchor links
@@ -62,6 +86,15 @@ export default function DynamicButton({ section, className = '' }: DynamicButton
           {button.text}
         </AnimatedButton>
       ))}
+      
+      {/* Payment Modal */}
+      <PaymentModal
+        isOpen={paymentModal.isOpen}
+        onClose={() => setPaymentModal(prev => ({ ...prev, isOpen: false }))}
+        amount={paymentModal.amount}
+        title={paymentModal.title}
+        description={paymentModal.description}
+      />
     </div>
   );
 } 

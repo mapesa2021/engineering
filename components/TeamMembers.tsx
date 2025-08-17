@@ -1,28 +1,28 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { getActiveTeamMembers, TeamMember } from '../utils/adminData';
+import { teamService } from '../lib/database';
+import type { TeamMember } from '../utils/adminData';
 
 export default function TeamMembers() {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
 
   useEffect(() => {
-    const loadTeamMembers = () => {
-      const members = getActiveTeamMembers();
+      const loadTeamMembers = async () => {
+    try {
+      const members = await teamService.getActive();
       setTeamMembers(members);
-    };
+    } catch (error) {
+      console.error('Error loading team members:', error);
+    }
+  };
 
     loadTeamMembers();
 
-    const handleStorageChange = () => {
-      loadTeamMembers();
-    };
-
-    window.addEventListener('storage', handleStorageChange);
-    window.addEventListener('localStorageChange', handleStorageChange);
+    // Set up polling for real-time updates (every 30 seconds)
+    const interval = setInterval(loadTeamMembers, 30000);
 
     return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      window.removeEventListener('localStorageChange', handleStorageChange);
+      clearInterval(interval);
     };
   }, []);
 

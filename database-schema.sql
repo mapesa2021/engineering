@@ -11,6 +11,7 @@ ALTER TABLE IF EXISTS homepage_buttons ENABLE ROW LEVEL SECURITY;
 ALTER TABLE IF EXISTS newsletter_subscribers ENABLE ROW LEVEL SECURITY;
 ALTER TABLE IF EXISTS contact_messages ENABLE ROW LEVEL SECURITY;
 ALTER TABLE IF EXISTS admin_users ENABLE ROW LEVEL SECURITY;
+ALTER TABLE IF EXISTS payments ENABLE ROW LEVEL SECURITY;
 
 -- Blog Posts Table
 CREATE TABLE IF NOT EXISTS blog_posts (
@@ -125,6 +126,23 @@ CREATE TABLE IF NOT EXISTS admin_users (
   last_login TIMESTAMP WITH TIME ZONE
 );
 
+-- Payments Table
+CREATE TABLE IF NOT EXISTS payments (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  order_id TEXT UNIQUE NOT NULL,
+  amount INTEGER NOT NULL,
+  currency TEXT NOT NULL DEFAULT 'TZS',
+  buyer_email TEXT NOT NULL,
+  buyer_name TEXT NOT NULL,
+  buyer_phone TEXT NOT NULL,
+  status TEXT CHECK (status IN ('pending', 'completed', 'failed')) DEFAULT 'pending',
+  zeno_pay_response JSONB,
+  zeno_pay_payment_id TEXT,
+  callback_data JSONB,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
 -- Insert default admin user (password: caretheplanet2024)
 INSERT INTO admin_users (username, email, password_hash) 
 VALUES ('admin', 'admin@caretheplanet.org', '$2a$10$default_hash_here')
@@ -135,6 +153,9 @@ CREATE INDEX IF NOT EXISTS idx_blog_posts_status ON blog_posts(status);
 CREATE INDEX IF NOT EXISTS idx_team_members_active ON team_members(is_active);
 CREATE INDEX IF NOT EXISTS idx_contact_messages_status ON contact_messages(status);
 CREATE INDEX IF NOT EXISTS idx_newsletter_subscribers_active ON newsletter_subscribers(is_active);
+CREATE INDEX IF NOT EXISTS idx_payments_order_id ON payments(order_id);
+CREATE INDEX IF NOT EXISTS idx_payments_status ON payments(status);
+CREATE INDEX IF NOT EXISTS idx_payments_created_at ON payments(created_at);
 
 -- RLS Policies (basic read access for public, full access for authenticated users)
 -- You can customize these policies based on your security requirements 

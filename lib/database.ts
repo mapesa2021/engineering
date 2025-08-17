@@ -199,3 +199,116 @@ export const newsletterService = {
     return true
   }
 } 
+
+// Payment Service
+export const paymentService = {
+  // Get all payments
+  async getAll(): Promise<any[]> {
+    try {
+      const { data, error } = await supabase
+        .from('payments')
+        .select('*')
+        .order('created_at', { ascending: false });
+      
+      if (error) throw error;
+      return data || [];
+    } catch (error) {
+      console.error('Error fetching payments:', error);
+      return [];
+    }
+  },
+
+  // Get payment by order ID
+  async getByOrderId(orderId: string): Promise<any | null> {
+    try {
+      const { data, error } = await supabase
+        .from('payments')
+        .select('*')
+        .eq('order_id', orderId)
+        .single();
+      
+      if (error) throw error;
+      return data;
+    } catch (error) {
+      console.error('Error fetching payment:', error);
+      return null;
+    }
+  },
+
+  // Create new payment record
+  async create(paymentData: {
+    orderId: string;
+    amount: number;
+    currency: string;
+    buyerEmail: string;
+    buyerName: string;
+    buyerPhone: string;
+    zenoPayResponse?: any;
+  }): Promise<any> {
+    try {
+      const { data, error } = await supabase
+        .from('payments')
+        .insert([{
+          order_id: paymentData.orderId,
+          amount: paymentData.amount,
+          currency: paymentData.currency,
+          buyer_email: paymentData.buyerEmail,
+          buyer_name: paymentData.buyerName,
+          buyer_phone: paymentData.buyerPhone,
+          zeno_pay_response: paymentData.zenoPayResponse,
+          status: 'pending'
+        }])
+        .select()
+        .single();
+      
+      if (error) throw error;
+      return data;
+    } catch (error) {
+      console.error('Error creating payment:', error);
+      throw error;
+    }
+  },
+
+  // Update payment status
+  async updateStatus(orderId: string, status: string, zenoPayResponse?: any): Promise<any> {
+    try {
+      const { data, error } = await supabase
+        .from('payments')
+        .update({
+          status,
+          zeno_pay_response: zenoPayResponse,
+          updated_at: new Date().toISOString()
+        })
+        .eq('order_id', orderId)
+        .select()
+        .single();
+      
+      if (error) throw error;
+      return data;
+    } catch (error) {
+      console.error('Error updating payment status:', error);
+      throw error;
+    }
+  },
+
+  // Update payment with callback data
+  async updateWithCallback(orderId: string, callbackData: any): Promise<any> {
+    try {
+      const { data, error } = await supabase
+        .from('payments')
+        .update({
+          callback_data: callbackData,
+          updated_at: new Date().toISOString()
+        })
+        .eq('order_id', orderId)
+        .select()
+        .single();
+      
+      if (error) throw error;
+      return data;
+    } catch (error) {
+      console.error('Error updating payment with callback:', error);
+      throw error;
+    }
+  }
+}; 

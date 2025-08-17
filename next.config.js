@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Static export for cPanel hosting
-  output: 'export',
+  // Static export for cPanel hosting - DISABLED to enable API routes
+  // output: 'export',
   trailingSlash: true,
   images: {
     unoptimized: true,
