@@ -18,20 +18,23 @@ const BlogPostPage = () => {
     if (id) {
       const loadPost = async () => {
         try {
+          console.log('🔍 Loading blog post with ID:', id);
           const foundPost = await getBlogPostById(Number(id));
+          console.log('📝 Found blog post:', foundPost);
           
-          if (foundPost && foundPost.status === 'published') {
+          if (foundPost) {
             setPost(foundPost);
             
             // For now, we'll set empty related posts since we need a separate function
             // TODO: Implement getRelatedPosts function
             setRelatedPosts([]);
           } else {
-            // Post not found or not published
+            console.log('❌ Blog post not found, redirecting to blog list');
+            // Post not found
             router.push('/blog');
           }
         } catch (error) {
-          console.error('Error loading blog post:', error);
+          console.error('❌ Error loading blog post:', error);
           router.push('/blog');
         } finally {
           setIsLoading(false);

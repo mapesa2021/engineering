@@ -37,6 +37,7 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
 
 export const getBlogPostById = async (id: number): Promise<BlogPost | null> => {
   try {
+    console.log('🔍 Fetching blog post with ID:', id);
     const { data, error } = await supabase
       .from('blog_posts')
       .select('*')
@@ -44,12 +45,28 @@ export const getBlogPostById = async (id: number): Promise<BlogPost | null> => {
       .single();
 
     if (error) {
-      console.error('Error fetching blog post:', error);
+      console.error('❌ Error fetching blog post:', error);
+      // Try to get from fallback data
+      const fallbackPosts = getFallbackData('blog_posts', []);
+      const fallbackPost = fallbackPosts.find((post: BlogPost) => post.id === id);
+      if (fallbackPost) {
+        console.log('✅ Found blog post in fallback data');
+        return fallbackPost;
+      }
       return null;
     }
+    
+    console.log('✅ Blog post fetched from Supabase:', data);
     return data;
   } catch (error) {
-    console.error('Supabase error:', error);
+    console.error('❌ Supabase error:', error);
+    // Try to get from fallback data
+    const fallbackPosts = getFallbackData('blog_posts', []);
+    const fallbackPost = fallbackPosts.find((post: BlogPost) => post.id === id);
+    if (fallbackPost) {
+      console.log('✅ Found blog post in fallback data');
+      return fallbackPost;
+    }
     return null;
   }
 };
