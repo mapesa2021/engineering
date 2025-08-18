@@ -1,9 +1,17 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Check if environment variables are available
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.warn('Supabase environment variables are not configured. Using fallback data.');
+}
+
+export const supabase = createClient(
+  supabaseUrl || 'https://kqbthffrjimvahmfxius.supabase.co',
+  supabaseAnonKey || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtxYnRoZmZyamltdmFobWZ4aXVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU1MjQzMzksImV4cCI6MjA3MTEwMDMzOX0.gLQfKMmx23jt8WElS2yPuXAeMLZpJGi28yB-534JbrE'
+);
 
 // Database types
 export interface BlogPost {

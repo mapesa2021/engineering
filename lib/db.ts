@@ -461,5 +461,90 @@ const getFallbackData = (key: string, defaultValue: any): any => {
     console.error('Error reading from localStorage:', error);
   }
   
+  // Return sample data for blog posts and events if Supabase is not available
+  if (key === 'blog_posts') {
+    return [
+      {
+        id: 1,
+        title: "Q Play App Launch: Revolutionizing Nightlife",
+        excerpt: "Discover how Q Play is changing the way people experience nightlife and connect with DJs.",
+        content: "Q Play has officially launched, bringing a new era of nightlife interaction...",
+        author: "Q Play Team",
+        date: "2024-01-15",
+        read_time: "5 min read",
+        category: "Platform Updates",
+        image: "🚀",
+        status: "published",
+        created_at: "2024-01-15T10:00:00Z",
+        updated_at: "2024-01-15T10:00:00Z"
+      },
+      {
+        id: 2,
+        title: "Top 10 DJ Tips for Success",
+        excerpt: "Essential tips for DJs looking to build their brand and grow their audience.",
+        content: "Being a successful DJ requires more than just good music...",
+        author: "DJ Expert",
+        date: "2024-01-10",
+        read_time: "8 min read",
+        category: "DJ Tips",
+        image: "🎧",
+        status: "published",
+        created_at: "2024-01-10T10:00:00Z",
+        updated_at: "2024-01-10T10:00:00Z"
+      }
+    ];
+  }
+  
+  if (key === 'events') {
+    return [
+      {
+        id: 1,
+        title: "Q Play Launch Party",
+        description: "Join us for the official launch of Q Play at the hottest club in town!",
+        date: "2024-02-15",
+        time: "10:00 PM",
+        location: "Club Q",
+        venue: "Club Q",
+        address: "123 Nightlife Ave",
+        city: "Los Angeles",
+        state: "CA",
+        zip_code: "90210",
+        image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop",
+        dj_name: "DJ Q Master",
+        dj_bio: "International DJ with over 10 years of experience",
+        ticket_price: "$25",
+        capacity: 500,
+        category: "Launch Party",
+        status: "upcoming",
+        featured: true,
+        created_at: "2024-01-15T10:00:00Z",
+        updated_at: "2024-01-15T10:00:00Z"
+      },
+      {
+        id: 2,
+        title: "Weekend Vibes",
+        description: "The ultimate weekend party with the best DJs in the city",
+        date: "2024-02-20",
+        time: "9:00 PM",
+        location: "Vibe Lounge",
+        venue: "Vibe Lounge",
+        address: "456 Party Street",
+        city: "Miami",
+        state: "FL",
+        zip_code: "33101",
+        image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&h=600&fit=crop",
+        dj_name: "DJ Vibe",
+        dj_bio: "Local favorite known for amazing energy",
+        ticket_price: "$30",
+        capacity: 300,
+        category: "Weekend Party",
+        status: "upcoming",
+        featured: false,
+        created_at: "2024-01-16T10:00:00Z",
+        updated_at: "2024-01-16T10:00:00Z"
+      }
+    ];
+  }
+  
   return defaultValue;
 }; 

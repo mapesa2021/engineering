@@ -68,7 +68,7 @@ const TeamManagement = () => {
         {/* Header */}
         <header className="bg-dark-card border-b border-q-orange/20 px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center">
+              <div className="flex items-center">
               <div className="w-8 h-8 rounded-xl flex items-center justify-center mr-3 overflow-hidden">
                 <img 
                   src="https://i.postimg.cc/HkxHn2Ct/Untitled-design-25.png" 
@@ -91,7 +91,7 @@ const TeamManagement = () => {
               <div className="text-white/60">
                 {teamMembers.length} member{teamMembers.length !== 1 ? 's' : ''}
               </div>
-            </div>
+          </div>
 
             {/* Team Members Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -103,18 +103,18 @@ const TeamManagement = () => {
                         <img 
                           src={member.image} 
                           alt={member.name}
-                          className="w-full h-full object-cover"
+                             className="w-full h-full object-cover"
                         />
                       ) : (
                         <span className="text-2xl">{member.image || '👨‍💼'}</span>
-                      )}
-                    </div>
-                    <div>
+                     )}
+                   </div>
+                  <div>
                       <h3 className="text-xl font-bold text-white">{member.name}</h3>
                       <p className="text-q-orange font-semibold">{member.position}</p>
-                    </div>
                   </div>
-                  
+                </div>
+
                   <p className="text-white/80 mb-4">{member.bio}</p>
                   
                   {member.social_links && (

@@ -17,7 +17,9 @@ export default function Events() {
     if (typeof window !== 'undefined') {
       const loadEvents = async () => {
         try {
+          console.log('Loading events...');
           const events = await getEvents();
+          console.log('Events loaded:', events);
           setEvents(events);
         } catch (error) {
           console.error('Error loading events:', error);

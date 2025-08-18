@@ -32,7 +32,7 @@ export default function Home() {
                 </p>
               </div>
               
-                              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Step 1 */}
                 <AnimatedCard delay={0.1}>
                   <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 shadow-xl hover:shadow-2xl hover:shadow-white/20 transition-all duration-300 text-center group hover:scale-105">
@@ -56,7 +56,7 @@ export default function Home() {
                     <p className="text-white/90 leading-relaxed">
                       DJs see the requests in real-time and play the highest-paying songs first. The crowd gets what they want.
                     </p>
-                  </div>
+                </div>
                 </AnimatedCard>
 
                 {/* Step 3 */}
@@ -64,12 +64,12 @@ export default function Home() {
                   <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 shadow-xl hover:shadow-2xl hover:shadow-white/20 transition-all duration-300 text-center group hover:scale-105">
                     <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-3xl" style={{ animationDelay: '3s' }}>
                       💰
-                    </div>
+                </div>
                     <h3 className="text-2xl font-bold text-white mb-4">3. DJs Earn Tips</h3>
                     <p className="text-white/90 leading-relaxed">
                       DJs earn extra income from song requests while keeping the party going. Everyone wins.
                     </p>
-                  </div>
+                </div>
                 </AnimatedCard>
               </div>
             </div>
@@ -83,7 +83,7 @@ export default function Home() {
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-black text-white mb-6 font-display">
                   <span className="text-gradient">Why Choose Q Play?</span>
-                </h2>
+                  </h2>
                 <p className="text-xl text-gray-300 max-w-3xl mx-auto font-body">
                   The ultimate platform connecting fans and DJs for unforgettable nights.
                 </p>
@@ -171,7 +171,7 @@ export default function Home() {
             </div>
           </section>
         </AnimatedSection>
-
+        
         {/* Testimonials Section */}
         <AnimatedSection delay={0.6}>
           <section className="section-padding bg-gradient-to-br from-q-purple via-q-magenta to-q-orange">
@@ -221,7 +221,7 @@ export default function Home() {
             </div>
           </section>
         </AnimatedSection>
-
+        
         {/* DJ Stats Section */}
         <AnimatedSection delay={0.8}>
           <section className="section-padding">
@@ -229,7 +229,7 @@ export default function Home() {
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-black text-white mb-6 font-display">
                   Built for DJs
-                </h2>
+                  </h2>
                 <p className="text-xl text-white/90 max-w-3xl mx-auto font-body">
                   Monetize song requests, keep crowds hyped, and own the night with Q Play.
                 </p>
@@ -274,7 +274,7 @@ export default function Home() {
                     <p className="text-white/80">Get paid for playing the songs your crowd wants—right when they want it. Tips range from $5 to $50+ per request.</p>
                   </div>
                 </AnimatedCard>
-                
+
                 <AnimatedCard delay={0.2}>
                   <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 text-center">
                     <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">🎧</div>
@@ -282,7 +282,7 @@ export default function Home() {
                     <p className="text-white/80">See requests in real-time with song titles, artist names, and tip amounts. Play the highest-paying songs first.</p>
                   </div>
                 </AnimatedCard>
-                
+
                 <AnimatedCard delay={0.3}>
                   <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 text-center">
                     <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">👥</div>
@@ -296,7 +296,7 @@ export default function Home() {
                     <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">📊</div>
                     <h3 className="text-2xl font-bold text-white mb-4">Analytics Dashboard</h3>
                     <p className="text-white/80">Track your earnings, most requested songs, and fan engagement metrics to optimize your sets.</p>
-                  </div>
+                    </div>
                 </AnimatedCard>
                 
                 <AnimatedCard delay={0.5}>
@@ -304,7 +304,7 @@ export default function Home() {
                     <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">🎵</div>
                     <h3 className="text-2xl font-bold text-white mb-4">Song Library</h3>
                     <p className="text-white/80">Access a vast library of songs. Fans can request anything from current hits to classic tracks.</p>
-                  </div>
+                    </div>
                 </AnimatedCard>
                 
                 <AnimatedCard delay={0.6}>
@@ -326,7 +326,7 @@ export default function Home() {
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-5xl font-black text-white mb-6 font-display">
                   How It Works for DJs
-                </h2>
+              </h2>
                 <p className="text-xl text-white/90 max-w-3xl mx-auto font-body">
                   Get started in minutes and start earning from your first gig.
                 </p>
@@ -419,13 +419,13 @@ export default function Home() {
                       <div className="border-t border-white/20 pt-2 flex justify-between text-white font-bold text-lg">
                         <span>Total Earnings:</span>
                         <span>$229.50</span>
-                      </div>
-                    </div>
+                  </div>
+                </div>
                     <p className="text-white/70 text-sm">*Based on actual DJ earnings data</p>
                   </div>
                 </AnimatedCard>
-              </div>
-            </div>
+                  </div>
+                </div>
           </section>
         </AnimatedSection>
 
@@ -450,8 +450,8 @@ export default function Home() {
                       <div>
                         <div className="text-white font-bold text-lg">DJ Mike</div>
                         <div className="text-white/70">Professional Club DJ</div>
-                      </div>
-                    </div>
+                  </div>
+                </div>
                     <p className="text-white/80 italic mb-4">
                       "Q Play has completely changed my income. I'm making an extra $300-500 per night just from song requests. The crowd loves it because they get to hear their favorite songs, and I love it because I'm getting paid more to do what I already love."
                     </p>
@@ -466,8 +466,8 @@ export default function Home() {
                       <div>
                         <div className="text-white font-bold text-lg">Sarah Chen</div>
                         <div className="text-white/70">Wedding & Event DJ</div>
-                      </div>
-                    </div>
+                  </div>
+                </div>
                     <p className="text-white/80 italic mb-4">
                       "The engagement level at my events has skyrocketed since using Q Play. Guests are more involved, the energy is incredible, and I'm earning significantly more. It's a win-win for everyone."
                     </p>
@@ -579,9 +579,9 @@ export default function Home() {
                            alt="Q Play Logo" 
                            className="w-full h-full object-cover"
                          />
-                       </div>
+                  </div>
                        <span className="text-2xl font-black text-gradient font-display">Q Play</span>
-                     </div>
+                </div>
                 <p className="text-gray-300 mb-4 max-w-md">
                   The ultimate platform connecting fans and DJs for unforgettable nights. Request songs, tip DJs, and own the night.
                 </p>
@@ -614,7 +614,7 @@ export default function Home() {
                        <Link href="/terms" className="hover:text-q-orange transition-colors duration-200">Terms of Service</Link>
                        <Link href="/privacy" className="hover:text-q-magenta transition-colors duration-200">Privacy Policy</Link>
                      </div>
-                   </div>
+            </div>
           </div>
         </footer>
       </AnimatedSection>

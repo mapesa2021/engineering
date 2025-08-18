@@ -16,7 +16,9 @@ const Blog = () => {
     if (typeof window !== 'undefined') {
       const loadPosts = async () => {
         try {
+          console.log('Loading blog posts...');
           const posts = await getBlogPosts();
+          console.log('Blog posts loaded:', posts);
           setBlogPosts(posts);
         } catch (error) {
           console.error('Error loading blog posts:', error);
