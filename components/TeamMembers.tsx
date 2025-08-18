@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { teamService } from '../lib/database';
-import type { TeamMember } from '../utils/adminData';
+import { getTeamMembers } from '../lib/db';
+import type { TeamMember } from '../lib/supabase';
 
 export default function TeamMembers() {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
@@ -9,7 +9,7 @@ export default function TeamMembers() {
   useEffect(() => {
       const loadTeamMembers = async () => {
     try {
-      const members = await teamService.getActive();
+      const members = await getTeamMembers();
       setTeamMembers(members);
     } catch (error) {
       console.error('Error loading team members:', error);
@@ -51,9 +51,9 @@ export default function TeamMembers() {
           {teamMembers.map((member) => (
             <div key={member.id} className="text-center">
               <div className="w-32 h-32 bg-eco-pale rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
-                {member.avatar && member.avatar.startsWith('http') ? (
+                {member.image && member.image.startsWith('http') ? (
                   <img 
-                    src={member.avatar} 
+                    src={member.image} 
                     alt={member.name}
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -62,8 +62,8 @@ export default function TeamMembers() {
                     }}
                   />
                 ) : null}
-                <div className={`w-full h-full flex items-center justify-center ${member.avatar && member.avatar.startsWith('http') ? 'hidden' : ''}`}>
-                  <span className="text-4xl">{member.avatar || '👨‍💼'}</span>
+                <div className={`w-full h-full flex items-center justify-center ${member.image && member.image.startsWith('http') ? 'hidden' : ''}`}>
+                  <span className="text-4xl">{member.image || '👨‍💼'}</span>
                 </div>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
@@ -73,20 +73,20 @@ export default function TeamMembers() {
               </p>
               
               {/* Social Links */}
-              {(member.email || member.linkedin || member.twitter) && (
+              {member.social_links && (
                 <div className="flex justify-center space-x-3">
-                  {member.email && (
+                  {member.social_links.email && (
                     <a
-                      href={`mailto:${member.email}`}
+                      href={`mailto:${member.social_links.email}`}
                       className="text-eco-green hover:text-eco-dark transition-colors duration-200"
                       title="Email"
                     >
                       📧
                     </a>
                   )}
-                  {member.linkedin && (
+                  {member.social_links.linkedin && (
                     <a
-                      href={member.linkedin}
+                      href={member.social_links.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-eco-green hover:text-eco-dark transition-colors duration-200"
@@ -95,9 +95,9 @@ export default function TeamMembers() {
                       💼
                     </a>
                   )}
-                  {member.twitter && (
+                  {member.social_links.twitter && (
                     <a
-                      href={member.twitter}
+                      href={member.social_links.twitter}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-eco-green hover:text-eco-dark transition-colors duration-200"

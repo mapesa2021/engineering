@@ -102,7 +102,7 @@ export default function ContactForm() {
             name="firstName"
             value={formData.firstName}
             onChange={handleInputChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-eco-green focus:border-transparent transition-colors duration-200"
+            className="w-full px-4 py-3 border border-white/20 bg-white/5 text-white placeholder-white/60 rounded-lg focus:ring-2 focus:ring-q-magenta focus:border-transparent transition-colors duration-200"
             placeholder="Your first name"
             required
             disabled={status === 'loading'}
@@ -118,7 +118,7 @@ export default function ContactForm() {
             name="lastName"
             value={formData.lastName}
             onChange={handleInputChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-eco-green focus:border-transparent transition-colors duration-200"
+            className="w-full px-4 py-3 border border-white/20 bg-white/5 text-white placeholder-white/60 rounded-lg focus:ring-2 focus:ring-q-magenta focus:border-transparent transition-colors duration-200"
             placeholder="Your last name"
             required
             disabled={status === 'loading'}
@@ -136,8 +136,8 @@ export default function ContactForm() {
           name="email"
           value={formData.email}
           onChange={handleInputChange}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-eco-green focus:border-transparent transition-colors duration-200"
-          placeholder="your.email@example.com"
+          className="w-full px-4 py-3 border border-white/20 bg-white/5 text-white placeholder-white/60 rounded-lg focus:ring-2 focus:ring-q-magenta focus:border-transparent transition-colors duration-200"
+           placeholder="your.email@example.com"
           required
           disabled={status === 'loading'}
         />
@@ -152,8 +152,8 @@ export default function ContactForm() {
           name="subject"
           value={formData.subject}
           onChange={handleInputChange}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-eco-green focus:border-transparent transition-colors duration-200"
-          required
+          className="w-full px-4 py-3 border border-white/20 bg-white/5 text-white placeholder-white/60 rounded-lg focus:ring-2 focus:ring-q-magenta focus:border-transparent transition-colors duration-200"
+           required
           disabled={status === 'loading'}
         >
           <option value="">Select a subject</option>
@@ -176,7 +176,7 @@ export default function ContactForm() {
           value={formData.message}
           onChange={handleInputChange}
           rows={6}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-eco-green focus:border-transparent transition-colors duration-200"
+          className="w-full px-4 py-3 border border-white/20 bg-white/5 text-white placeholder-white/60 rounded-lg focus:ring-2 focus:ring-q-magenta focus:border-transparent transition-colors duration-200"
           placeholder="Tell us how we can help you..."
           required
           disabled={status === 'loading'}

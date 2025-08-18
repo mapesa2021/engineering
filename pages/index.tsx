@@ -3,415 +3,563 @@ import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import AnimatedSection from '../components/AnimatedSection';
 import AnimatedCard from '../components/AnimatedCard';
-import AnimatedButton from '../components/AnimatedButton';
-import Testimonials from '../components/Testimonials';
-import TreePackages from '../components/TreePackages';
-import DynamicButton from '../components/DynamicButton';
-import ProjectButton from '../components/ProjectButton';
-import NewsletterButton from '../components/NewsletterButton';
-import NewsletterForm from '../components/NewsletterForm';
 import Link from 'next/link';
-
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>CareThePlanet - Save Our Planet Together</title>
-        <meta name="description" content="Join our mission to protect the environment, combat climate change, and create a sustainable future for generations to come." />
+        <title>Q Play - Request Songs. Tip DJs. Own the Night.</title>
+        <meta name="description" content="Q Play lets fans at events and clubs pay to request their favorite songs while DJs earn more by playing them." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+                       <link rel="icon" href="https://i.postimg.cc/HkxHn2Ct/Untitled-design-25.png" />
       </Head>
 
-      <main className="min-h-screen bg-white">
+      <main className="min-h-screen bg-dark-bg">
         <Navbar />
         <Hero />
         
-        {/* Stats Section */}
+        {/* How It Works Section */}
         <AnimatedSection delay={0.1}>
-          <section className="section-padding bg-gradient-to-br from-eco-green via-eco-light to-eco-pale">
-            <div className="container-custom">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-6 cursor-pointer hover:bg-white/30 transition-all duration-300">
-                  <div className="text-3xl font-bold text-white mb-2">50+</div>
-                  <div className="text-eco-pale">Active Projects</div>
-                </div>
-                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-6 cursor-pointer hover:bg-white/30 transition-all duration-300">
-                  <div className="text-3xl font-bold text-white mb-2">100K+</div>
-                  <div className="text-eco-pale">Trees Planted</div>
-                </div>
-                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-6 cursor-pointer hover:bg-white/30 transition-all duration-300">
-                  <div className="text-3xl font-bold text-white mb-2">25+</div>
-                  <div className="text-eco-pale">Countries Reached</div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </AnimatedSection>
-        
-        {/* Join Our Mission Section */}
-        <AnimatedSection delay={0.15}>
-          <section className="section-padding bg-white">
-            <div className="container-custom">
-              <div className="max-w-4xl mx-auto text-center">
-                <div className="bg-gradient-to-br from-eco-green to-eco-dark rounded-2xl p-8 md:p-12 shadow-xl">
-                  <div className="text-6xl mb-6">🌱</div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                    Join Our Mission
-                  </h2>
-                  <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                    Plant trees, save the planet. Every contribution makes a difference in our fight against climate change.
-                  </p>
-                  <DynamicButton section="mission" className="justify-center" />
-                </div>
-              </div>
-            </div>
-          </section>
-        </AnimatedSection>
-        
-        {/* Donate Trees Section */}
-        <AnimatedSection delay={0.2}>
-          <TreePackages />
-        </AnimatedSection>
-        
-        {/* About Section */}
-        <AnimatedSection delay={0.4}>
-          <section className="section-padding bg-gray-50">
-            <div className="container-custom">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                    Our Mission
-                  </h2>
-                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                    We are dedicated to environmental conservation and sustainability. Our team works tirelessly to implement innovative solutions that address the most pressing environmental challenges of our time.
-                  </p>
-                  <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                    From reforestation projects to renewable energy initiatives, we&apos;re committed to creating lasting positive impact on our planet and inspiring others to join the movement.
-                  </p>
-                  <DynamicButton section="about" />
-                </div>
-                <div 
-                  className="bg-eco-pale rounded-2xl p-8 text-center"
-                >
-                  <div className="text-6xl mb-4">🌍</div>
-                  <h3 className="text-2xl font-bold text-eco-green mb-4">Environmental Impact</h3>
-                  <p className="text-gray-700">
-                    Every project we undertake is designed to maximize positive environmental impact while engaging local communities.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-        </AnimatedSection>
-
-        {/* Projects Preview Section */}
-        <AnimatedSection delay={0.6}>
-          <section className="section-padding">
+          <section className="section-padding bg-gradient-to-br from-q-orange via-q-magenta to-q-purple">
             <div className="container-custom">
               <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Our Key Projects
+                <h2 className="text-4xl md:text-5xl font-black text-white mb-6 font-display">
+                  <span className="text-white">How It Works</span>
                 </h2>
-                <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                  Discover how we&apos;re making a difference across the globe through innovative environmental initiatives.
+                <p className="text-xl text-white/90 max-w-3xl mx-auto font-body">
+                  Get your favorite songs played and help DJs earn more. It's that simple.
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {/* Project Card 1 */}
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Step 1 */}
                 <AnimatedCard delay={0.1}>
-                  <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    <div 
-                      className="h-48 bg-gradient-to-br from-eco-green to-eco-dark flex items-center justify-center"
-                    >
-                      <span className="text-4xl">🌱</span>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 shadow-xl hover:shadow-2xl hover:shadow-white/20 transition-all duration-300 text-center group hover:scale-105">
+                    <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
+                      🎵
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-3">Tree Planting Initiative</h3>
-                      <p className="text-gray-600 mb-4">
-                        Planting millions of trees worldwide to combat deforestation and restore natural habitats.
-                      </p>
-                      <ProjectButton projectId="tree-planting" />
-                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4">1. Fans Request Songs</h3>
+                    <p className="text-white/90 leading-relaxed">
+                      Browse the song catalog and pay to request your favorite tracks. Set your price and get your song in the queue.
+                    </p>
                   </div>
                 </AnimatedCard>
 
-                {/* Project Card 2 */}
+                {/* Step 2 */}
                 <AnimatedCard delay={0.2}>
-                  <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    <div 
-                      className="h-48 bg-gradient-to-br from-eco-light to-eco-green flex items-center justify-center"
-                    >
-                      <span className="text-4xl">☀️</span>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 shadow-xl hover:shadow-2xl hover:shadow-white/20 transition-all duration-300 text-center group hover:scale-105">
+                    <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-3xl" style={{ animationDelay: '1.5s' }}>
+                      🎧
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-3">Renewable Energy</h3>
-                      <p className="text-gray-600 mb-4">
-                        Promoting clean energy solutions and helping communities transition to sustainable power sources.
-                      </p>
-                      <ProjectButton projectId="renewable-energy" />
-                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4">2. DJs Play Them</h3>
+                    <p className="text-white/90 leading-relaxed">
+                      DJs see the requests in real-time and play the highest-paying songs first. The crowd gets what they want.
+                    </p>
                   </div>
                 </AnimatedCard>
 
-                {/* Project Card 3 */}
+                {/* Step 3 */}
                 <AnimatedCard delay={0.3}>
-                  <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    <div 
-                      className="h-48 bg-gradient-to-br from-eco-pale to-eco-light flex items-center justify-center"
-                    >
-                      <span className="text-4xl">🌊</span>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 shadow-xl hover:shadow-2xl hover:shadow-white/20 transition-all duration-300 text-center group hover:scale-105">
+                    <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-3xl" style={{ animationDelay: '3s' }}>
+                      💰
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-3">Ocean Conservation</h3>
-                      <p className="text-gray-600 mb-4">
-                        Protecting marine ecosystems and cleaning up ocean pollution through community-driven initiatives.
-                      </p>
-                      <ProjectButton projectId="ocean-conservation" />
-                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4">3. DJs Earn Tips</h3>
+                    <p className="text-white/90 leading-relaxed">
+                      DJs earn extra income from song requests while keeping the party going. Everyone wins.
+                    </p>
                   </div>
                 </AnimatedCard>
               </div>
             </div>
           </section>
         </AnimatedSection>
-
-        {/* CTA Section */}
-        <AnimatedSection delay={0.8}>
-          <section className="section-padding bg-eco-green">
-            <div className="container-custom text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Ready to Make a Difference?
-              </h2>
-              <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
-                Your support enables us to continue our vital work protecting the environment and building a sustainable future.
-              </p>
-              <DynamicButton section="cta" className="justify-center" />
+        
+        {/* Benefits Section */}
+        <AnimatedSection delay={0.4}>
+          <section className="section-padding bg-dark-bg">
+            <div className="container-custom">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-black text-white mb-6 font-display">
+                  <span className="text-gradient">Why Choose Q Play?</span>
+                </h2>
+                <p className="text-xl text-gray-300 max-w-3xl mx-auto font-body">
+                  The ultimate platform connecting fans and DJs for unforgettable nights.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                                {/* For Fans */}
+                <div className="neon-card">
+                  <div className="text-center lg:text-left">
+                    <div className="w-16 h-16 bg-gradient-to-r from-q-orange to-q-magenta rounded-xl flex items-center justify-center mx-auto lg:mx-0 mb-6 text-2xl">
+                      🎉
+                    </div>
+                    <h3 className="text-3xl font-bold text-white mb-6">For Fans</h3>
+                    <div className="space-y-4">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-6 h-6 bg-q-orange rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                          <span className="text-white text-xs">✓</span>
+                        </div>
+                        <div>
+                          <h4 className="text-white font-semibold mb-1">Control the Vibe</h4>
+                          <p className="text-gray-300 text-sm">Request your favorite songs and shape the night's energy.</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-6 h-6 bg-q-magenta rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                          <span className="text-white text-xs">✓</span>
+                        </div>
+                        <div>
+                          <h4 className="text-white font-semibold mb-1">Hear Your Songs</h4>
+                          <p className="text-gray-300 text-sm">Get your requests played by paying what you think they're worth.</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-6 h-6 bg-q-purple rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                          <span className="text-white text-xs">✓</span>
+                        </div>
+                        <div>
+                          <h4 className="text-white font-semibold mb-1">Connect with DJs</h4>
+                          <p className="text-gray-300 text-sm">Build relationships with your favorite DJs and support their craft.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* For DJs */}
+                <div className="neon-card">
+                  <div className="text-center lg:text-left">
+                    <div className="w-16 h-16 bg-gradient-to-r from-q-magenta to-q-purple rounded-xl flex items-center justify-center mx-auto lg:mx-0 mb-6 text-2xl">
+                      🎛️
+                    </div>
+                    <h3 className="text-3xl font-bold text-white mb-6">For DJs</h3>
+                    <div className="space-y-4">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-6 h-6 bg-q-magenta rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                          <span className="text-white text-xs">✓</span>
+                        </div>
+                        <div>
+                          <h4 className="text-white font-semibold mb-1">Earn Extra Income</h4>
+                          <p className="text-gray-300 text-sm">Make more money doing what you love with song request tips.</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-6 h-6 bg-q-purple rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                          <span className="text-white text-xs">✓</span>
+                        </div>
+                        <div>
+                          <h4 className="text-white font-semibold mb-1">Engage Fans</h4>
+                          <p className="text-gray-300 text-sm">Build a loyal following and connect with your audience like never before.</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-6 h-6 bg-q-orange rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                          <span className="text-white text-xs">✓</span>
+                        </div>
+                        <div>
+                          <h4 className="text-white font-semibold mb-1">Grow Your Following</h4>
+                          <p className="text-gray-300 text-sm">Expand your reach and get discovered by new fans at every event.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
         </AnimatedSection>
 
         {/* Testimonials Section */}
-        <AnimatedSection delay={0.9}>
-          <Testimonials />
-        </AnimatedSection>
-
-        {/* FAQ Section */}
-        <AnimatedSection delay={1.0}>
-          <section className="section-padding bg-white">
+        <AnimatedSection delay={0.6}>
+          <section className="section-padding bg-gradient-to-br from-q-purple via-q-magenta to-q-orange">
             <div className="container-custom">
               <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Frequently Asked Questions
+                <h2 className="text-4xl md:text-5xl font-black text-white mb-6 font-display">
+                  <span className="text-white">What People Say</span>
                 </h2>
-                <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                  Find answers to common questions about our environmental initiatives and how you can get involved.
+                <p className="text-xl text-white/90 max-w-3xl mx-auto font-body">
+                  Join thousands of happy fans and DJs who are already using Q Play.
                 </p>
               </div>
               
-              <div className="max-w-3xl mx-auto space-y-4">
-                {/* FAQ Item 1 */}
-                <div className="bg-gray-50 rounded-lg border border-gray-200">
-                  <button 
-                    className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 transition-colors duration-200"
-                    onClick={() => {
-                      const content = document.getElementById('faq-1');
-                      if (content) {
-                        content.classList.toggle('hidden');
-                      }
-                    }}
-                  >
-                    <span className="font-semibold text-gray-900">How do I know my donation is being used effectively?</span>
-                    <span className="text-[#1abc9c] text-xl">+</span>
-                  </button>
-                  <div id="faq-1" className="hidden px-6 pb-4">
-                    <p className="text-gray-700 leading-relaxed">
-                      We maintain complete transparency in all our projects. Every donation is tracked and reported through our quarterly impact reports. You can see exactly where your money goes, from tree planting locations to community education programs. We also provide GPS coordinates and photos of reforestation sites.
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Fan Testimonial */}
+                <AnimatedCard delay={0.1}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 shadow-xl hover:shadow-2xl hover:shadow-white/20 transition-all duration-300 text-center group hover:scale-105">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
+                      🎉
+                    </div>
+                    <p className="text-white/90 mb-6 italic text-lg">
+                      "Q Play made the party unforgettable! I got my favorite song played and the whole crowd went wild. Worth every penny!"
                     </p>
+                    <div>
+                      <div className="text-white font-semibold">Sarah M.</div>
+                      <div className="text-white/80 text-sm">Party Goer</div>
+                    </div>
                   </div>
-                </div>
+                </AnimatedCard>
 
-                {/* FAQ Item 2 */}
-                <div className="bg-gray-50 rounded-lg border border-gray-200">
-                  <button 
-                    className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 transition-colors duration-200"
-                    onClick={() => {
-                      const content = document.getElementById('faq-2');
-                      if (content) {
-                        content.classList.toggle('hidden');
-                      }
-                    }}
-                  >
-                    <span className="font-semibold text-gray-900">Can I volunteer with your organization?</span>
-                    <span className="text-[#1abc9c] text-xl">+</span>
-                  </button>
-                  <div id="faq-2" className="hidden px-6 pb-4">
-                    <p className="text-gray-700 leading-relaxed">
-                      Absolutely! We welcome volunteers from all backgrounds. Whether you want to participate in tree planting events, help with community outreach, or contribute your professional skills, there are many ways to get involved. Visit our volunteer page to see current opportunities in your area.
+                {/* DJ Testimonial */}
+                <AnimatedCard delay={0.2}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 shadow-xl hover:shadow-2xl hover:shadow-white/20 transition-all duration-300 text-center group hover:scale-105">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
+                      🎛️
+                    </div>
+                    <p className="text-white/90 mb-6 italic text-lg">
+                      "Finally a way to earn extra while doing what I love. The fans are happy, I'm making more money, and the energy is incredible!"
                     </p>
+                    <div>
+                      <div className="text-white font-semibold">DJ Mike</div>
+                      <div className="text-white/80 text-sm">Professional DJ</div>
+                    </div>
                   </div>
-                </div>
+                </AnimatedCard>
+              </div>
+            </div>
+          </section>
+        </AnimatedSection>
 
-                {/* FAQ Item 3 */}
-                <div className="bg-gray-50 rounded-lg border border-gray-200">
-                  <button 
-                    className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 transition-colors duration-200"
-                    onClick={() => {
-                      const content = document.getElementById('faq-3');
-                      if (content) {
-                        content.classList.toggle('hidden');
-                      }
-                    }}
-                  >
-                    <span className="font-semibold text-gray-900">What types of trees do you plant?</span>
-                    <span className="text-[#1abc9c] text-xl">+</span>
-                  </button>
-                  <div id="faq-3" className="hidden px-6 pb-4">
-                    <p className="text-gray-700 leading-relaxed">
-                      We plant native species that are best suited for each local ecosystem. Our team of environmental scientists carefully selects tree species based on climate, soil conditions, and biodiversity needs. This ensures maximum survival rates and ecological benefits for each region.
-                    </p>
-                  </div>
+        {/* DJ Stats Section */}
+        <AnimatedSection delay={0.8}>
+          <section className="section-padding">
+            <div className="container-custom">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-black text-white mb-6 font-display">
+                  Built for DJs
+                </h2>
+                <p className="text-xl text-white/90 max-w-3xl mx-auto font-body">
+                  Monetize song requests, keep crowds hyped, and own the night with Q Play.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="bg-white/10 border border-white/20 rounded-2xl p-6 text-center">
+                  <div className="text-4xl font-black text-white">+$250</div>
+                  <div className="text-white/70">Avg. extra per night</div>
                 </div>
-
-                {/* FAQ Item 4 */}
-                <div className="bg-gray-50 rounded-lg border border-gray-200">
-                  <button 
-                    className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 transition-colors duration-200"
-                    onClick={() => {
-                      const content = document.getElementById('faq-4');
-                      if (content) {
-                        content.classList.toggle('hidden');
-                      }
-                    }}
-                  >
-                    <span className="font-semibold text-gray-900">How can I track the impact of my contribution?</span>
-                    <span className="text-[#1abc9c] text-xl">+</span>
-                  </button>
-                  <div id="faq-4" className="hidden px-6 pb-4">
-                    <p className="text-gray-700 leading-relaxed">
-                      Every donor receives a personalized dashboard where you can track your environmental impact in real-time. See the number of trees planted, CO2 offset, and community projects supported through your contributions. We also send regular updates with photos and progress reports.
-                    </p>
-                  </div>
+                <div className="bg-white/10 border border-white/20 rounded-2xl p-6 text-center">
+                  <div className="text-4xl font-black text-white">2.5x</div>
+                  <div className="text-white/70">More fan engagement</div>
                 </div>
-
-                {/* FAQ Item 5 */}
-                <div className="bg-gray-50 rounded-lg border border-gray-200">
-                  <button 
-                    className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 transition-colors duration-200"
-                    onClick={() => {
-                      const content = document.getElementById('faq-5');
-                      if (content) {
-                        content.classList.toggle('hidden');
-                      }
-                    }}
-                  >
-                    <span className="font-semibold text-gray-900">Do you work with local communities?</span>
-                    <span className="text-[#1abc9c] text-xl">+</span>
-                  </button>
-                  <div id="faq-5" className="hidden px-6 pb-4">
-                    <p className="text-gray-700 leading-relaxed">
-                      Yes! Community involvement is at the heart of our mission. We partner with local communities to ensure our projects meet their needs and create lasting benefits. This includes providing training, creating jobs, and supporting sustainable development initiatives that benefit both people and the planet.
-                    </p>
-                  </div>
+                <div className="bg-white/10 border border-white/20 rounded-2xl p-6 text-center">
+                  <div className="text-4xl font-black text-white">10K+</div>
+                  <div className="text-white/70">Fans already on Q Play</div>
                 </div>
               </div>
             </div>
           </section>
         </AnimatedSection>
 
-        {/* Join Our Community Section */}
-        <AnimatedSection delay={1.1}>
-          <section className="section-padding bg-gradient-to-br from-[#1abc9c] to-[#16a085] text-white">
+        {/* DJ Features Section */}
+        <AnimatedSection delay={0.9}>
+          <section className="section-padding bg-gradient-to-br from-q-orange via-q-magenta to-q-purple">
             <div className="container-custom">
               <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  Join Our Community
+                <h2 className="text-3xl md:text-5xl font-black text-white mb-6 font-display">
+                  Why DJs Love Q Play
                 </h2>
-                <p className="text-xl max-w-2xl mx-auto opacity-90">
-                  Connect with us on social media and stay updated with our latest environmental initiatives and impact stories.
+                <p className="text-xl text-white/90 max-w-3xl mx-auto font-body">
+                  Everything you need to boost your earnings and connect with fans.
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                {/* Social Media Section */}
-                <div className="text-center lg:text-left">
-                  <h3 className="text-2xl font-bold mb-6">Follow Us</h3>
-                  <p className="text-lg mb-8 opacity-90">
-                    Join thousands of environmental advocates and stay connected with our mission to protect the planet.
-                  </p>
-                  
-                  <div className="flex flex-wrap justify-center lg:justify-start gap-6">
-                    {/* Facebook */}
-                    <a 
-                      href="#" 
-                      className="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors duration-200"
-                      aria-label="Follow us on Facebook"
-                    >
-                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                      </svg>
-                    </a>
-                    
-                    {/* Instagram */}
-                    <a 
-                      href="#" 
-                      className="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors duration-200"
-                      aria-label="Follow us on Instagram"
-                    >
-                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.895 3.708 13.744 3.708 12.447s.49-2.448 1.297-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.807.875 1.297 2.026 1.297 3.323s-.49 2.448-1.297 3.323c-.875.807-2.026 1.297-3.323 1.297zm7.83-9.781c-.49 0-.875-.385-.875-.875s.385-.875.875-.875.875.385.875.875-.385.875-.875.875zm-7.83 9.781c-2.026 0-3.708-1.682-3.708-3.708s1.682-3.708 3.708-3.708 3.708 1.682 3.708 3.708-1.682 3.708-3.708 3.708z"/>
-                      </svg>
-                    </a>
-                    
-                    {/* Twitter/X */}
-                    <a 
-                      href="#" 
-                      className="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors duration-200"
-                      aria-label="Follow us on Twitter/X"
-                    >
-                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                      </svg>
-                    </a>
-                    
-                    {/* YouTube */}
-                    <a 
-                      href="#" 
-                      className="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors duration-200"
-                      aria-label="Follow us on YouTube"
-                    >
-                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                      </svg>
-                    </a>
-                    
-                    {/* LinkedIn */}
-                    <a 
-                      href="#" 
-                      className="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors duration-200"
-                      aria-label="Follow us on LinkedIn"
-                    >
-                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                      </svg>
-                    </a>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <AnimatedCard delay={0.1}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 text-center">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">💰</div>
+                    <h3 className="text-2xl font-bold text-white mb-4">Earn Extra Income</h3>
+                    <p className="text-white/80">Get paid for playing the songs your crowd wants—right when they want it. Tips range from $5 to $50+ per request.</p>
                   </div>
-                </div>
+                </AnimatedCard>
                 
-                {/* Newsletter Section */}
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8">
-                  <h3 className="text-2xl font-bold mb-4">Stay Updated</h3>
-                  <p className="text-lg mb-6 opacity-90">
-                    Subscribe to our newsletter for the latest environmental news, project updates, and ways to get involved.
-                  </p>
-                  
-                  <NewsletterForm />
-                  
-                  <p className="text-sm opacity-75 mt-4">
-                    We respect your privacy. Unsubscribe at any time.
-                  </p>
-                </div>
+                <AnimatedCard delay={0.2}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 text-center">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">🎧</div>
+                    <h3 className="text-2xl font-bold text-white mb-4">Live Request Queue</h3>
+                    <p className="text-white/80">See requests in real-time with song titles, artist names, and tip amounts. Play the highest-paying songs first.</p>
+                  </div>
+                </AnimatedCard>
+                
+                <AnimatedCard delay={0.3}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 text-center">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">👥</div>
+                    <h3 className="text-2xl font-bold text-white mb-4">Build Your Following</h3>
+                    <p className="text-white/80">Fans can follow you, see your upcoming gigs, and get notified when you're playing nearby.</p>
+                  </div>
+                </AnimatedCard>
+                
+                <AnimatedCard delay={0.4}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 text-center">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">📊</div>
+                    <h3 className="text-2xl font-bold text-white mb-4">Analytics Dashboard</h3>
+                    <p className="text-white/80">Track your earnings, most requested songs, and fan engagement metrics to optimize your sets.</p>
+                  </div>
+                </AnimatedCard>
+                
+                <AnimatedCard delay={0.5}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 text-center">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">🎵</div>
+                    <h3 className="text-2xl font-bold text-white mb-4">Song Library</h3>
+                    <p className="text-white/80">Access a vast library of songs. Fans can request anything from current hits to classic tracks.</p>
+                  </div>
+                </AnimatedCard>
+                
+                <AnimatedCard delay={0.6}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 text-center">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">💬</div>
+                    <h3 className="text-2xl font-bold text-white mb-4">Fan Interaction</h3>
+                    <p className="text-white/80">Fans can send messages with their requests and you can respond directly through the app.</p>
+                  </div>
+                </AnimatedCard>
+              </div>
+            </div>
+          </section>
+        </AnimatedSection>
+
+        {/* DJ How It Works Section */}
+        <AnimatedSection delay={1.0}>
+          <section className="section-padding">
+            <div className="container-custom">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-5xl font-black text-white mb-6 font-display">
+                  How It Works for DJs
+                </h2>
+                <p className="text-xl text-white/90 max-w-3xl mx-auto font-body">
+                  Get started in minutes and start earning from your first gig.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <AnimatedCard delay={0.1}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 text-center">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">📱</div>
+                    <h3 className="text-2xl font-bold text-white mb-4">1. Download & Setup</h3>
+                    <p className="text-white/80">Download Q Play, create your DJ profile, and connect your payment method. Setup takes less than 5 minutes.</p>
+                  </div>
+                </AnimatedCard>
+                
+                <AnimatedCard delay={0.2}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 text-center">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">🎯</div>
+                    <h3 className="text-2xl font-bold text-white mb-4">2. Go Live</h3>
+                    <p className="text-white/80">Start your set and go live on Q Play. Fans at your venue can start requesting songs immediately.</p>
+                  </div>
+                </AnimatedCard>
+                
+                <AnimatedCard delay={0.3}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 text-center">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">💸</div>
+                    <h3 className="text-2xl font-bold text-white mb-4">3. Earn Money</h3>
+                    <p className="text-white/80">Play requested songs and earn tips instantly. Money is transferred to your account within 24 hours.</p>
+                  </div>
+                </AnimatedCard>
+              </div>
+            </div>
+          </section>
+        </AnimatedSection>
+
+        {/* DJ Earnings Examples Section */}
+        <AnimatedSection delay={1.1}>
+          <section className="section-padding bg-gradient-to-br from-q-purple via-q-magenta to-q-orange">
+            <div className="container-custom">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-5xl font-black text-white mb-6 font-display">
+                  Real Earnings Examples
+                </h2>
+                <p className="text-xl text-white/90 max-w-3xl mx-auto font-body">
+                  See how much DJs are actually making with Q Play.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <AnimatedCard delay={0.1}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8">
+                    <h3 className="text-2xl font-bold text-white mb-4">Club DJ - 4 Hour Set</h3>
+                    <div className="space-y-4 mb-6">
+                      <div className="flex justify-between text-white/80">
+                        <span>Song Requests:</span>
+                        <span>24 requests</span>
+                      </div>
+                      <div className="flex justify-between text-white/80">
+                        <span>Average Tip:</span>
+                        <span>$12.50</span>
+                      </div>
+                      <div className="flex justify-between text-white/80">
+                        <span>Q Play Fee (15%):</span>
+                        <span>-$45</span>
+                      </div>
+                      <div className="border-t border-white/20 pt-2 flex justify-between text-white font-bold text-lg">
+                        <span>Total Earnings:</span>
+                        <span>$255</span>
+                      </div>
+                    </div>
+                    <p className="text-white/70 text-sm">*Based on actual DJ earnings data</p>
+                  </div>
+                </AnimatedCard>
+                
+                <AnimatedCard delay={0.2}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8">
+                    <h3 className="text-2xl font-bold text-white mb-4">Wedding DJ - 6 Hour Event</h3>
+                    <div className="space-y-4 mb-6">
+                      <div className="flex justify-between text-white/80">
+                        <span>Song Requests:</span>
+                        <span>18 requests</span>
+                      </div>
+                      <div className="flex justify-between text-white/80">
+                        <span>Average Tip:</span>
+                        <span>$15.00</span>
+                      </div>
+                      <div className="flex justify-between text-white/80">
+                        <span>Q Play Fee (15%):</span>
+                        <span>-$40.50</span>
+                      </div>
+                      <div className="border-t border-white/20 pt-2 flex justify-between text-white font-bold text-lg">
+                        <span>Total Earnings:</span>
+                        <span>$229.50</span>
+                      </div>
+                    </div>
+                    <p className="text-white/70 text-sm">*Based on actual DJ earnings data</p>
+                  </div>
+                </AnimatedCard>
+              </div>
+            </div>
+          </section>
+        </AnimatedSection>
+
+        {/* DJ Testimonials Section */}
+        <AnimatedSection delay={1.2}>
+          <section className="section-padding">
+            <div className="container-custom">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-5xl font-black text-white mb-6 font-display">
+                  What DJs Are Saying
+                </h2>
+                <p className="text-xl text-white/90 max-w-3xl mx-auto font-body">
+                  Join thousands of DJs who've transformed their careers with Q Play.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <AnimatedCard delay={0.1}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8">
+                    <div className="flex items-center mb-6">
+                      <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-2xl mr-4">🎛️</div>
+                      <div>
+                        <div className="text-white font-bold text-lg">DJ Mike</div>
+                        <div className="text-white/70">Professional Club DJ</div>
+                      </div>
+                    </div>
+                    <p className="text-white/80 italic mb-4">
+                      "Q Play has completely changed my income. I'm making an extra $300-500 per night just from song requests. The crowd loves it because they get to hear their favorite songs, and I love it because I'm getting paid more to do what I already love."
+                    </p>
+                    <div className="text-white/60 text-sm">Los Angeles, CA</div>
+                  </div>
+                </AnimatedCard>
+                
+                <AnimatedCard delay={0.2}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8">
+                    <div className="flex items-center mb-6">
+                      <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-2xl mr-4">🎧</div>
+                      <div>
+                        <div className="text-white font-bold text-lg">Sarah Chen</div>
+                        <div className="text-white/70">Wedding & Event DJ</div>
+                      </div>
+                    </div>
+                    <p className="text-white/80 italic mb-4">
+                      "The engagement level at my events has skyrocketed since using Q Play. Guests are more involved, the energy is incredible, and I'm earning significantly more. It's a win-win for everyone."
+                    </p>
+                    <div className="text-white/60 text-sm">Miami, FL</div>
+                  </div>
+                </AnimatedCard>
+              </div>
+            </div>
+          </section>
+        </AnimatedSection>
+
+        {/* DJ FAQ Section */}
+        <AnimatedSection delay={1.3}>
+          <section className="section-padding bg-gradient-to-br from-q-orange via-q-magenta to-q-purple">
+            <div className="container-custom">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-5xl font-black text-white mb-6 font-display">
+                  Frequently Asked Questions
+                </h2>
+                <p className="text-xl text-white/90 max-w-3xl mx-auto font-body">
+                  Everything you need to know about getting started with Q Play.
+                </p>
+              </div>
+              
+              <div className="max-w-4xl mx-auto space-y-6">
+                <AnimatedCard delay={0.1}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
+                    <h3 className="text-xl font-bold text-white mb-3">How much does it cost to join Q Play?</h3>
+                    <p className="text-white/80">Q Play is completely free to download and use. We only take a 15% fee from song request tips, so you keep 85% of all earnings.</p>
+                  </div>
+                </AnimatedCard>
+                
+                <AnimatedCard delay={0.2}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
+                    <h3 className="text-xl font-bold text-white mb-3">Do I need special equipment?</h3>
+                    <p className="text-white/80">No special equipment needed! Just download the Q Play app on your phone or tablet. You can use it alongside your existing DJ setup.</p>
+                  </div>
+                </AnimatedCard>
+                
+                <AnimatedCard delay={0.3}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
+                    <h3 className="text-xl font-bold text-white mb-3">How do I get paid?</h3>
+                    <p className="text-white/80">Earnings are automatically transferred to your connected bank account or PayPal within 24 hours of each gig. You can also track all earnings in real-time through the app.</p>
+                  </div>
+                </AnimatedCard>
+                
+                <AnimatedCard delay={0.4}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
+                    <h3 className="text-xl font-bold text-white mb-3">Can I decline song requests?</h3>
+                    <p className="text-white/80">Absolutely! You have full control over which songs to play. You can decline requests that don't fit your set or venue requirements.</p>
+                  </div>
+                </AnimatedCard>
+                
+                <AnimatedCard delay={0.5}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
+                    <h3 className="text-xl font-bold text-white mb-3">What if I don't have the requested song?</h3>
+                    <p className="text-white/80">You can decline requests for songs you don't have. Fans will be notified and can request a different song instead.</p>
+                  </div>
+                </AnimatedCard>
+              </div>
+            </div>
+          </section>
+        </AnimatedSection>
+
+        {/* Final CTA Section */}
+        <AnimatedSection delay={1.4}>
+          <section className="section-padding bg-gradient-to-br from-q-orange via-q-magenta to-q-purple">
+            <div className="container-custom text-center">
+              <h2 className="text-4xl md:text-5xl font-black text-white mb-6 font-display">
+                Ready to Start Earning More?
+              </h2>
+              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto font-body">
+                Join thousands of DJs who are already making extra income with Q Play. Download now and start earning from your next gig.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <button className="btn-app-store flex items-center justify-center gap-3">
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                  </svg>
+                  Download on App Store
+                </button>
+                <button className="btn-google-play flex items-center justify-center gap-3">
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                  </svg>
+                  Get it on Google Play
+                </button>
+              </div>
+              
+              <div className="text-white/70 text-sm">
+                Free to download • No monthly fees • Start earning immediately
               </div>
             </div>
           </section>
@@ -420,47 +568,53 @@ export default function Home() {
 
       {/* Footer */}
       <AnimatedSection delay={1.0}>
-        <footer className="bg-gray-900 text-white py-12">
+        <footer className="bg-dark-bg border-t border-q-orange/20 py-12">
           <div className="container-custom">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div className="col-span-1 md:col-span-2">
-                <div className="flex items-center space-x-2 mb-4">
-                  <div 
-                    className="w-8 h-8 bg-eco-green rounded-full flex items-center justify-center cursor-pointer"
-                  >
-                    <span className="text-white font-bold text-sm">🌱</span>
-                  </div>
-                  <span className="text-xl font-bold">CareThePlanet</span>
-                </div>
+                                     <div className="flex items-center space-x-3 mb-4">
+                       <div className="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden">
+                         <img 
+                           src="https://i.postimg.cc/HkxHn2Ct/Untitled-design-25.png" 
+                           alt="Q Play Logo" 
+                           className="w-full h-full object-cover"
+                         />
+                       </div>
+                       <span className="text-2xl font-black text-gradient font-display">Q Play</span>
+                     </div>
                 <p className="text-gray-300 mb-4 max-w-md">
-                  Dedicated to environmental conservation and creating a sustainable future for all living beings on Earth.
+                  The ultimate platform connecting fans and DJs for unforgettable nights. Request songs, tip DJs, and own the night.
                 </p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-4">Quick Links</h3>
+                <h3 className="font-semibold text-white mb-4">Quick Links</h3>
                 <ul className="space-y-2 text-gray-300">
-                  <li><Link href="/" className="hover:text-white transition-colors duration-200">Home</Link></li>
-                  <li><Link href="/about" className="hover:text-white transition-colors duration-200">About</Link></li>
-                  <li><Link href="/projects" className="hover:text-white transition-colors duration-200">Projects</Link></li>
-                  <li><Link href="/contact" className="hover:text-white transition-colors duration-200">Contact</Link></li>
+                  <li><Link href="/" className="hover:text-q-orange transition-colors duration-200">Home</Link></li>
+                  <li><Link href="/how-it-works" className="hover:text-q-magenta transition-colors duration-200">How It Works</Link></li>
+                  <li><Link href="/for-djs" className="hover:text-q-purple transition-colors duration-200">For DJs</Link></li>
+                  <li><Link href="/events" className="hover:text-q-orange transition-colors duration-200">Events</Link></li>
                 </ul>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-4">Get Involved</h3>
+                <h3 className="font-semibold text-white mb-4">Get Started</h3>
                 <ul className="space-y-2 text-gray-300">
-                  <li><a href="/donate" className="hover:text-white transition-colors duration-200">Donate</a></li>
-                  <li><a href="/volunteer" className="hover:text-white transition-colors duration-200">Volunteer</a></li>
-                  <li><a href="/newsletter" className="hover:text-white transition-colors duration-200">Newsletter</a></li>
-                  <li><a href="/events" className="hover:text-white transition-colors duration-200">Events</a></li>
+                  <li><a href="#" className="hover:text-q-orange transition-colors duration-200">Download App</a></li>
+                  <li><a href="#" className="hover:text-q-magenta transition-colors duration-200">For DJs</a></li>
+                  <li><a href="#" className="hover:text-q-purple transition-colors duration-200">Support</a></li>
+                  <li><a href="#" className="hover:text-q-orange transition-colors duration-200">Contact</a></li>
                 </ul>
               </div>
             </div>
             
-            <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-              <p>&copy; 2024 CareThePlanet. All rights reserved. Together we can save our planet.</p>
-            </div>
+                               <div className="border-t border-q-orange/20 mt-8 pt-8 text-center text-gray-400">
+                     <p>&copy; 2024 Q Play. All rights reserved. Own the night with Q Play.</p>
+                     <div className="flex justify-center space-x-6 mt-4 text-sm">
+                       <Link href="/terms" className="hover:text-q-orange transition-colors duration-200">Terms of Service</Link>
+                       <Link href="/privacy" className="hover:text-q-magenta transition-colors duration-200">Privacy Policy</Link>
+                     </div>
+                   </div>
           </div>
         </footer>
       </AnimatedSection>

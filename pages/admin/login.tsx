@@ -1,69 +1,63 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 const AdminLogin = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
   const router = useRouter();
 
-  useEffect(() => {
-    // Check if already authenticated
-    const token = localStorage.getItem('adminToken');
-    if (token) {
-      router.push('/admin');
-    }
-  }, [router]);
-
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
-    setError('');
-
-    // Simple authentication (in production, this should be a proper API call)
-    if (username === 'admin' && password === 'caretheplanet2024') {
+    
+    // Simple authentication (in production, use proper auth)
+    if (credentials.username === 'admin' && credentials.password === 'qplay2024') {
       localStorage.setItem('adminToken', 'admin-token-123');
       router.push('/admin');
     } else {
       setError('Invalid credentials. Please try again.');
     }
-    
-    setIsLoading(false);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCredentials({
+      ...credentials,
+      [e.target.name]: e.target.value
+    });
+    setError(''); // Clear error when user starts typing
   };
 
   return (
     <>
       <Head>
-        <title>Admin Login - CareThePlanet</title>
-        <meta name="description" content="Admin login for CareThePlanet website" />
+        <title>Q Play Admin Login</title>
+        <meta name="description" content="Admin login for Q Play website" />
       </Head>
 
-      <div className="min-h-screen bg-gradient-to-br from-eco-green via-eco-light to-eco-pale flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-dark-bg flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
-          <div className="text-center">
-            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-              <span className="text-3xl">🌱</span>
+          <div>
+            <div className="flex justify-center">
+              <div className="w-16 h-16 rounded-xl flex items-center justify-center overflow-hidden">
+                <img 
+                  src="https://i.postimg.cc/HkxHn2Ct/Untitled-design-25.png" 
+                  alt="Q Play Logo" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
-            <h2 className="text-3xl font-bold text-white mb-2">
-              CareThePlanet Admin
+            <h2 className="mt-6 text-center text-3xl font-black text-white">
+              Q Play Admin
             </h2>
-            <p className="text-white/90">
-              Sign in to manage your website content
+            <p className="mt-2 text-center text-sm text-white/60">
+              Sign in to manage your website
             </p>
           </div>
-
-          <div className="bg-white rounded-lg shadow-xl p-8">
-            <form className="space-y-6" onSubmit={handleLogin}>
-              {error && (
-                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
-                  {error}
-                </div>
-              )}
-
+          
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+            <div className="space-y-4">
               <div>
-                <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="username" className="block text-sm font-medium text-white/80 mb-2">
                   Username
                 </label>
                 <input
@@ -71,15 +65,15 @@ const AdminLogin = () => {
                   name="username"
                   type="text"
                   required
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-eco-green focus:border-transparent"
+                  value={credentials.username}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-white/20 bg-white/5 text-white placeholder-white/40 rounded-lg focus:ring-2 focus:ring-q-orange focus:border-transparent transition-colors duration-200"
                   placeholder="Enter your username"
                 />
               </div>
-
+              
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="password" className="block text-sm font-medium text-white/80 mb-2">
                   Password
                 </label>
                 <input
@@ -87,39 +81,34 @@ const AdminLogin = () => {
                   name="password"
                   type="password"
                   required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-eco-green focus:border-transparent"
+                  value={credentials.password}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-white/20 bg-white/5 text-white placeholder-white/40 rounded-lg focus:ring-2 focus:ring-q-orange focus:border-transparent transition-colors duration-200"
                   placeholder="Enter your password"
                 />
               </div>
-
-              <div>
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full bg-eco-green hover:bg-eco-dark text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isLoading ? (
-                    <div className="flex items-center justify-center">
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                      Signing in...
-                    </div>
-                  ) : (
-                    'Sign In'
-                  )}
-                </button>
-              </div>
-            </form>
-
-            <div className="mt-6 text-center">
-              <p className="text-sm text-gray-500">
-                Demo Credentials: <br />
-                <span className="font-mono text-xs bg-gray-100 px-2 py-1 rounded">
-                  Username: admin | Password: caretheplanet2024
-                </span>
-              </p>
             </div>
+
+            {error && (
+              <div className="bg-red-500/20 border border-red-500/30 text-red-400 px-4 py-3 rounded-lg text-sm">
+                {error}
+              </div>
+            )}
+
+            <div>
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-q-orange to-q-magenta hover:from-q-magenta hover:to-q-purple text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-q-orange/30"
+              >
+                Sign In
+              </button>
+            </div>
+          </form>
+          
+          <div className="text-center">
+            <p className="text-xs text-white/40">
+              Demo credentials: admin / qplay2024
+            </p>
           </div>
         </div>
       </div>

@@ -36,6 +36,13 @@ const BlogAdmin = () => {
     }
   };
 
+  const handleReloadDefaults = () => {
+    if (confirm('This will clear all current posts and reload the default Q Play blog posts. Continue?')) {
+      localStorage.removeItem('caretheplanet_blog_posts');
+      setBlogPosts(getBlogPosts());
+    }
+  };
+
   const handleStatusToggle = (post: BlogPost) => {
     const updatedPost: BlogPost = {
       ...post,
@@ -68,25 +75,31 @@ const BlogAdmin = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-dark-bg py-8">
       <div className="container-custom">
-        <div className="bg-white rounded-xl shadow-lg p-8">
+        <div className="bg-dark-card rounded-xl shadow-lg p-8 border border-q-orange/20">
           {/* Header */}
           <div className="flex justify-between items-center mb-8">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">Manage Blog Posts</h1>
-              <p className="text-gray-600">Edit, delete, and organize your blog articles</p>
+              <h1 className="text-3xl font-bold text-white mb-2">Manage Blog Posts</h1>
+              <p className="text-gray-300">Edit, delete, and organize your blog articles</p>
             </div>
             <div className="flex gap-4">
               <Link
                 href="/admin"
-                className="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
+                className="px-4 py-2 text-gray-300 hover:text-white transition-colors"
               >
                 ← Back to Admin
               </Link>
+              <button
+                onClick={handleReloadDefaults}
+                className="bg-gradient-to-r from-q-purple to-q-magenta hover:from-q-magenta hover:to-q-orange text-white px-6 py-2 rounded-lg transition-colors"
+              >
+                Reload Default Posts
+              </button>
               <Link
                 href="/admin/blog/new"
-                className="bg-eco-green hover:bg-eco-dark text-white px-6 py-2 rounded-lg transition-colors"
+                className="bg-gradient-to-r from-q-orange to-q-magenta hover:from-glow-orange hover:to-glow-magenta text-white px-6 py-2 rounded-lg transition-colors"
               >
                 Create New Post
               </Link>
@@ -97,7 +110,7 @@ const BlogAdmin = () => {
           <div className="space-y-6">
             {blogPosts.length === 0 ? (
               <div className="text-center py-12">
-                <p className="text-gray-500 text-lg mb-4">No blog posts found.</p>
+                <p className="text-gray-400 text-lg mb-4">No blog posts found.</p>
                 <Link
                   href="/admin/blog/new"
                   className="bg-eco-green hover:bg-eco-dark text-white px-6 py-2 rounded-lg transition-colors"

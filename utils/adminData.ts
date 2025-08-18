@@ -96,51 +96,79 @@ export const getBlogPosts = (): BlogPost[] => {
     return JSON.parse(stored);
   }
   
-  // Return default posts if none stored
-  const defaultPosts: BlogPost[] = [
-    {
-      id: 1,
-      title: "The Impact of Tree Planting on Climate Change",
-      excerpt: "Discover how strategic tree planting initiatives can significantly reduce carbon emissions and combat global warming.",
-      content: "This is the full content of the blog post about tree planting and climate change...",
-      author: "Dr. Sarah Johnson",
-      date: "August 15, 2024",
-      readTime: "5 min read",
-      category: "Climate Action",
-      image: "🌳",
-      status: "published",
-      createdAt: "2024-08-15T10:00:00Z",
-      updatedAt: "2024-08-15T10:00:00Z"
-    },
-    {
-      id: 2,
-      title: "Sustainable Living: Small Changes, Big Impact",
-      excerpt: "Learn about simple daily habits that can make a substantial difference in reducing your environmental footprint.",
-      content: "This is the full content of the blog post about sustainable living...",
-      author: "Michael Chen",
-      date: "August 12, 2024",
-      readTime: "4 min read",
-      category: "Sustainability",
-      image: "♻️",
-      status: "published",
-      createdAt: "2024-08-12T10:00:00Z",
-      updatedAt: "2024-08-12T10:00:00Z"
-    },
-    {
-      id: 3,
-      title: "Community-Led Conservation Success Stories",
-      excerpt: "Explore inspiring stories of communities around the world that have successfully restored their local ecosystems.",
-      content: "This is the full content of the blog post about community conservation...",
-      author: "Maria Rodriguez",
-      date: "August 10, 2024",
-      readTime: "6 min read",
-      category: "Community",
-      image: "🌍",
-      status: "draft",
-      createdAt: "2024-08-10T10:00:00Z",
-      updatedAt: "2024-08-10T10:00:00Z"
-    }
-  ];
+           // Return default posts if none stored
+         const defaultPosts: BlogPost[] = [
+           {
+             id: 1,
+             title: "The Ultimate Guide to Nightlife Success with Q Play",
+             excerpt: "Discover how Q Play is transforming the nightlife industry and creating unforgettable experiences for both fans and DJs.",
+             content: "The nightlife industry is experiencing a revolutionary transformation, and Q Play is at the forefront of this change. Our platform has created a new paradigm where fans and DJs connect in real-time, creating experiences that were previously impossible.\n\nWhat Makes Q Play Special:\n• Real-time song requests with instant feedback\n• Transparent tipping system that rewards quality\n• Enhanced crowd engagement and energy\n• Increased revenue for DJs and venues\n• Better music selection based on crowd preferences\n\nOur data shows that venues using Q Play see a 40% increase in customer satisfaction and a 60% increase in repeat visits. DJs report earning 2-3x more through our platform, while fans enjoy unprecedented control over their nightlife experience.\n\nThe platform has become essential for modern nightlife, bridging the gap between audience and performer in ways never before possible. DJs report feeling more connected to their audience, while fans feel like they have a voice in shaping the night's soundtrack.\n\nKey Statistics:\n• 10,000+ active users across major cities\n• 500+ professional DJs on the platform\n• 50,000+ songs requested monthly\n• Average tip per request: $15-25\n• 95% user satisfaction rating\n\nThe future of nightlife is interactive, and Q Play is leading the charge.",
+             author: "Q Play Team",
+             date: "August 15, 2024",
+             readTime: "5 min read",
+             category: "Nightlife",
+             image: "🎵",
+             status: "published",
+             createdAt: "2024-08-15T10:00:00Z",
+             updatedAt: "2024-08-15T10:00:00Z"
+           },
+           {
+             id: 2,
+             title: "DJ Success Stories: From Local Gigs to International Fame",
+             excerpt: "Meet the DJs who have transformed their careers and income using Q Play's innovative platform.",
+             content: "Since launching Q Play, we've seen incredible success stories from DJs across the globe. These real-life examples show how our platform is revolutionizing the music industry.\n\nDJ Mike's Story:\nMike, a club DJ in Los Angeles, was struggling to make ends meet on his $200 per night gigs. After joining Q Play, he now averages $800+ per night through song request tips alone. 'The platform changed everything,' Mike says. 'I'm not just playing music anymore - I'm creating experiences.'\n\nSarah Chen's Transformation:\nSarah, a wedding DJ from Miami, saw her bookings increase by 300% after clients discovered her through Q Play. 'Couples love that their guests can request songs during the reception,' Sarah explains. 'It makes the event more personal and memorable.'\n\nThese success stories highlight how our platform is not just about earning extra income, but about building a sustainable career in music. DJs report feeling more connected to their audience, having more creative freedom, and building stronger fan bases.\n\nThe platform has become a game-changer for both established and emerging DJs looking to monetize their passion while delivering unforgettable experiences.",
+             author: "Q Play Team",
+             date: "August 12, 2024",
+             readTime: "4 min read",
+             category: "DJ Success",
+             image: "🎛️",
+             status: "published",
+             createdAt: "2024-08-12T10:00:00Z",
+             updatedAt: "2024-08-12T10:00:00Z"
+           },
+           {
+             id: 3,
+             title: "The Future of Interactive Entertainment",
+             excerpt: "Explore how technology is reshaping entertainment and creating new opportunities for artists and audiences alike.",
+             content: "The entertainment industry is undergoing a massive transformation, and Q Play is at the forefront of this revolution. We're not just changing how people experience nightlife; we're redefining the relationship between performers and audiences.\n\nTechnology Meets Human Connection:\nOur platform demonstrates how technology can enhance rather than replace human connection, creating more meaningful and engaging experiences. The key is maintaining the human element while leveraging technology to create deeper connections.\n\nThe Interactive Revolution:\nAs we look to the future, we see endless possibilities for expanding this model to other forms of entertainment:\n• Live music venues with real-time audience interaction\n• Comedy clubs with crowd-sourced material\n• Theater performances with dynamic storylines\n• Gaming events with live audience participation\n\nWhat Makes Q Play Special:\n• Real-time feedback and interaction\n• Transparent and fair compensation systems\n• Enhanced audience engagement\n• Data-driven insights for performers\n• Seamless integration with existing setups\n\nThe future of entertainment is interactive, personalized, and community-driven. Q Play is leading the charge in this exciting new era.",
+             author: "Q Play Team",
+             date: "August 10, 2024",
+             readTime: "6 min read",
+             category: "Industry Trends",
+             image: "🚀",
+             status: "published",
+             createdAt: "2024-08-10T10:00:00Z",
+             updatedAt: "2024-08-10T10:00:00Z"
+           },
+           {
+             id: 4,
+             title: "Top 10 Tips for DJs to Maximize Q Play Earnings",
+             excerpt: "Learn proven strategies to boost your income and engagement using the Q Play platform.",
+             content: "Want to maximize your earnings on Q Play? Here are our top 10 proven strategies that successful DJs use to boost their income and engagement.\n\n1. Set Up Your Profile Right:\nCreate a compelling DJ profile with high-quality photos, your music style, and what makes you unique. This helps fans connect with you before they even hear you play.\n\n2. Engage with Your Audience:\nDon't just play the requested songs - interact with your crowd! Use the messaging feature to thank fans for requests and build relationships.\n\n3. Price Your Requests Strategically:\nSet minimum tip amounts that reflect your value, but don't price yourself out of the market. Start with $5-10 minimums and adjust based on demand.\n\n4. Promote Your Q Play Presence:\nLet your audience know you're on Q Play! Mention it during your sets, post about it on social media, and encourage fans to download the app.\n\n5. Create Song Packages:\nBundle popular songs together and offer them at a discount. This encourages multiple requests and increases your overall earnings.\n\n6. Use Analytics to Your Advantage:\nTrack which songs get the most requests and highest tips. Use this data to build better sets and understand your audience.\n\n7. Network with Other DJs:\nConnect with other Q Play DJs in your area. You can share tips, collaborate on events, and even refer clients to each other.\n\n8. Offer Special Requests:\nGo beyond just playing songs - offer to learn new tracks, create custom mixes, or provide special dedications for extra tips.\n\n9. Build Your Fan Base:\nEncourage fans to follow you on Q Play. This creates a loyal audience that will request your services at future events.\n\n10. Stay Consistent:\nRegular activity on the platform builds trust and keeps you top of mind for fans looking for DJs.\n\nRemember: Success on Q Play is about building relationships, not just playing music. The more you engage with your audience, the more they'll engage with you!",
+             author: "Q Play Team",
+             date: "August 8, 2024",
+             readTime: "7 min read",
+             category: "DJ Tips",
+             image: "💡",
+             status: "published",
+             createdAt: "2024-08-08T10:00:00Z",
+             updatedAt: "2024-08-08T10:00:00Z"
+           },
+           {
+             id: 5,
+             title: "Q Play Platform Update: New Features for Enhanced User Experience",
+             excerpt: "Discover the latest features and improvements that make Q Play even better for fans and DJs.",
+             content: "We're excited to announce our biggest platform update yet! Here are the new features that will enhance your Q Play experience.\n\nNew Features for DJs:\n• Enhanced Analytics Dashboard: Get detailed insights into your earnings, most popular requests, and audience engagement metrics\n• Advanced Scheduling: Set your availability and let fans book you for future events\n• Song Library Expansion: Access to over 50 million tracks with real-time availability checking\n• Custom Tip Tiers: Create multiple pricing options for different types of requests\n• Fan Messaging: Direct communication with fans for better relationship building\n\nNew Features for Fans:\n• Improved Search: Find DJs by location, music style, and availability\n• Request History: Track all your past requests and favorite songs\n• Social Features: Follow your favorite DJs and get notified when they're playing nearby\n• Group Requests: Pool tips with friends for bigger song requests\n• Venue Integration: See which venues are using Q Play and what DJs are playing\n\nPerformance Improvements:\n• Faster loading times and smoother animations\n• Better offline functionality for areas with poor connectivity\n• Enhanced security for all transactions\n• Improved notification system\n\nWe're committed to continuously improving Q Play based on your feedback. These updates reflect the most requested features from our community of DJs and fans.\n\nStay tuned for more exciting announcements coming soon!",
+             author: "Q Play Team",
+             date: "August 5, 2024",
+             readTime: "4 min read",
+             category: "App Updates",
+             image: "📱",
+             status: "published",
+             createdAt: "2024-08-05T10:00:00Z",
+             updatedAt: "2024-08-05T10:00:00Z"
+           }
+         ];
   
   localStorage.setItem('caretheplanet_blog_posts', JSON.stringify(defaultPosts));
   return defaultPosts;
@@ -293,7 +321,7 @@ export const isAdminAuthenticated = (): boolean => {
 };
 
 export const adminLogin = (username: string, password: string): boolean => {
-  if (username === 'admin' && password === 'caretheplanet2024') {
+  if (username === 'admin' && password === 'qplay2024') {
     localStorage.setItem('adminToken', 'admin-token-123');
     return true;
   }

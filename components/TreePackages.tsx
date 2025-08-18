@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { getTreePackages, TreePackage } from '../utils/adminData';
 import AnimatedCard from './AnimatedCard';
-import PaymentModal from './PaymentModal';
+// import PaymentModal from './PaymentModal';
 
 const TreePackages = () => {
   const [packages, setPackages] = useState<TreePackage[]>([]);
@@ -131,13 +131,7 @@ const TreePackages = () => {
           </div>
         )}
       </div>
-      <PaymentModal
-        isOpen={paymentModal.isOpen}
-        onClose={() => setPaymentModal({ ...paymentModal, isOpen: false })}
-        amount={paymentModal.amount}
-        title={paymentModal.title}
-        description={paymentModal.description}
-      />
+      {/* Payments disabled */}
     </section>
   );
 };

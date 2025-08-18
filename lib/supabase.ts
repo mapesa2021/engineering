@@ -1,46 +1,122 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient } from '@supabase/supabase-js';
 
-// Only create client if environment variables are available
-const createSupabaseClient = () => {
-  // Try both client-side and server-side environment variables
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY
-  
-  if (!supabaseUrl || !supabaseAnonKey) {
-    console.warn('Supabase environment variables not found. Client will not be initialized.')
-    return null
-  }
-  
-  return createClient(supabaseUrl, supabaseAnonKey)
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+// Database types
+export interface BlogPost {
+  id: number;
+  title: string;
+  excerpt: string;
+  content: string;
+  author: string;
+  date: string;
+  read_time: string;
+  category: string;
+  image: string;
+  status: 'draft' | 'published' | 'archived';
+  created_at: string;
+  updated_at: string;
 }
 
-// Initialize client only when needed
-export const supabase = createSupabaseClient()
+export interface Event {
+  id: number;
+  title: string;
+  description: string;
+  date: string;
+  time: string;
+  location: string;
+  venue: string;
+  address: string;
+  city: string;
+  state: string;
+  zip_code: string;
+  image: string;
+  dj_name: string;
+  dj_bio: string;
+  ticket_price: string;
+  capacity: number;
+  category: string;
+  status: 'upcoming' | 'ongoing' | 'completed' | 'cancelled';
+  featured: boolean;
+  created_at: string;
+  updated_at: string;
+}
 
-// Database table names
-export const TABLES = {
-  BLOG_POSTS: 'blog_posts',
-  TEAM_MEMBERS: 'team_members',
-  TESTIMONIALS: 'testimonials',
-  HERO_IMAGES: 'hero_images',
-  TREE_PACKAGES: 'tree_packages',
-  BUTTONS: 'homepage_buttons',
-  NEWSLETTER_SUBSCRIBERS: 'newsletter_subscribers',
-  CONTACT_MESSAGES: 'contact_messages',
-  ADMIN_USERS: 'admin_users'
-} as const
+export interface TeamMember {
+  id: number;
+  name: string;
+  position: string;
+  bio: string;
+  image: string;
+  social_links: any;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
 
-// Row Level Security (RLS) policies
-export const enableRLS = async () => {
-  if (!supabase) {
-    console.warn('Supabase client not available. Skipping RLS setup.')
-    return
-  }
-  
-  // Enable RLS on all tables
-  const tables = Object.values(TABLES)
-  
-  for (const table of tables) {
-    await supabase.rpc('enable_rls', { table_name: table })
-  }
+export interface Testimonial {
+  id: number;
+  name: string;
+  role: string;
+  content: string;
+  rating: number;
+  image: string;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface HeroImage {
+  id: number;
+  title: string;
+  subtitle: string;
+  image_url: string;
+  order_index: number;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ContactMessage {
+  id: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+  subject: string;
+  message: string;
+  is_read: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface NewsletterSubscriber {
+  id: number;
+  email: string;
+  is_active: boolean;
+  subscribed_at: string;
+  updated_at: string;
+}
+
+export interface ButtonConfig {
+  id: number;
+  button_name: string;
+  button_text: string;
+  button_url: string;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface AdminUser {
+  id: number;
+  username: string;
+  password_hash: string;
+  email: string;
+  role: string;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
 } 

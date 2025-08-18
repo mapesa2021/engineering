@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,24 +9,48 @@
   }
   
   body {
-    @apply bg-white text-gray-900;
+    @apply bg-dark-bg text-white font-body;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-eco-green hover:bg-eco-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl;
+    @apply bg-gradient-to-r from-q-orange to-q-magenta hover:from-glow-orange hover:to-glow-magenta text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105;
   }
   
   .btn-secondary {
-    @apply bg-white hover:bg-eco-pale text-eco-green border-2 border-eco-green font-semibold py-3 px-6 rounded-lg transition-colors duration-200;
+    @apply bg-transparent hover:bg-q-purple/10 text-q-purple border-2 border-q-purple font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-q-purple/30;
+  }
+  
+  .btn-app-store {
+    @apply bg-black text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-2xl;
+  }
+  
+  .btn-google-play {
+    @apply bg-gradient-to-r from-q-orange to-q-magenta text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-2xl;
   }
   
   .section-padding {
-    @apply py-16 px-4 sm:px-6 lg:px-8;
+    @apply py-20 px-4 sm:px-6 lg:px-8;
   }
   
   .container-custom {
     @apply max-w-7xl mx-auto;
+  }
+  
+  .neon-card {
+    @apply bg-dark-card/50 backdrop-blur-sm border border-q-orange/20 rounded-2xl p-8 shadow-xl hover:shadow-2xl hover:shadow-q-orange/20 transition-all duration-300;
+  }
+  
+  .neon-glow {
+    @apply shadow-lg shadow-q-orange/30;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-q-orange via-q-magenta to-q-purple bg-clip-text text-transparent;
+  }
+  
+  .bg-gradient-neon {
+    @apply bg-gradient-to-br from-dark-bg via-dark-surface to-dark-card;
   }
 } 

@@ -105,7 +105,8 @@ export class ZenoPayService {
 }
 
 // Create singleton instance
-export const zenoPayService = new ZenoPayService();
+// Payments disabled
+export const zenoPayService = null as any;
 
 // Utility function to format amount
 export const formatAmount = (amount: number, currency: string = 'TZS'): string => {

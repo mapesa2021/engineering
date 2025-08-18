@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import AnimatedButton from './AnimatedButton';
 import { getButtonsBySection, Button } from '../utils/adminData';
-import PaymentModal from './PaymentModal';
+// import PaymentModal from './PaymentModal';
 
 interface DynamicButtonProps {
   section: string;
@@ -88,13 +88,7 @@ export default function DynamicButton({ section, className = '' }: DynamicButton
       ))}
       
       {/* Payment Modal */}
-      <PaymentModal
-        isOpen={paymentModal.isOpen}
-        onClose={() => setPaymentModal(prev => ({ ...prev, isOpen: false }))}
-        amount={paymentModal.amount}
-        title={paymentModal.title}
-        description={paymentModal.description}
-      />
+      {/* Payments disabled */}
     </div>
   );
 } 
