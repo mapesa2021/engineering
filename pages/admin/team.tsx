@@ -157,9 +157,9 @@ const TeamManagement = () => {
                     <div className="flex items-center justify-between text-sm text-white/60">
                       <span>Status: {member.is_active ? 'Active' : 'Inactive'}</span>
                       <span>ID: {member.id}</span>
-                    </div>
-                  </div>
-                </div>
+                            </div>
+                            </div>
+                        </div>
                   ))}
             </div>
 

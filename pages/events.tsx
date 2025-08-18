@@ -5,25 +5,36 @@ import Navbar from '../components/Navbar';
 import Image from 'next/image';
 import AnimatedSection from '../components/AnimatedSection';
 import AnimatedCard from '../components/AnimatedCard';
-import { getEvents } from '../lib/db';
+import { getEvents, testSupabaseConnection } from '../lib/db';
 import type { Event } from '../lib/supabase';
 
 export default function Events() {
   const [events, setEvents] = useState<Event[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [connectionStatus, setConnectionStatus] = useState<string>('Testing...');
 
   useEffect(() => {
     // Load events from database (only on client side)
     if (typeof window !== 'undefined') {
       const loadEvents = async () => {
         try {
-          console.log('Loading events...');
+          console.log('🚀 Starting events loading process...');
+          
+          // Test Supabase connection first
+          const isConnected = await testSupabaseConnection();
+          setConnectionStatus(isConnected ? 'Connected' : 'Using fallback data');
+          
+          console.log('📡 Connection status:', isConnected ? 'Connected to Supabase' : 'Using fallback data');
+          
           const events = await getEvents();
-          console.log('Events loaded:', events);
+          console.log('🎉 Events loaded:', events);
+          console.log('📊 Total events:', events.length);
+          
           setEvents(events);
         } catch (error) {
-          console.error('Error loading events:', error);
+          console.error('❌ Error loading events:', error);
           setEvents([]);
+          setConnectionStatus('Error loading data');
         } finally {
           setIsLoading(false);
         }

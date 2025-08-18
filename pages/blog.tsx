@@ -4,25 +4,36 @@ import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import AnimatedSection from '../components/AnimatedSection';
 import AnimatedCard from '../components/AnimatedCard';
-import { getBlogPosts } from '../lib/db';
+import { getBlogPosts, testSupabaseConnection } from '../lib/db';
 import type { BlogPost } from '../lib/supabase';
 
 const Blog = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [connectionStatus, setConnectionStatus] = useState<string>('Testing...');
 
   useEffect(() => {
     // Load blog posts from database (only on client side)
     if (typeof window !== 'undefined') {
       const loadPosts = async () => {
         try {
-          console.log('Loading blog posts...');
+          console.log('🚀 Starting blog posts loading process...');
+          
+          // Test Supabase connection first
+          const isConnected = await testSupabaseConnection();
+          setConnectionStatus(isConnected ? 'Connected' : 'Using fallback data');
+          
+          console.log('📡 Connection status:', isConnected ? 'Connected to Supabase' : 'Using fallback data');
+          
           const posts = await getBlogPosts();
-          console.log('Blog posts loaded:', posts);
+          console.log('📝 Blog posts loaded:', posts);
+          console.log('📊 Total posts:', posts.length);
+          
           setBlogPosts(posts);
         } catch (error) {
-          console.error('Error loading blog posts:', error);
+          console.error('❌ Error loading blog posts:', error);
           setBlogPosts([]);
+          setConnectionStatus('Error loading data');
         } finally {
           setIsLoading(false);
         }

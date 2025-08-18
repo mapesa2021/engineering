@@ -3,21 +3,34 @@ import { supabase, BlogPost, Event, TeamMember, Testimonial, HeroImage, ContactM
 // Blog Posts
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
   try {
-    console.log('Fetching blog posts from Supabase...');
+    console.log('🔍 Fetching blog posts from Supabase...');
+    console.log('🔍 Supabase URL:', process.env.NEXT_PUBLIC_SUPABASE_URL);
+    console.log('🔍 Supabase Key available:', !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+    
     const { data, error } = await supabase
       .from('blog_posts')
       .select('*')
       .order('created_at', { ascending: false });
 
     if (error) {
-      console.error('Error fetching blog posts:', error);
+      console.error('❌ Error fetching blog posts:', error);
+      console.log('🔄 Falling back to sample data...');
       return getFallbackData('blog_posts', []);
     }
     
-    console.log('Blog posts fetched from Supabase:', data);
-    return data || [];
+    console.log('✅ Blog posts fetched from Supabase:', data);
+    console.log('📊 Number of blog posts:', data?.length || 0);
+    
+    // If no data from Supabase, return fallback data
+    if (!data || data.length === 0) {
+      console.log('⚠️ No blog posts found in Supabase, using fallback data');
+      return getFallbackData('blog_posts', []);
+    }
+    
+    return data;
   } catch (error) {
-    console.error('Supabase error:', error);
+    console.error('❌ Supabase error:', error);
+    console.log('🔄 Falling back to sample data...');
     return getFallbackData('blog_posts', []);
   }
 };
@@ -101,27 +114,41 @@ export const deleteBlogPost = async (id: number): Promise<boolean> => {
 // Events
 export const getEvents = async (): Promise<Event[]> => {
   try {
-    console.log('Fetching events from Supabase...');
+    console.log('🔍 Fetching events from Supabase...');
+    console.log('🔍 Supabase URL:', process.env.NEXT_PUBLIC_SUPABASE_URL);
+    console.log('🔍 Supabase Key available:', !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+    
     const { data, error } = await supabase
       .from('events')
       .select('*')
       .order('date', { ascending: true });
 
     if (error) {
-      console.error('Error fetching events:', error);
+      console.error('❌ Error fetching events:', error);
+      console.log('🔄 Falling back to sample data...');
       return getFallbackData('events', []);
     }
     
-    console.log('Events fetched from Supabase:', data);
-    return data || [];
+    console.log('✅ Events fetched from Supabase:', data);
+    console.log('📊 Number of events:', data?.length || 0);
+    
+    // If no data from Supabase, return fallback data
+    if (!data || data.length === 0) {
+      console.log('⚠️ No events found in Supabase, using fallback data');
+      return getFallbackData('events', []);
+    }
+    
+    return data;
   } catch (error) {
-    console.error('Supabase error:', error);
+    console.error('❌ Supabase error:', error);
+    console.log('🔄 Falling back to sample data...');
     return getFallbackData('events', []);
   }
 };
 
 export const getEventById = async (id: number): Promise<Event | null> => {
   try {
+    console.log('🔍 Fetching event with ID:', id);
     const { data, error } = await supabase
       .from('events')
       .select('*')
@@ -129,12 +156,28 @@ export const getEventById = async (id: number): Promise<Event | null> => {
       .single();
 
     if (error) {
-      console.error('Error fetching event:', error);
+      console.error('❌ Error fetching event:', error);
+      // Try to get from fallback data
+      const fallbackEvents = getFallbackData('events', []);
+      const fallbackEvent = fallbackEvents.find((event: Event) => event.id === id);
+      if (fallbackEvent) {
+        console.log('✅ Found event in fallback data');
+        return fallbackEvent;
+      }
       return null;
     }
+    
+    console.log('✅ Event fetched from Supabase:', data);
     return data;
   } catch (error) {
-    console.error('Supabase error:', error);
+    console.error('❌ Supabase error:', error);
+    // Try to get from fallback data
+    const fallbackEvents = getFallbackData('events', []);
+    const fallbackEvent = fallbackEvents.find((event: Event) => event.id === id);
+    if (fallbackEvent) {
+      console.log('✅ Found event in fallback data');
+      return fallbackEvent;
+    }
     return null;
   }
 };
@@ -449,6 +492,28 @@ export const isAdminAuthenticated = (): boolean => {
 export const adminLogout = (): void => {
   if (typeof window !== 'undefined') {
     localStorage.removeItem('admin_token');
+  }
+};
+
+// Test Supabase connection
+export const testSupabaseConnection = async (): Promise<boolean> => {
+  try {
+    console.log('🔍 Testing Supabase connection...');
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('count')
+      .limit(1);
+
+    if (error) {
+      console.error('❌ Supabase connection test failed:', error);
+      return false;
+    }
+    
+    console.log('✅ Supabase connection test successful');
+    return true;
+  } catch (error) {
+    console.error('❌ Supabase connection test error:', error);
+    return false;
   }
 };
 
