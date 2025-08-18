@@ -356,6 +356,84 @@ export const getHeroImages = async (): Promise<HeroImage[]> => {
   }
 };
 
+export const createHeroImage = async (image: Omit<HeroImage, 'id' | 'created_at' | 'updated_at'>): Promise<HeroImage | null> => {
+  try {
+    const { data, error } = await supabase
+      .from('hero_images')
+      .insert([image])
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error creating hero image:', error);
+      return null;
+    }
+    return data;
+  } catch (error) {
+    console.error('Supabase error:', error);
+    return null;
+  }
+};
+
+export const updateHeroImage = async (id: number, updates: Partial<HeroImage>): Promise<HeroImage | null> => {
+  try {
+    const { data, error } = await supabase
+      .from('hero_images')
+      .update(updates)
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error updating hero image:', error);
+      return null;
+    }
+    return data;
+  } catch (error) {
+    console.error('Supabase error:', error);
+    return null;
+  }
+};
+
+export const deleteHeroImage = async (id: number): Promise<boolean> => {
+  try {
+    const { error } = await supabase
+      .from('hero_images')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      console.error('Error deleting hero image:', error);
+      return false;
+    }
+    return true;
+  } catch (error) {
+    console.error('Supabase error:', error);
+    return false;
+  }
+};
+
+export const updateHeroImageOrder = async (images: HeroImage[]): Promise<boolean> => {
+  try {
+    // Update each image's order
+    for (const image of images) {
+      const { error } = await supabase
+        .from('hero_images')
+        .update({ order_index: image.order_index })
+        .eq('id', image.id);
+
+      if (error) {
+        console.error('Error updating hero image order:', error);
+        return false;
+      }
+    }
+    return true;
+  } catch (error) {
+    console.error('Supabase error:', error);
+    return false;
+  }
+};
+
 // Contact Messages
 export const createContactMessage = async (message: Omit<ContactMessage, 'id' | 'created_at' | 'updated_at'>): Promise<ContactMessage | null> => {
   try {

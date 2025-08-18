@@ -3,7 +3,14 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { getHeroImages, saveHeroImages, updateHeroImage, addHeroImage, deleteHeroImage, HeroImage } from '../../utils/adminData';
+import { 
+  getHeroImages, 
+  createHeroImage, 
+  updateHeroImage, 
+  deleteHeroImage, 
+  updateHeroImageOrder 
+} from '../../lib/db';
+import type { HeroImage } from '../../lib/supabase';
 
 const HeroManagement = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -15,18 +22,28 @@ const HeroManagement = () => {
 
   useEffect(() => {
     // Check if user is authenticated
-    const token = localStorage.getItem('adminToken');
-    if (token === 'admin-token-123') {
+    const token = localStorage.getItem('admin_token');
+    if (token === 'admin_authenticated') {
       setIsAuthenticated(true);
     }
     setIsLoading(false);
   }, []);
 
   useEffect(() => {
-    // Load hero images from data utility
-    const images = getHeroImages();
-    setHeroImages(images);
-  }, []);
+    // Load hero images from database
+    if (isAuthenticated) {
+      loadHeroImages();
+    }
+  }, [isAuthenticated]);
+
+  const loadHeroImages = async () => {
+    try {
+      const images = await getHeroImages();
+      setHeroImages(images);
+    } catch (error) {
+      console.error('Error loading hero images:', error);
+    }
+  };
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
@@ -38,72 +55,110 @@ const HeroManagement = () => {
     setEditingImage({ ...image });
   };
 
-  const handleSaveImage = (e: React.FormEvent) => {
+  const handleSaveImage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!editingImage) return;
 
-    if (editingImage.id > 5) {
-      // This is a new image
-      const newImage = addHeroImage({
-        src: editingImage.src,
-        alt: editingImage.alt,
-        title: editingImage.title,
-        order: editingImage.order
-      });
-      setHeroImages(prev => [...prev, newImage]);
-    } else {
-      // This is an existing image
-      const updatedImage = updateHeroImage(editingImage.id, editingImage);
-      if (updatedImage) {
-        setHeroImages(prev => 
-          prev.map(img => 
-            img.id === editingImage.id ? updatedImage : img
-          )
-        );
+    setIsSubmitting(true);
+    try {
+      if (editingImage.id > 1000) {
+        // This is a new image (temporary ID)
+        const newImageData = {
+          title: editingImage.title,
+          subtitle: editingImage.subtitle || '',
+          image_url: editingImage.image_url,
+          order_index: editingImage.order_index,
+          is_active: true
+        };
+        
+        const newImage = await createHeroImage(newImageData);
+        if (newImage) {
+          setHeroImages(prev => [...prev, newImage]);
+          await loadHeroImages(); // Reload to get the real ID
+        }
+      } else {
+        // This is an existing image
+        const updatedImage = await updateHeroImage(editingImage.id, {
+          title: editingImage.title,
+          subtitle: editingImage.subtitle,
+          image_url: editingImage.image_url,
+          order_index: editingImage.order_index
+        });
+        
+        if (updatedImage) {
+          setHeroImages(prev => 
+            prev.map(img => 
+              img.id === editingImage.id ? updatedImage : img
+            )
+          );
+        }
       }
+      setEditingImage(null);
+    } catch (error) {
+      console.error('Error saving hero image:', error);
+      alert('Error saving image. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
-    setEditingImage(null);
   };
 
-  const handleDeleteImage = (id: number) => {
+  const handleDeleteImage = async (id: number) => {
     if (window.confirm('Are you sure you want to delete this image?')) {
-      const success = deleteHeroImage(id);
-      if (success) {
-        setHeroImages(prev => prev.filter(img => img.id !== id));
+      try {
+        const success = await deleteHeroImage(id);
+        if (success) {
+          setHeroImages(prev => prev.filter(img => img.id !== id));
+        } else {
+          alert('Error deleting image. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error deleting hero image:', error);
+        alert('Error deleting image. Please try again.');
       }
     }
   };
 
   const handleAddImage = () => {
     const newImage: HeroImage = {
-      id: Date.now(),
-      src: '',
-      alt: '',
+      id: Date.now(), // Temporary ID
       title: '',
-      order: heroImages.length + 1
+      subtitle: '',
+      image_url: '',
+      order_index: heroImages.length + 1,
+      is_active: true,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
     setEditingImage(newImage);
   };
 
-  const handleReorder = (fromIndex: number, toIndex: number) => {
+  const handleReorder = async (fromIndex: number, toIndex: number) => {
     const newImages = [...heroImages];
     const [movedImage] = newImages.splice(fromIndex, 1);
     newImages.splice(toIndex, 0, movedImage);
     
     // Update order numbers
     newImages.forEach((img, index) => {
-      img.order = index + 1;
+      img.order_index = index + 1;
     });
     
     setHeroImages(newImages);
+    
+    // Save the new order to database
+    try {
+      await updateHeroImageOrder(newImages);
+    } catch (error) {
+      console.error('Error updating image order:', error);
+      alert('Error updating image order. Please try again.');
+    }
   };
 
   const handleSaveAll = async () => {
     setIsSubmitting(true);
     
     try {
-      // Save all hero images using the data utility
-      saveHeroImages(heroImages);
+      // Reload to reflect any changes made directly in the grid
+      await loadHeroImages(); 
       
       setIsSubmitting(false);
       alert('Hero images updated successfully!');
@@ -132,8 +187,8 @@ const HeroManagement = () => {
   return (
     <>
       <Head>
-        <title>Hero Image Management - CareThePlanet Admin</title>
-        <meta name="description" content="Manage hero slider images for CareThePlanet website" />
+        <title>Hero Image Management - Q Play Admin</title>
+        <meta name="description" content="Manage hero slider images for Q Play website" />
       </Head>
 
       <div className="min-h-screen bg-gray-100">
@@ -143,8 +198,8 @@ const HeroManagement = () => {
             <div className="flex justify-between items-center py-4">
               <div className="flex items-center">
                 <Link href="/admin" className="mr-4">
-                  <div className="w-8 h-8 bg-eco-green rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">🌱</span>
+                  <div className="w-8 h-8 bg-gradient-to-r from-q-orange to-q-magenta rounded-full flex items-center justify-center">
+                    <span className="text-white font-bold text-sm">Q</span>
                   </div>
                 </Link>
                 <h1 className="text-2xl font-bold text-gray-900">Hero Image Management</h1>
@@ -152,7 +207,7 @@ const HeroManagement = () => {
               <div className="flex items-center space-x-4">
                 <button
                   onClick={handleAddImage}
-                  className="bg-eco-green hover:bg-eco-dark text-white px-4 py-2 rounded-lg transition-colors duration-200"
+                  className="bg-gradient-to-r from-q-orange to-q-magenta hover:from-glow-orange hover:to-glow-magenta text-white px-4 py-2 rounded-lg transition-all duration-200"
                 >
                   + Add Image
                 </button>
@@ -161,7 +216,7 @@ const HeroManagement = () => {
                   disabled={isSubmitting}
                   className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-200 disabled:opacity-50"
                 >
-                  {isSubmitting ? 'Saving...' : 'Save All Changes'}
+                  {isSubmitting ? 'Saving...' : 'Refresh Images'}
                 </button>
                 <Link
                   href="/admin"
@@ -187,10 +242,11 @@ const HeroManagement = () => {
               <div className="ml-3">
                 <h3 className="text-sm font-medium text-blue-800">Hero Image Guidelines</h3>
                 <div className="mt-2 text-sm text-blue-700">
-                  <p>• Images should be high-quality and relevant to environmental conservation</p>
+                  <p>• Images should be high-quality and relevant to nightlife, music, and DJ culture</p>
                   <p>• Recommended size: 1920x1080 pixels or similar aspect ratio</p>
-                  <p>• Use descriptive alt text for accessibility</p>
-                  <p>• Drag and drop to reorder images (first image appears first)</p>
+                  <p>• Use descriptive titles and subtitles for each image</p>
+                  <p>• Drag and drop to reorder images (first image appears first in the slider)</p>
+                  <p>• Images should capture the vibrant energy of Q Play's nightlife experience</p>
                 </div>
               </div>
             </div>
@@ -203,8 +259,8 @@ const HeroManagement = () => {
                 {/* Image Preview */}
                 <div className="relative h-48 bg-gray-200">
                   <Image
-                    src={image.src}
-                    alt={image.alt}
+                    src={image.image_url}
+                    alt={image.title}
                     fill
                     className="object-cover"
                     onError={() => {
@@ -212,9 +268,9 @@ const HeroManagement = () => {
                     }}
                   />
                   <div className="absolute top-2 left-2 bg-black/50 text-white text-xs px-2 py-1 rounded">
-                    Order: {image.order}
+                    Order: {image.order_index}
                   </div>
-                  {image.src && (
+                  {image.image_url && (
                     <div className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded">
                       ✓ Loaded
                     </div>
@@ -224,7 +280,7 @@ const HeroManagement = () => {
                 {/* Image Details */}
                 <div className="p-4">
                   <h3 className="font-semibold text-gray-900 mb-2">{image.title}</h3>
-                  <p className="text-sm text-gray-600 mb-3">{image.alt}</p>
+                  <p className="text-sm text-gray-600 mb-3">{image.subtitle}</p>
                   
                   {/* Actions */}
                   <div className="flex space-x-2">
@@ -273,7 +329,7 @@ const HeroManagement = () => {
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
               <div className="bg-white rounded-lg max-w-md w-full p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  {editingImage.id > 5 ? 'Add New Image' : 'Edit Image'}
+                  {editingImage.id > 1000 ? 'Add New Image' : 'Edit Image'}
                 </h3>
                 
                 <form onSubmit={handleSaveImage} className="space-y-4">
@@ -284,8 +340,8 @@ const HeroManagement = () => {
                     <input
                       type="url"
                       required
-                      value={editingImage.src}
-                      onChange={(e) => setEditingImage(prev => prev ? { ...prev, src: e.target.value } : null)}
+                      value={editingImage.image_url}
+                      onChange={(e) => setEditingImage(prev => prev ? { ...prev, image_url: e.target.value } : null)}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-eco-green focus:border-transparent"
                       placeholder="https://example.com/image.jpg"
                     />
@@ -307,15 +363,14 @@ const HeroManagement = () => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Alt Text *
+                      Subtitle
                     </label>
                     <textarea
-                      required
-                      rows={3}
-                      value={editingImage.alt}
-                      onChange={(e) => setEditingImage(prev => prev ? { ...prev, alt: e.target.value } : null)}
+                      rows={2}
+                      value={editingImage.subtitle}
+                      onChange={(e) => setEditingImage(prev => prev ? { ...prev, subtitle: e.target.value } : null)}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-eco-green focus:border-transparent"
-                      placeholder="Description of the image for accessibility"
+                      placeholder="Optional subtitle for the image"
                     />
                   </div>
 
@@ -329,7 +384,7 @@ const HeroManagement = () => {
                     </button>
                     <button
                       type="submit"
-                      className="px-4 py-2 bg-eco-green hover:bg-eco-dark text-white rounded-lg transition-colors duration-200"
+                      className="px-4 py-2 bg-gradient-to-r from-q-orange to-q-magenta hover:from-glow-orange hover:to-glow-magenta text-white rounded-lg transition-all duration-200"
                     >
                       Save
                     </button>
