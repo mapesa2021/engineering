@@ -1,51 +1,55 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '../../components/Navbar';
 import AnimatedSection from '../../components/AnimatedSection';
-
-interface Event {
-  id: number;
-  title: string;
-  description: string;
-  date: string;
-  time: string;
-  location: string;
-  venue: string;
-  address: string;
-  city: string;
-  state: string;
-  zipCode: string;
-  image: string;
-  djName: string;
-  djBio: string;
-  ticketPrice: string;
-  capacity: number;
-  category: string;
-  status: 'upcoming' | 'ongoing' | 'completed' | 'cancelled';
-  featured: boolean;
-  createdAt: string;
-  updatedAt: string;
-}
+import { getEventById } from '../../lib/db';
+import type { Event } from '../../lib/supabase';
 
 export default function EventDetail() {
   const router = useRouter();
   const { id } = router.query;
+  const [event, setEvent] = useState<Event | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // This would normally come from an API or database
-  // For now, we'll simulate getting the event data
-  const getEvent = (): Event | null => {
-    if (typeof window === 'undefined') return null;
-    
-    const stored = localStorage.getItem('caretheplanet_events');
-    if (!stored) return null;
-    
-    const events = JSON.parse(stored);
-    return events.find((event: Event) => event.id === Number(id)) || null;
-  };
+  useEffect(() => {
+    if (id && typeof window !== 'undefined') {
+      const loadEvent = async () => {
+        try {
+          console.log('Loading event with ID:', id);
+          const eventData = await getEventById(Number(id));
+          console.log('Event loaded:', eventData);
+          setEvent(eventData);
+        } catch (error) {
+          console.error('Error loading event:', error);
+          setEvent(null);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+      
+      loadEvent();
+    }
+  }, [id]);
 
-  const event = getEvent();
+  if (isLoading) {
+    return (
+      <>
+        <Head>
+          <title>Loading Event - Q Play</title>
+          <meta name="description" content="Loading event details" />
+        </Head>
+        <div className="min-h-screen bg-dark-bg flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-q-orange mx-auto mb-4"></div>
+            <p className="text-gray-300">Loading event details...</p>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   if (!event) {
     return (
@@ -151,20 +155,20 @@ export default function EventDetail() {
                         <h3 className="text-lg font-semibold text-white mb-2">📍 Location</h3>
                         <p className="text-gray-300">{event.venue}</p>
                         <p className="text-gray-300">{event.address}</p>
-                        <p className="text-gray-300">{event.city}, {event.state} {event.zipCode}</p>
+                        <p className="text-gray-300">{event.city}, {event.state} {event.zip_code}</p>
                       </div>
                       
                       <div>
                         <h3 className="text-lg font-semibold text-white mb-2">🎵 DJ</h3>
-                        <p className="text-gray-300">{event.djName}</p>
-                        {event.djBio && (
-                          <p className="text-gray-400 text-sm mt-2">{event.djBio}</p>
+                        <p className="text-gray-300">{event.dj_name}</p>
+                        {event.dj_bio && (
+                          <p className="text-gray-400 text-sm mt-2">{event.dj_bio}</p>
                         )}
                       </div>
                       
                       <div>
                         <h3 className="text-lg font-semibold text-white mb-2">💰 Ticket Price</h3>
-                        <p className="text-gray-300">{event.ticketPrice}</p>
+                        <p className="text-gray-300">{event.ticket_price}</p>
                         <p className="text-gray-400 text-sm mt-2">Capacity: {event.capacity} people</p>
                       </div>
                     </div>
@@ -226,12 +230,12 @@ export default function EventDetail() {
                       
                       <div>
                         <span className="text-gray-400 text-sm">DJ</span>
-                        <p className="text-white font-semibold">{event.djName}</p>
+                        <p className="text-white font-semibold">{event.dj_name}</p>
                       </div>
                       
                       <div>
                         <span className="text-gray-400 text-sm">Price</span>
-                        <p className="text-white font-semibold">{event.ticketPrice}</p>
+                        <p className="text-white font-semibold">{event.ticket_price}</p>
                       </div>
                       
                       <div>

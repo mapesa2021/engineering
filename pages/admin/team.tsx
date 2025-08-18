@@ -90,7 +90,7 @@ const TeamManagement = () => {
               <h2 className="text-3xl font-bold text-white">Team Members</h2>
               <div className="text-white/60">
                 {teamMembers.length} member{teamMembers.length !== 1 ? 's' : ''}
-              </div>
+            </div>
           </div>
 
             {/* Team Members Grid */}
@@ -104,7 +104,7 @@ const TeamManagement = () => {
                           src={member.image} 
                           alt={member.name}
                              className="w-full h-full object-cover"
-                        />
+                           />
                       ) : (
                         <span className="text-2xl">{member.image || '👨‍💼'}</span>
                      )}
@@ -124,10 +124,10 @@ const TeamManagement = () => {
                           href={`mailto:${member.social_links.email}`}
                           className="text-q-orange hover:text-glow-orange transition-colors"
                           title="Email"
-                        >
+                  >
                           📧
                         </a>
-                      )}
+          )}
                       {member.social_links.linkedin && (
                         <a
                           href={member.social_links.linkedin}
@@ -150,8 +150,8 @@ const TeamManagement = () => {
                           🐦
                         </a>
                       )}
-                    </div>
-                  )}
+                            </div>
+                          )}
                   
                   <div className="mt-4 pt-4 border-t border-q-orange/20">
                     <div className="flex items-center justify-between text-sm text-white/60">
@@ -160,7 +160,7 @@ const TeamManagement = () => {
                     </div>
                   </div>
                 </div>
-              ))}
+                  ))}
             </div>
 
             {teamMembers.length === 0 && (

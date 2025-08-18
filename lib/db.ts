@@ -3,16 +3,18 @@ import { supabase, BlogPost, Event, TeamMember, Testimonial, HeroImage, ContactM
 // Blog Posts
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
   try {
+    console.log('Fetching blog posts from Supabase...');
     const { data, error } = await supabase
       .from('blog_posts')
       .select('*')
-      .eq('status', 'published')
       .order('created_at', { ascending: false });
 
     if (error) {
       console.error('Error fetching blog posts:', error);
       return getFallbackData('blog_posts', []);
     }
+    
+    console.log('Blog posts fetched from Supabase:', data);
     return data || [];
   } catch (error) {
     console.error('Supabase error:', error);
@@ -99,16 +101,18 @@ export const deleteBlogPost = async (id: number): Promise<boolean> => {
 // Events
 export const getEvents = async (): Promise<Event[]> => {
   try {
+    console.log('Fetching events from Supabase...');
     const { data, error } = await supabase
       .from('events')
       .select('*')
-      .in('status', ['upcoming', 'ongoing'])
       .order('date', { ascending: true });
 
     if (error) {
       console.error('Error fetching events:', error);
       return getFallbackData('events', []);
     }
+    
+    console.log('Events fetched from Supabase:', data);
     return data || [];
   } catch (error) {
     console.error('Supabase error:', error);
