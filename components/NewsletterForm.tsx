@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { addNewsletterSubscriber } from '../utils/adminData';
+import { addNewsletterSubscriber } from '../lib/adminData';
 
 export default function NewsletterForm() {
   const [email, setEmail] = useState('');
@@ -20,15 +20,15 @@ export default function NewsletterForm() {
     setMessage('');
 
     try {
-      const success = addNewsletterSubscriber(email, 'homepage');
+      const subscriber = addNewsletterSubscriber(email);
       
-      if (success) {
+      if (subscriber) {
         setStatus('success');
         setMessage('Thank you for subscribing! You\'ll receive updates soon.');
         setEmail('');
       } else {
         setStatus('error');
-        setMessage('This email is already subscribed to our newsletter.');
+        setMessage('Something went wrong. Please try again.');
       }
     } catch (error) {
       setStatus('error');

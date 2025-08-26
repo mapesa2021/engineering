@@ -1,29 +1,85 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { getHeroSlides } from '../lib/adminData';
+
+// Parallax hook
+const useParallax = (speed: number = 0.5) => {
+  const [offset, setOffset] = useState(0);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setOffset(window.pageYOffset * speed);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [speed]);
+  
+  return offset;
+};
 
 const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [heroSlides, setHeroSlides] = useState<any[]>([]);
+  const parallaxOffset = useParallax(0.3);
 
-  // Nightlife slider images
-  const sliderImages = [
-    {
-      src: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "Vibrant nightclub with neon lights",
-      title: "Electric Nights"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "DJ performing at a club",
-      title: "DJ Experience"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "Crowd dancing at a music festival",
-      title: "Crowd Energy"
-    }
-  ];
+  // Load hero slides from admin data
+  useEffect(() => {
+    const loadHeroSlides = () => {
+      try {
+        const allSlides = getHeroSlides();
+        console.log('🔍 Hero Component - All slides from admin:', allSlides);
+        
+        const slides = allSlides.filter(slide => slide.isActive);
+        console.log('🔍 Hero Component - Active slides:', slides);
+        
+        if (slides.length > 0) {
+          console.log('✅ Hero Component - Setting slides from admin data:', slides);
+          setHeroSlides(slides);
+        } else {
+          console.log('⚠️ Hero Component - No active slides found, using fallback');
+          // Fallback to default slides if no admin slides are configured
+          setHeroSlides([
+            {
+              id: '1',
+              title: 'Technical Engineering Solutions Across Tanzania',
+              subtitle: 'Your Trusted Partner',
+              description: 'From industrial automation to water treatment and office solutions, we deliver complete technical solutions for your business needs.',
+              image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+              buttonText: 'Get a Quote',
+              buttonLink: '/contact',
+              isActive: true
+            }
+          ]);
+        }
+      } catch (error) {
+        console.error('❌ Hero Component - Error loading hero slides:', error);
+        // Fallback to default slide
+        setHeroSlides([
+          {
+            id: '1',
+            title: 'Technical Engineering Solutions Across Tanzania',
+            subtitle: 'Your Trusted Partner',
+            description: 'From industrial automation to water treatment and office solutions, we deliver complete technical solutions for your business needs.',
+            image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+            buttonText: 'Get a Quote',
+            buttonLink: '/contact',
+            isActive: true
+          }
+        ]);
+      }
+    };
+
+    loadHeroSlides();
+    
+    // Refresh slides every 5 seconds to catch admin updates
+    const interval = setInterval(loadHeroSlides, 5000);
+    
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -31,26 +87,28 @@ const Hero = () => {
 
   // Auto-advance slider every 5 seconds
   useEffect(() => {
+    if (heroSlides.length === 0) return;
+    
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => 
-        prevIndex === sliderImages.length - 1 ? 0 : prevIndex + 1
+        prevIndex === heroSlides.length - 1 ? 0 : prevIndex + 1
       );
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [sliderImages.length]);
+  }, [heroSlides.length]);
 
   // Function to go to next image
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) => 
-      prevIndex === sliderImages.length - 1 ? 0 : prevIndex + 1
+      prevIndex === heroSlides.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   // Function to go to previous image
   const prevImage = () => {
     setCurrentImageIndex((prevIndex) => 
-      prevIndex === 0 ? sliderImages.length - 1 : prevIndex - 1
+      prevIndex === 0 ? heroSlides.length - 1 : prevIndex - 1
     );
   };
 
@@ -59,20 +117,59 @@ const Hero = () => {
     setCurrentImageIndex(index);
   };
 
+  if (heroSlides.length === 0) {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Full Cover Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-          alt="Vibrant nightclub with neon lights"
+          src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            alt="Loading..."
           fill
           className="object-cover"
           priority
           sizes="100vw"
         />
-        {/* Brand-colored overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-q-orange/70 via-q-magenta/60 to-q-purple/70"></div>
+          <div className="absolute inset-0 bg-black/70"></div>
+        </div>
+        <div className="container-custom relative z-10 flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-oleum-yellow mx-auto mb-4"></div>
+            <p className="text-white text-lg">Loading...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Full Cover Background Image with Parallax */}
+      <div className="absolute inset-0 z-0">
+        {heroSlides.map((slide, index) => (
+          <div
+            key={slide.id}
+            className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+              index === currentImageIndex 
+                ? 'opacity-100 scale-100' 
+                : 'opacity-0 scale-105'
+            }`}
+            style={{
+              transition: 'opacity 1s ease-in-out, transform 1s ease-in-out',
+              transform: `translateY(${parallaxOffset}px) scale(1.1)`
+            }}
+          >
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              className="object-cover"
+              priority={index === 0}
+              sizes="100vw"
+            />
+          </div>
+        ))}
+        {/* Professional overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/70"></div>
       </div>
       
       <div className="container-custom relative z-10">
@@ -80,64 +177,98 @@ const Hero = () => {
           {/* Text Content */}
           <div className={`text-left transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {/* Main Heading */}
-            <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight font-display">
-              <span className="text-white">Request Songs.</span>
-              <span className="block text-white">Tip DJs.</span>
-              <span className="block text-white">Own the Night.</span>
+            <h1 
+              key={`title-${currentImageIndex}`}
+              className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight font-display transition-all duration-1000 ease-in-out"
+              style={{
+                animation: 'fadeInUp 1s ease-in-out'
+              }}
+            >
+              {heroSlides[currentImageIndex]?.title || heroSlides[0]?.title}
             </h1>
             
-            {/* Mission Statement */}
-            <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed font-body">
-              Q Play lets fans at events and clubs pay to request their favorite songs while DJs earn more by playing them.
+            {/* Subtitle */}
+            {heroSlides[currentImageIndex]?.subtitle && (
+              <p 
+                key={`subtitle-${currentImageIndex}`}
+                className="text-2xl md:text-3xl text-oleum-yellow mb-4 font-semibold transition-all duration-1000 ease-in-out"
+                style={{
+                  animation: 'fadeInUp 1s ease-in-out 0.2s both'
+                }}
+              >
+                {heroSlides[currentImageIndex].subtitle}
+              </p>
+            )}
+            
+            {/* Description */}
+            <p 
+              key={`description-${currentImageIndex}`}
+              className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed font-body transition-all duration-1000 ease-in-out"
+              style={{
+                animation: 'fadeInUp 1s ease-in-out 0.4s both'
+              }}
+            >
+              {heroSlides[currentImageIndex]?.description || heroSlides[0]?.description}
             </p>
             
             {/* Call to Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <button className="btn-app-store flex items-center justify-center gap-3">
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+              <Link 
+                href={heroSlides[currentImageIndex]?.buttonLink || heroSlides[0]?.buttonLink || '/contact'}
+                className="bg-oleum-yellow hover:bg-oleum-yellow-dark text-oleum-black font-semibold py-4 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform hover:animate-bounce-subtle flex items-center justify-center gap-3 border-2 border-oleum-navy hover:border-oleum-navy-dark shadow-oleum-yellow/20"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
-                Download on App Store
-              </button>
-              <button className="btn-google-play flex items-center justify-center gap-3">
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                {heroSlides[currentImageIndex]?.buttonText || heroSlides[0]?.buttonText || 'Get a Quote'}
+              </Link>
+              <Link 
+                href="/services"
+                className="bg-transparent hover:bg-white/10 text-white border-2 border-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105 transform hover:animate-bounce-subtle flex items-center justify-center gap-3"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
-                Get it on Google Play
-              </button>
+                Explore Services
+              </Link>
             </div>
             
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2">10K+</div>
-                <div className="text-white/80 text-sm">Active Users</div>
+                <div className="text-3xl font-bold text-oleum-yellow mb-2">5+</div>
+                <div className="text-white text-sm font-semibold">Years Experience</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2">500+</div>
-                <div className="text-white/80 text-sm">DJs</div>
+                <div className="text-3xl font-bold text-oleum-yellow mb-2">50+</div>
+                <div className="text-white text-sm font-semibold">Projects Completed</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2">50K+</div>
-                <div className="text-white/80 text-sm">Songs Requested</div>
+                <div className="text-3xl font-bold text-oleum-yellow mb-2">100%</div>
+                <div className="text-white text-sm font-semibold">Client Satisfaction</div>
               </div>
             </div>
           </div>
           
           {/* Mini Slider */}
           <div className={`relative transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative h-96 lg:h-[500px] rounded-lg overflow-hidden shadow-2xl">
               {/* Slider Images */}
-              {sliderImages.map((image, index) => (
+              {heroSlides.map((slide, index) => (
                 <div
-                  key={index}
-                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                    index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                  key={slide.id}
+                  className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                    index === currentImageIndex 
+                      ? 'opacity-100 scale-100' 
+                      : 'opacity-0 scale-105'
                   }`}
+                  style={{
+                    transition: 'opacity 1s ease-in-out, transform 1s ease-in-out'
+                  }}
                 >
                   <Image
-                    src={image.src}
-                    alt={image.alt}
+                    src={slide.image}
+                    alt={slide.title}
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -147,10 +278,10 @@ const Hero = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                   <div className="absolute bottom-6 left-6 right-6">
                     <h3 className="text-white text-xl md:text-2xl font-bold mb-2">
-                      {image.title}
+                      {slide.title}
                     </h3>
-                    <p className="text-white/80 text-sm">
-                      Experience the ultimate nightlife connection
+                    <p className="text-gray-300 text-sm">
+                      {slide.subtitle || 'Professional engineering solutions for your business'}
                     </p>
                   </div>
                 </div>
@@ -178,20 +309,20 @@ const Hero = () => {
               </button>
               
               {/* Dots Indicator */}
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
-                {sliderImages.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToImage(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                      index === currentImageIndex 
-                        ? 'bg-white scale-110' 
-                        : 'bg-white/50 hover:bg-white/75'
-                    }`}
-                    aria-label={`Go to image ${index + 1}`}
-                  />
-                ))}
-              </div>
+                                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+                {heroSlides.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => goToImage(index)}
+                        className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                          index === currentImageIndex 
+                            ? 'bg-oleum-yellow scale-110' 
+                            : 'bg-white/50 hover:bg-white/75'
+                        }`}
+                        aria-label={`Go to image ${index + 1}`}
+                      />
+                    ))}
+                  </div>
             </div>
           </div>
         </div>

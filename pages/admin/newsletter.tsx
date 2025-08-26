@@ -3,10 +3,11 @@ import { useState, useEffect } from 'react';
 import { 
   NewsletterSubscriber, 
   getNewsletterSubscribers, 
-  removeNewsletterSubscriber, 
+  saveNewsletterSubscribers,
+  removeNewsletterSubscriber,
   unsubscribeNewsletterSubscriber,
-  getNewsletterSubscriberCount 
-} from '../../utils/adminData';
+  getNewsletterSubscriberCount
+} from '../../lib/adminData';
 
 export default function NewsletterManagement() {
   const [subscribers, setSubscribers] = useState<NewsletterSubscriber[]>([]);
@@ -41,9 +42,9 @@ export default function NewsletterManagement() {
   const handleExport = () => {
     const activeSubscribers = subscribers.filter(sub => sub.isActive);
     const csvContent = [
-      'Email,Subscribed Date,Source',
+      'Email,Subscribed Date,Status',
       ...activeSubscribers.map(sub => 
-        `${sub.email},${new Date(sub.subscribedAt).toLocaleDateString()},${sub.source}`
+        `${sub.email},${new Date(sub.date).toLocaleDateString()},${sub.isActive ? 'Active' : 'Inactive'}`
       )
     ].join('\n');
     
@@ -63,20 +64,11 @@ export default function NewsletterManagement() {
       return true;
     })
     .filter(sub => 
-      sub.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      sub.source.toLowerCase().includes(searchTerm.toLowerCase())
+      sub.email.toLowerCase().includes(searchTerm.toLowerCase())
     )
-    .sort((a, b) => new Date(b.subscribedAt).getTime() - new Date(a.subscribedAt).getTime());
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  const getSourceDisplayName = (source: string) => {
-    const names: { [key: string]: string } = {
-      homepage: 'Homepage',
-      contact: 'Contact Form',
-      footer: 'Footer',
-      popup: 'Popup'
-    };
-    return names[source] || source;
-  };
+
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -86,7 +78,7 @@ export default function NewsletterManagement() {
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Newsletter Subscribers</h1>
               <p className="text-gray-600 mt-2">
-                Manage your newsletter subscribers and track subscription sources
+                Manage your newsletter subscribers
               </p>
             </div>
             <div className="flex gap-4">
@@ -126,7 +118,7 @@ export default function NewsletterManagement() {
             <div className="flex-1">
               <input
                 type="text"
-                placeholder="Search by email or source..."
+                placeholder="Search by email..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-eco-green"
@@ -158,9 +150,6 @@ export default function NewsletterManagement() {
                       Subscribed Date
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Source
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Status
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -178,16 +167,11 @@ export default function NewsletterManagement() {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-900">
-                          {new Date(subscriber.subscribedAt).toLocaleDateString()}
+                          {new Date(subscriber.date).toLocaleDateString()}
                         </div>
                         <div className="text-sm text-gray-500">
-                          {new Date(subscriber.subscribedAt).toLocaleTimeString()}
+                          {new Date(subscriber.date).toLocaleTimeString()}
                         </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
-                          {getSourceDisplayName(subscriber.source)}
-                        </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${

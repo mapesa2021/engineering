@@ -1,191 +1,218 @@
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
+import AnimatedSection from '../components/AnimatedSection';
+import AnimatedCard from '../components/AnimatedCard';
+import Link from 'next/link';
+import ProjectsSection from '../components/ProjectsSection';
+import ProjectCategories from '../components/ProjectCategories';
 
 export default function Projects() {
   return (
     <>
       <Head>
-        <title>Our Projects - CareThePlanet</title>
-        <meta name="description" content="Explore our environmental conservation projects and initiatives around the world." />
+        <title>Our Projects - Oleum Company Limited | Engineering Solutions in Tanzania</title>
+        <meta name="description" content="Explore our engineering projects and technical solutions across Tanzania, including electrical systems, industrial automation, and environmental consulting." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="min-h-screen bg-white">
+      <main className="min-h-screen bg-oleum-white">
         <Navbar />
         
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-eco-green to-eco-dark section-padding">
+        <AnimatedSection delay={0.1}>
+          <section className="section-padding bg-gradient-to-br from-oleum-navy via-oleum-navy-dark to-oleum-navy">
           <div className="container-custom text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              <h1 className="text-4xl md:text-6xl font-black text-white mb-6 font-display">
               Our Projects
             </h1>
-            <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto">
-              Discover how we&apos;re making a difference across the globe through innovative environmental initiatives.
+              <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-body">
+                Discover how we're delivering innovative engineering solutions across Tanzania.
             </p>
           </div>
         </section>
+        </AnimatedSection>
 
         {/* Featured Projects */}
-        <section className="section-padding">
-          <div className="container-custom">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-16">
-              Featured Initiatives
-            </h2>
-            
-            <div className="space-y-16">
-              {/* Project 1 */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                    Global Reforestation Program
-                  </h3>
-                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                    Our flagship initiative aims to plant 100 million trees across 25 countries by 2030. We work with local communities to restore degraded forests and create sustainable livelihoods.
-                  </p>
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="bg-eco-pale rounded-lg p-4 text-center">
-                      <div className="text-2xl font-bold text-eco-green">2.5M</div>
-                      <div className="text-sm text-gray-600">Trees Planted</div>
-                    </div>
-                    <div className="bg-eco-pale rounded-lg p-4 text-center">
-                      <div className="text-2xl font-bold text-eco-green">15</div>
-                      <div className="text-sm text-gray-600">Countries</div>
-                    </div>
-                  </div>
-                  <button className="btn-primary">Learn More</button>
-                </div>
-                <div className="bg-gradient-to-br from-eco-green to-eco-dark rounded-2xl p-12 text-center text-white">
-                  <div className="text-6xl mb-4">🌱</div>
-                  <h4 className="text-xl font-semibold mb-2">Active Since 2020</h4>
-                  <p className="text-eco-pale">Creating lasting environmental impact</p>
-                </div>
-              </div>
-
-              {/* Project 2 */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className="order-2 lg:order-1 bg-gradient-to-br from-eco-light to-eco-green rounded-2xl p-12 text-center text-white">
-                  <div className="text-6xl mb-4">☀️</div>
-                  <h4 className="text-xl font-semibold mb-2">Renewable Energy</h4>
-                  <p className="text-eco-pale">Powering communities sustainably</p>
-                </div>
-                <div className="order-1 lg:order-2">
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                    Solar Energy for Rural Communities
-                  </h3>
-                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                    We&apos;re bringing clean, affordable solar energy to rural communities in developing countries, reducing reliance on fossil fuels and improving quality of life.
-                  </p>
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="bg-eco-pale rounded-lg p-4 text-center">
-                      <div className="text-2xl font-bold text-eco-green">50+</div>
-                      <div className="text-sm text-gray-600">Communities</div>
-                    </div>
-                    <div className="bg-eco-pale rounded-lg p-4 text-center">
-                      <div className="text-2xl font-bold text-eco-green">2.5MW</div>
-                      <div className="text-sm text-gray-600">Solar Capacity</div>
-                    </div>
-                  </div>
-                  <button className="btn-primary">Learn More</button>
-                </div>
-              </div>
-
-              {/* Project 3 */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                    Ocean Cleanup Initiative
-                  </h3>
-                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                    Our marine conservation program focuses on removing plastic pollution from oceans, protecting marine life, and educating communities about ocean health.
-                  </p>
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="bg-eco-pale rounded-lg p-4 text-center">
-                      <div className="text-2xl font-bold text-eco-green">500+</div>
-                      <div className="text-sm text-gray-600">Tons Removed</div>
-                    </div>
-                    <div className="bg-eco-pale rounded-lg p-4 text-center">
-                      <div className="text-2xl font-bold text-eco-green">8</div>
-                      <div className="text-sm text-gray-600">Coastal Areas</div>
-                    </div>
-                  </div>
-                  <button className="btn-primary">Learn More</button>
-                </div>
-                <div className="bg-gradient-to-br from-eco-pale to-eco-light rounded-2xl p-12 text-center">
-                  <div className="text-6xl mb-4">🌊</div>
-                  <h4 className="text-xl font-semibold mb-2 text-eco-green">Marine Protection</h4>
-                  <p className="text-gray-700">Safeguarding ocean ecosystems</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ProjectsSection 
+          title="Featured Projects"
+          subtitle="Discover how we're delivering innovative engineering solutions across Tanzania."
+          maxProjects={6}
+          showFeatured={true}
+          showCategories={true}
+        />
 
         {/* Project Categories */}
-        <section className="section-padding bg-gray-50">
-          <div className="container-custom">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-16">
-              Project Categories
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="bg-white rounded-xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300">
-                <div className="text-4xl mb-4">🌿</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Conservation</h3>
-                <p className="text-gray-600 mb-4">
-                  Protecting endangered species and their habitats through strategic conservation efforts.
-                </p>
-                <div className="text-eco-green font-semibold">12 Active Projects</div>
-              </div>
-              
-              <div className="bg-white rounded-xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300">
-                <div className="text-4xl mb-4">🏗️</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Infrastructure</h3>
-                <p className="text-gray-600 mb-4">
-                  Building sustainable infrastructure for communities and environmental monitoring.
-                </p>
-                <div className="text-eco-green font-semibold">8 Active Projects</div>
-              </div>
-              
-              <div className="bg-white rounded-xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300">
-                <div className="text-4xl mb-4">👥</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Education</h3>
-                <p className="text-gray-600 mb-4">
-                  Environmental education programs for schools and community groups worldwide.
-                </p>
-                <div className="text-eco-green font-semibold">15 Active Projects</div>
-              </div>
-              
-              <div className="bg-white rounded-xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300">
-                <div className="text-4xl mb-4">🔬</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Research</h3>
-                <p className="text-gray-600 mb-4">
-                  Scientific research on climate change, biodiversity, and environmental solutions.
-                </p>
-                <div className="text-eco-green font-semibold">10 Active Projects</div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ProjectCategories 
+          title="Project Categories"
+          subtitle="Explore our diverse portfolio of engineering solutions across different sectors."
+        />
 
         {/* Get Involved */}
-        <section className="section-padding bg-eco-green">
-          <div className="container-custom text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Support Our Projects
+        <AnimatedSection delay={0.4}>
+          <section className="section-padding bg-oleum-yellow">
+            <div className="container-custom text-center">
+              <h2 className="text-3xl md:text-4xl font-black text-oleum-black mb-6 font-display">
+                Start Your Project
             </h2>
-            <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
-              Your contribution helps us continue our vital work protecting the environment and building a sustainable future.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-eco-green hover:bg-eco-pale font-semibold py-4 px-8 rounded-lg transition-colors duration-200 text-lg">
-                Donate to Projects
-              </button>
-              <button className="border-2 border-white text-white hover:bg-white hover:text-eco-green font-semibold py-4 px-8 rounded-lg transition-colors duration-200 text-lg">
-                Volunteer
-              </button>
+              <p className="text-xl text-oleum-black/80 mb-8 max-w-2xl mx-auto">
+                Ready to bring your engineering vision to life? Let's discuss your project requirements.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/contact" className="bg-oleum-navy text-white hover:bg-oleum-navy-dark font-semibold py-4 px-8 rounded-lg transition-colors duration-200 text-lg">
+                  Get a Quote
+                </Link>
+                <Link href="/contact" className="border-2 border-oleum-navy text-oleum-navy hover:bg-oleum-navy hover:text-white font-semibold py-4 px-8 rounded-lg transition-colors duration-200 text-lg">
+                  Schedule Consultation
+                </Link>
+                    </div>
+                    </div>
+          </section>
+        </AnimatedSection>
+
+        {/* Footer */}
+        <footer className="bg-oleum-navy text-white relative shadow-2xl">
+          {/* Top border accent */}
+          <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-oleum-yellow via-oleum-navy to-oleum-yellow"></div>
+          {/* Main Footer Content */}
+          <div className="container-custom py-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              
+              {/* Company Information */}
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-12 h-12 bg-oleum-yellow rounded-lg flex items-center justify-center text-2xl font-bold text-oleum-black">
+                    O
+                  </div>
+                  <h3 className="text-xl font-bold">Oleum Company Limited</h3>
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Your trusted partner in engineering solutions. Providing comprehensive technical services, industrial automation, and professional guidance to help you achieve your engineering goals with confidence.
+                </p>
+                <div className="flex space-x-4">
+                  <a href="#" className="social-icon">
+                    📧
+                  </a>
+                  <a href="#" className="social-icon">
+                    📱
+                  </a>
+                  <a href="#" className="social-icon">
+                    💬
+                  </a>
+                </div>
+              </div>
+
+              {/* Contact Information */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-bold mb-4">Contact</h3>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3">
+                    <div className="footer-icon">
+                      📞
+                    </div>
+                    <span className="text-gray-300 text-sm">+255 768 216 901</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="footer-icon">
+                      📧
+                    </div>
+                    <span className="text-gray-300 text-sm">info@oleum.co.tz</span>
+                </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="footer-icon">
+                      📍
+                    </div>
+                    <span className="text-gray-300 text-sm">Dar Ubungo, Tanzania</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="footer-icon">
+                      🕒
+                    </div>
+                    <span className="text-gray-300 text-sm">Mon-Fri: 8AM-6PM</span>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Company Links */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-bold mb-4">Company</h3>
+                <div className="space-y-3">
+                  <Link href="/about" className="block text-gray-300 text-sm hover:text-oleum-yellow transition-colors duration-300">
+                    About Us
+                  </Link>
+                  <Link href="/services" className="block text-gray-300 text-sm hover:text-oleum-yellow transition-colors duration-300">
+                    Our Services
+                  </Link>
+                  <Link href="/projects" className="block text-gray-300 text-sm hover:text-oleum-yellow transition-colors duration-300">
+                    Projects
+                  </Link>
+                  <Link href="/contact" className="block text-gray-300 text-sm hover:text-oleum-yellow transition-colors duration-300">
+                    Contact
+                  </Link>
+                  <Link href="/careers" className="block text-gray-300 text-sm hover:text-oleum-yellow transition-colors duration-300">
+                    Careers
+                  </Link>
+                </div>
+              </div>
+
+              {/* Services */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-bold mb-4">Services</h3>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-6 h-6 bg-oleum-yellow rounded-full flex items-center justify-center text-xs text-oleum-black">
+                      ⚡
+                    </div>
+                    <span className="text-gray-300 text-sm">Electrical Systems</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-6 h-6 bg-oleum-yellow rounded-full flex items-center justify-center text-xs text-oleum-black">
+                      🏭
+                    </div>
+                    <span className="text-gray-300 text-sm">Industrial Automation</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-6 h-6 bg-oleum-yellow rounded-full flex items-center justify-center text-xs text-oleum-black">
+                      🌊
+                    </div>
+                    <span className="text-gray-300 text-sm">Water Treatment</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-6 h-6 bg-oleum-yellow rounded-full flex items-center justify-center text-xs text-oleum-black">
+                      🧪
+                    </div>
+                    <span className="text-gray-300 text-sm">Chemical Supply</span>
+                </div>
+                </div>
+              </div>
             </div>
           </div>
-        </section>
+          
+          {/* Bottom Footer */}
+          <div className="border-t border-oleum-navy-light">
+            <div className="container-custom py-6">
+              <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div className="text-gray-300 text-sm">
+                  © 2025 Oleum Company Limited. All rights reserved. Made with ❤️ for engineering excellence.
+                </div>
+                <div className="flex items-center space-x-6">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-4 h-4 bg-oleum-yellow rounded-full flex items-center justify-center text-xs text-oleum-black">
+                      ✓
+                    </div>
+                    <span className="text-gray-300 text-sm">ISO Certified</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-4 h-4 bg-oleum-yellow rounded-full flex items-center justify-center text-xs text-oleum-black">
+                      ✓
+              </div>
+                    <span className="text-gray-300 text-sm">Licensed</span>
+              </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </footer>
       </main>
     </>
   );
