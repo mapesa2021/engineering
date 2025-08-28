@@ -9,8 +9,8 @@ if (!supabaseUrl || !supabaseAnonKey) {
 }
 
 export const supabase = createClient(
-  supabaseUrl || 'https://kqbthffrjimvahmfxius.supabase.co',
-  supabaseAnonKey || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtxYnRoZmZyamltdmFobWZ4aXVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU1MjQzMzksImV4cCI6MjA3MTEwMDMzOX0.gLQfKMmx23jt8WElS2yPuXAeMLZpJGi28yB-534JbrE'
+  supabaseUrl || 'https://kuhzazzxuobvakawadck.supabase.co',
+  supabaseAnonKey || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt1aHphenp4dW9idmFrYXdhZGNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYzMDkxNTksImV4cCI6MjA3MTg4NTE1OX0.maJMKEoXXv8lw6VujpW22UhvvYoA2ihGDYFDeyEofzg'
 );
 
 // Database types

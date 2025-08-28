@@ -307,9 +307,9 @@ export const getFallbackData = () => {
   if (typeof window === 'undefined') return null;
 
   return {
-    blogPosts: JSON.parse(localStorage.getItem('caretheplanet_blog_posts') || '[]'),
-    events: JSON.parse(localStorage.getItem('caretheplanet_events') || '[]'),
-    testimonials: JSON.parse(localStorage.getItem('caretheplanet_testimonials') || '[]'),
-    teamMembers: JSON.parse(localStorage.getItem('caretheplanet_team_members') || '[]'),
+    blogPosts: JSON.parse(localStorage.getItem('olerum_blog_posts') || '[]'),
+events: JSON.parse(localStorage.getItem('olerum_events') || '[]'),
+testimonials: JSON.parse(localStorage.getItem('olerum_testimonials') || '[]'),
+teamMembers: JSON.parse(localStorage.getItem('olerum_team_members') || '[]'),
   };
 }; 

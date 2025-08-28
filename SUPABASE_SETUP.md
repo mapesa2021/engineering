@@ -7,7 +7,7 @@
 3. **Click "New Project"**
 4. **Fill in details:**
    - Organization: Create new or select existing
-   - Project name: `caretheplanet-db`
+   - Project name: `olerum-engineering-db`
    - Database password: Create a strong password
    - Region: Choose closest to your users
 5. **Click "Create new project"**
@@ -110,4 +110,4 @@ If you want to migrate your current localStorage data:
 
 ---
 
-**Your CareThePlanet website will now have a professional, scalable database backend! 🎉** 
+**Your Olerum Engineering website will now have a professional, scalable database backend! 🎉** 

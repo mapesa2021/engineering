@@ -124,7 +124,7 @@ export default function Privacy() {
 							<div>
 								<h2 className="text-2xl font-bold text-white mb-4">11. Contact Us</h2>
 								<p className="text-white/80 leading-relaxed">
-									If you have any questions about this Privacy Policy, please contact us at privacy@qplay.app
+									If you have any questions about this Privacy Policy, please contact us at privacy@oleum.co.tz
 								</p>
 							</div>
 						</div>

@@ -567,7 +567,7 @@ export const adminLogin = async (username: string, password: string): Promise<bo
     // The password in the database is 'qplay2024'
     if (password === 'qplay2024') {
       if (typeof window !== 'undefined') {
-        localStorage.setItem('admin_token', 'admin_authenticated');
+        localStorage.setItem('adminToken', 'admin-token-123');
       }
       return true;
     }
@@ -581,12 +581,12 @@ export const adminLogin = async (username: string, password: string): Promise<bo
 
 export const isAdminAuthenticated = (): boolean => {
   if (typeof window === 'undefined') return false;
-  return localStorage.getItem('admin_token') === 'admin_authenticated';
+  return localStorage.getItem('adminToken') === 'admin-token-123';
 };
 
 export const adminLogout = (): void => {
   if (typeof window !== 'undefined') {
-    localStorage.removeItem('admin_token');
+    localStorage.removeItem('adminToken');
   }
 };
 
@@ -617,7 +617,7 @@ const getFallbackData = (key: string, defaultValue: any): any => {
   if (typeof window === 'undefined') return defaultValue;
   
   try {
-    const stored = localStorage.getItem(`caretheplanet_${key}`);
+    const stored = localStorage.getItem(`olerum_${key}`);
     if (stored) {
       return JSON.parse(stored);
     }

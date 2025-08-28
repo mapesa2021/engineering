@@ -1,11 +1,11 @@
-# 🚀 CareThePlanet Production Deployment Guide
+# 🚀 Olerum Engineering Production Deployment Guide
 
-Your CareThePlanet website is now ready for production deployment! This guide will walk you through uploading it to various hosting platforms.
+Your Olerum Engineering website is now ready for production deployment! This guide will walk you through uploading it to various hosting platforms.
 
 ## 📦 **Production Package Ready**
 
-- **File**: `caretheplanet-production.zip` (189.9 KB)
-- **Location**: `caretheplanet/` directory
+- **File**: `olerum-engineering-production.zip` (189.9 KB)
+- **Location**: `olerum-engineering/` directory
 - **Contents**: Complete static website with admin panel
 
 ## 🎯 **Deployment Options**
@@ -13,7 +13,7 @@ Your CareThePlanet website is now ready for production deployment! This guide wi
 ### **Option 1: cPanel Hosting (Recommended for beginners)**
 
 1. **Download the production package**:
-   - `caretheplanet-production.zip` from your project folder
+   - `olerum-engineering-production.zip` from your project folder
 
 2. **Access your cPanel**:
    - Login to your hosting provider's cPanel
@@ -21,7 +21,7 @@ Your CareThePlanet website is now ready for production deployment! This guide wi
 
 3. **Upload and extract**:
    - Go to `public_html/` directory
-   - Upload `caretheplanet-production.zip`
+   - Upload `olerum-engineering-production.zip`
    - Extract the ZIP file
    - Move all contents from `out/` folder to `public_html/`
 
@@ -32,7 +32,7 @@ Your CareThePlanet website is now ready for production deployment! This guide wi
 ### **Option 2: Netlify (Free hosting)**
 
 1. **Go to [netlify.com](https://netlify.com)**
-2. **Drag and drop** the `caretheplanet-production.zip` file
+2. **Drag and drop** the `olerum-engineering-production.zip` file
 3. **Extract automatically** - Netlify will handle this
 4. **Get your URL** - Netlify provides a free subdomain
 5. **Custom domain** - Connect your own domain if desired
@@ -91,7 +91,7 @@ public_html/ (or your hosting root)
 ### **2. Admin Panel Access**
 - **URL**: `yourdomain.com/admin/login`
 - **Username**: `admin`
-- **Password**: `caretheplanet2024`
+- **Password**: `olerum2024`
 
 ### **3. Update Content**
 - Login to admin panel
@@ -156,7 +156,7 @@ public_html/ (or your hosting root)
 
 ## 🎉 **Congratulations!**
 
-Your CareThePlanet website with admin panel is now production-ready! The static export ensures fast loading times and compatibility with most hosting providers.
+Your Olerum Engineering website with admin panel is now production-ready! The static export ensures fast loading times and compatibility with most hosting providers.
 
 ---
 

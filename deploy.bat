@@ -1,13 +1,13 @@
 @echo off
-REM 🚀 CareThePlanet Deployment Script for Windows
+REM 🚀 Olerum Engineering Deployment Script for Windows
 REM This script builds and prepares your project for production deployment
 
-echo 🌱 CareThePlanet - Building for Production...
+echo 🌱 Olerum Engineering - Building for Production...
 echo ==============================================
 
 REM Check if we're in the right directory
 if not exist "package.json" (
-    echo ❌ Error: package.json not found. Please run this script from the caretheplanet directory.
+    echo ❌ Error: package.json not found. Please run this script from the olerum-engineering directory.
     pause
     exit /b 1
 )
@@ -16,7 +16,7 @@ REM Clean previous builds
 echo 🧹 Cleaning previous builds...
 if exist ".next" rmdir /s /q ".next"
 if exist "out" rmdir /s /q "out"
-if exist "*.zip" del /q "*.zip"
+if exist "*.zip" del "*.zip"
 
 REM Install dependencies (if needed)
 echo 📦 Installing dependencies...
@@ -37,12 +37,16 @@ if %errorlevel% equ 0 (
         REM Create production package
         echo 📦 Creating production package...
         cd out
-        powershell -command "Compress-Archive -Path * -DestinationPath ..\caretheplanet-production.zip -Force"
+        powershell -command "Compress-Archive -Path * -DestinationPath ..\olerum-engineering-production.zip -Force"
         cd ..
         
+        REM Get file size
+        for %%A in (olerum-engineering-production.zip) do set SIZE=%%~zA
+        
         echo 🎉 Deployment package ready!
-        echo 📁 File: caretheplanet-production.zip
-        echo 📍 Location: %cd%\caretheplanet-production.zip
+        echo 📁 File: olerum-engineering-production.zip
+        echo 📏 Size: %SIZE% bytes
+        echo 📍 Location: %cd%\olerum-engineering-production.zip
         echo.
         echo 🚀 Ready to upload to your hosting provider!
         echo 📖 See DEPLOYMENT_GUIDE.md for detailed instructions.

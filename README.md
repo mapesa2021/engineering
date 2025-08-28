@@ -1,141 +1,84 @@
-# CareThePlanet 🌱
+# Olerum Engineering 🌱
 
-A modern, responsive Next.js website for an environmental NGO focused on saving our planet through conservation efforts, sustainable projects, and community engagement.
+A modern, responsive website built with Next.js, TypeScript, and Tailwind CSS for environmental engineering and sustainability projects.
 
 ## Features
 
-- **Modern Design**: Clean, professional design with a green and white environmental theme
-- **Fully Responsive**: Mobile-first approach with responsive design for all devices
-- **TypeScript**: Built with TypeScript for better development experience and type safety
-- **Tailwind CSS**: Utility-first CSS framework for rapid UI development
-- **ESLint & Prettier**: Code quality and formatting tools for clean, consistent code
-- **Component-Based**: Modular, reusable components for maintainable code
+- 🌿 **Modern Design**: Clean, professional interface with smooth animations
+- 📱 **Responsive**: Works perfectly on all devices
+- ⚡ **Fast Performance**: Optimized for speed and SEO
+- 🔧 **Admin Panel**: Easy content management system
+- 📝 **Blog System**: Dynamic blog with markdown support
+- 🌳 **Project Showcase**: Beautiful project galleries
+- 📧 **Contact Forms**: Integrated contact and newsletter systems
+- 💳 **Payment Integration**: Secure donation and payment processing
 
-## Tech Stack
+## Quick Start
 
-- **Framework**: Next.js 14
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Code Quality**: ESLint, Prettier
-- **Package Manager**: npm/yarn
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd olerum-engineering/
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## Project Structure
 
 ```
-caretheplanet/
-├── components/          # Reusable UI components
-│   ├── Navbar.tsx     # Navigation bar with mobile menu
-│   └── Hero.tsx       # Hero section with mission statement
+olerum-engineering/
+├── components/          # Reusable React components
 ├── pages/              # Next.js pages and routing
-│   ├── _app.tsx       # App wrapper with global styles
-│   ├── _document.tsx  # Custom document setup
-│   └── index.tsx      # Homepage
-├── styles/             # Global styles and Tailwind CSS
-│   └── globals.css    # Global CSS with Tailwind directives
-├── public/             # Static assets (images, icons, etc.)
-├── package.json        # Dependencies and scripts
-├── tsconfig.json       # TypeScript configuration
-├── tailwind.config.js  # Tailwind CSS configuration
-├── postcss.config.js   # PostCSS configuration
-├── .eslintrc.json      # ESLint configuration
-├── .prettierrc         # Prettier configuration
-└── next.config.js      # Next.js configuration
+├── styles/             # Global styles and Tailwind config
+├── public/             # Static assets
+├── lib/                # Database and utility functions
+├── hooks/              # Custom React hooks
+└── utils/              # Helper functions
 ```
 
-## Getting Started
+## Admin Panel
 
-### Prerequisites
-
-- Node.js 18+ 
-- npm or yarn
-
-### Installation
-
-1. **Install dependencies:**
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-2. **Run the development server:**
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-
-3. **Open your browser:**
-   Navigate to [http://localhost:3000](http://localhost:3000)
-
-### Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-
-## Customization
-
-### Colors
-
-The project uses a custom color palette defined in `tailwind.config.js`:
-
-- `eco-green`: Primary green color (#10B981)
-- `eco-dark`: Darker green for hover states (#059669)
-- `eco-light`: Lighter green for accents (#34D399)
-- `eco-pale`: Very light green for backgrounds (#D1FAE5)
-
-### Components
-
-All components are located in the `components/` directory and can be easily customized:
-
-- **Navbar**: Navigation with mobile-responsive hamburger menu
-- **Hero**: Hero section with mission statement and call-to-action buttons
-- **Footer**: Comprehensive footer with links and organization information
-
-### Styling
-
-The project uses Tailwind CSS utility classes and custom CSS components defined in `styles/globals.css`. Custom component classes include:
-
-- `.btn-primary`: Primary button styling
-- `.btn-secondary`: Secondary button styling
-- `.section-padding`: Consistent section spacing
-- `.container-custom`: Responsive container with max-width
+Access the admin panel at `/admin` with:
+- **Username**: `admin`
+- **Password**: `olerum2024`
 
 ## Deployment
 
-### Vercel (Recommended)
-
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Deploy automatically on every push
-
-### Other Platforms
-
-The project can be deployed to any platform that supports Next.js:
-
+The project is configured for easy deployment to:
 - Netlify
-- AWS Amplify
-- DigitalOcean App Platform
-- Traditional VPS with Node.js
+- Vercel
+- Any static hosting provider
+
+## Technologies Used
+
+- **Next.js 14** - React framework
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **Supabase** - Database and authentication
+- **React Hot Toast** - Notifications
 
 ## Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Run linting: `npm run lint`
-5. Submit a pull request
+4. Submit a pull request
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE).
-
-## Support
-
-For questions or support, please open an issue in the GitHub repository.
+This project is licensed under the MIT License.
 
 ---
 
-**Together we can save our planet! 🌍🌱** 
+Built with ❤️ for environmental sustainability and engineering excellence. # engineering

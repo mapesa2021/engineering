@@ -67,7 +67,7 @@ export default function DynamicButton({ section, className = '' }: DynamicButton
                 isOpen: true,
                 amount: amount,
                 title: button.text,
-                description: `Donation to CareThePlanet - ${button.text}`
+                description: `Donation to Olerum Engineering - ${button.text}`
               });
             } else if (button.url.startsWith('http')) {
               window.open(button.url, '_blank');

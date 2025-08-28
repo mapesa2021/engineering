@@ -1,203 +1,219 @@
-import Head from 'next/head';
 import { useState, useEffect } from 'react';
+import Head from 'next/head';
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import AnimatedSection from '../components/AnimatedSection';
 import AnimatedCard from '../components/AnimatedCard';
-import { getBlogPosts, testSupabaseConnection } from '../lib/db';
-import type { BlogPost } from '../lib/supabase';
+import NewsletterForm from '../components/NewsletterForm';
+import { getBlogPosts, type BlogPost } from '../lib/adminData';
 
-const Blog = () => {
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+export default function Blog() {
+  const [posts, setPosts] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [connectionStatus, setConnectionStatus] = useState<string>('Testing...');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [searchTerm, setSearchTerm] = useState('');
+
+
 
   useEffect(() => {
-    // Load blog posts from database (only on client side)
-    if (typeof window !== 'undefined') {
-      const loadPosts = async () => {
-        try {
-          console.log('🚀 Starting blog posts loading process...');
-          
-          // Test Supabase connection first
-          const isConnected = await testSupabaseConnection();
-          setConnectionStatus(isConnected ? 'Connected' : 'Using fallback data');
-          
-          console.log('📡 Connection status:', isConnected ? 'Connected to Supabase' : 'Using fallback data');
-          
-          const posts = await getBlogPosts();
-          console.log('📝 Blog posts loaded:', posts);
-          console.log('📊 Total posts:', posts.length);
-          
-          setBlogPosts(posts);
-        } catch (error) {
-          console.error('❌ Error loading blog posts:', error);
-          setBlogPosts([]);
-          setConnectionStatus('Error loading data');
-        } finally {
+    // Load real blog posts from admin data
+    const loadPosts = () => {
+      const realPosts = getBlogPosts().filter(post => post.isPublished);
+      setPosts(realPosts);
           setIsLoading(false);
-        }
       };
       
       loadPosts();
-    }
+    
+    // Refresh posts every 5 seconds to catch new additions
+    const interval = setInterval(loadPosts, 5000);
+    
+    return () => clearInterval(interval);
   }, []);
+
+  const categories = ['all', ...Array.from(new Set(posts.map(post => post.category)))];
+
+  const filteredPosts = posts.filter(post => {
+    const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory;
+    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <>
       <Head>
-        <title>Blog - Q Play | Nightlife & DJ Stories</title>
-        <meta name="description" content="Read the latest nightlife stories, DJ success stories, and platform updates from Q Play." />
-        <meta name="keywords" content="nightlife blog, DJ stories, music industry, Q Play platform" />
-        <link rel="icon" href="https://i.postimg.cc/HkxHn2Ct/Untitled-design-25.png" />
+        <title>Blog - Oleum Company Limited</title>
+        <meta name="description" content="Latest insights, trends, and updates from Oleum Company Limited. Engineering solutions, industrial automation, and professional guidance." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className="min-h-screen bg-oleum-white">
         <Navbar />
         
         {/* Hero Section */}
         <AnimatedSection delay={0.1}>
-          <section className="bg-gradient-to-br from-q-orange via-q-magenta to-q-purple section-padding">
+          <section className="section-padding bg-gradient-to-br from-oleum-navy via-oleum-navy-dark to-oleum-navy">
             <div className="container-custom text-center">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                Q Play Blog
+              <h1 className="text-4xl md:text-6xl font-black text-white mb-6 font-display">
+                Our Blog
               </h1>
-              <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">
-                Stay updated with the latest nightlife stories, DJ success stories, and platform updates from Q Play.
+              <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-body">
+                Latest insights, trends, and updates from our engineering experts
               </p>
             </div>
           </section>
         </AnimatedSection>
 
-        {/* Blog Posts Grid */}
+        {/* Search and Filter Section */}
         <AnimatedSection delay={0.2}>
-          <section className="section-padding bg-dark-bg">
+          <section className="section-padding bg-oleum-gray">
             <div className="container-custom">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  Latest Articles
-                </h2>
-                <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                  Discover insights, tips, and inspiring stories about nightlife, DJs, and the music industry.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {isLoading ? (
-                  // Loading skeleton
-                  Array.from({ length: 6 }).map((_, index) => (
-                    <div key={index} className="bg-dark-card border border-q-orange/20 rounded-xl shadow-lg p-6 animate-pulse">
-                      <div className="h-48 bg-gradient-to-br from-q-orange/20 to-q-magenta/20 rounded-lg mb-4"></div>
-                      <div className="h-4 bg-gray-600 rounded mb-2"></div>
-                      <div className="h-6 bg-gray-600 rounded mb-4"></div>
-                      <div className="h-4 bg-gray-600 rounded mb-2"></div>
-                      <div className="h-4 bg-gray-600 rounded mb-4"></div>
-                      <div className="h-10 bg-gray-600 rounded"></div>
-                    </div>
-                  ))
-                ) : blogPosts.length === 0 ? (
-                  <div className="col-span-full text-center py-12">
-                    <p className="text-gray-400 text-lg mb-4">No blog posts available at the moment.</p>
-                    <p className="text-gray-500">Check back soon for the latest nightlife stories and DJ tips!</p>
-                  </div>
-                                ) : (
-                  blogPosts.map((post, index) => (
-                    <AnimatedCard key={post.id} delay={0.1 + index * 0.1}>
-                      <Link href={`/blog/${post.id}`}>
-                      <article className="bg-dark-card border border-q-orange/20 rounded-xl shadow-lg hover:shadow-xl hover:shadow-q-orange/20 transition-all duration-300 overflow-hidden group cursor-pointer">
-                      {/* Blog Image */}
-                      <div className="h-48 bg-gradient-to-br from-q-orange to-q-magenta flex items-center justify-center">
-                        <span className="text-6xl">{post.image}</span>
-                      </div>
-                      
-                      {/* Blog Content */}
-                      <div className="p-6">
-                        {/* Category */}
-                        <div className="mb-3">
-                          <span className="inline-block bg-q-magenta/20 text-q-magenta text-sm font-semibold px-3 py-1 rounded-full">
-                            {post.category}
-                          </span>
-                        </div>
-                        
-                        {/* Title */}
-                        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-q-orange transition-colors duration-200">
-                          {post.title}
-                        </h3>
-                        
-                        {/* Excerpt */}
-                        <p className="text-gray-300 mb-4 leading-relaxed">
-                          {post.excerpt}
-                        </p>
-                        
-                        {/* Meta Info */}
-                        <div className="flex items-center justify-between text-sm text-gray-400 mb-4">
-                          <span>{post.author}</span>
-                          <span>{post.read_time}</span>
-                        </div>
-                        
-                        {/* Date */}
-                        <div className="text-sm text-gray-500 mb-4">
-                          {post.date}
-                        </div>
-                        
-                        {/* Read More Button */}
-                        <button className="w-full bg-gradient-to-r from-q-orange to-q-magenta hover:from-glow-orange hover:to-glow-magenta text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
-                          Read More
-                        </button>
-                      </div>
-                    </article>
-                    </Link>
-                  </AnimatedCard>
-                  ))
-                )}
-              </div>
-
-              {/* Load More Button */}
-              <div className="text-center mt-12">
-                <button className="bg-transparent border-2 border-q-orange text-q-orange hover:bg-q-orange hover:text-white font-semibold py-4 px-8 rounded-lg transition-all duration-200">
-                  Load More Articles
-                </button>
-              </div>
-            </div>
-          </section>
-        </AnimatedSection>
-
-        {/* Newsletter Signup */}
-        <AnimatedSection delay={0.8}>
-          <section className="section-padding bg-gradient-to-r from-q-orange to-q-magenta">
-            <div className="container-custom text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Stay Updated
-              </h2>
-              <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
-                Subscribe to our newsletter for the latest nightlife stories, DJ tips, and platform updates delivered to your inbox.
-              </p>
-              
-              <div className="max-w-md mx-auto">
-                <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
+                {/* Search */}
+                <div className="relative w-full lg:w-96">
                   <input
-                    type="email"
-                    placeholder="Enter your email address"
-                    className="flex-1 px-6 py-4 rounded-lg border-0 focus:ring-2 focus:ring-white focus:outline-none"
+                    type="text"
+                    placeholder="Search articles..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full px-4 py-3 pl-12 border border-oleum-gray-dark rounded-lg focus:ring-2 focus:ring-oleum-navy focus:border-transparent"
                   />
-                  <button className="bg-white text-q-orange font-semibold px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors duration-200">
-                    Subscribe
-                  </button>
+                  <svg className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-oleum-gray-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+
+                {/* Category Filter */}
+                <div className="flex flex-wrap gap-2">
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => setSelectedCategory(category)}
+                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                        selectedCategory === category
+                          ? 'bg-oleum-navy text-white'
+                          : 'bg-white text-oleum-navy hover:bg-oleum-navy hover:text-white'
+                      }`}
+                    >
+                      {category.charAt(0).toUpperCase() + category.slice(1)}
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
           </section>
         </AnimatedSection>
-      </main>
 
-      {/* Footer */}
-      <footer className="bg-dark-bg border-t border-q-orange/20 text-white py-12">
-        <div className="container-custom text-center">
-          <p>&copy; 2024 Q Play. All rights reserved.</p>
-        </div>
-      </footer>
+        {/* Blog Posts */}
+        <AnimatedSection delay={0.3}>
+          <section className="section-padding">
+            <div className="container-custom">
+                {isLoading ? (
+                <div className="text-center py-12">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-oleum-navy mx-auto mb-4"></div>
+                  <p className="text-oleum-gray-dark">Loading articles...</p>
+                    </div>
+              ) : filteredPosts.length === 0 ? (
+                <div className="text-center py-12">
+                  <div className="text-6xl mb-4">📝</div>
+                  <h3 className="text-2xl font-bold text-oleum-navy mb-2">No articles found</h3>
+                  <p className="text-oleum-gray-dark">Try adjusting your search or filter criteria.</p>
+                  </div>
+                                ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {filteredPosts.map((post, index) => (
+                    <AnimatedCard key={post.id} delay={0.1 + index * 0.1}>
+                      <Link href={`/blog/${post.slug}`}>
+                        <article className="bg-white rounded-xl shadow-lg border border-oleum-gray overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+                          {/* Image */}
+                          <div className="relative h-48 bg-oleum-gray overflow-hidden">
+                            {post.image ? (
+                              <img
+                                src={post.image}
+                                alt={post.title}
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                  // Fallback to placeholder if image fails to load
+                                  const target = e.target as HTMLImageElement;
+                                  target.style.display = 'none';
+                                  target.nextElementSibling?.classList.remove('hidden');
+                                }}
+                              />
+                            ) : null}
+                            <div className={`absolute inset-0 flex items-center justify-center ${post.image ? 'hidden' : ''}`}>
+                              <svg className="w-16 h-16 text-oleum-gray-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                              </svg>
+                            </div>
+                      </div>
+                      
+                          {/* Content */}
+                      <div className="p-6">
+                            <div className="flex items-center space-x-2 mb-3">
+                              <span className="bg-oleum-yellow/20 text-oleum-yellow-dark px-3 py-1 rounded-full text-xs font-medium">
+                            {post.category}
+                          </span>
+                              <span className="text-oleum-gray-dark text-sm">•</span>
+                              <span className="text-oleum-gray-dark text-sm">{post.readTime} min read</span>
+                        </div>
+                        
+                            <h3 className="text-xl font-bold text-oleum-navy mb-3 line-clamp-2">
+                          {post.title}
+                        </h3>
+                        
+                            <p className="text-oleum-gray-dark mb-4 line-clamp-3">
+                          {post.excerpt}
+                        </p>
+                        
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center space-x-2">
+                                <div className="w-8 h-8 bg-oleum-gray rounded-full flex items-center justify-center">
+                                  <svg className="w-4 h-4 text-oleum-gray-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                  </svg>
+                                </div>
+                                <span className="text-sm text-oleum-gray-dark">{post.author}</span>
+                              </div>
+                              <span className="text-sm text-oleum-gray-dark">{post.publishedAt}</span>
+                        </div>
+                        
+                            {/* Tags */}
+                            <div className="flex flex-wrap gap-1 mt-4">
+                              {post.tags.slice(0, 3).map((tag, index) => (
+                                <span key={index} className="bg-oleum-gray text-oleum-gray-dark px-2 py-1 rounded text-xs">
+                                  #{tag}
+                                </span>
+                              ))}
+                        </div>
+                      </div>
+                    </article>
+                    </Link>
+                  </AnimatedCard>
+                  ))}
+                </div>
+              )}
+            </div>
+          </section>
+        </AnimatedSection>
+
+        {/* Newsletter Section */}
+        <AnimatedSection delay={0.4}>
+          <section className="section-padding bg-gradient-to-br from-oleum-navy via-oleum-navy-dark to-oleum-navy">
+            <div className="container-custom text-center">
+              <h2 className="text-3xl md:text-4xl font-black text-white mb-6">Stay Updated</h2>
+              <p className="text-white/90 mb-8 max-w-2xl mx-auto">
+                Subscribe to our newsletter for the latest engineering insights, industry trends, and company updates.
+              </p>
+              <div className="max-w-md mx-auto">
+                <NewsletterForm />
+              </div>
+            </div>
+          </section>
+        </AnimatedSection>
+      </main>
     </>
   );
-};
-
-export default Blog; 
+} 

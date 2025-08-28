@@ -1,4 +1,4 @@
-# Netlify Deployment Guide for CareThePlanet
+# Netlify Deployment Guide for Olerum Engineering
 
 ## Prerequisites
 - GitHub account with your project repository
@@ -10,16 +10,16 @@
    ```bash
    git init
    git add .
-   git commit -m "Initial commit - CareThePlanet website"
+   git commit -m "Initial commit - Olerum Engineering website"
    ```
 
 2. **Create GitHub Repository**:
    - Go to github.com and create a new repository
-   - Name it something like "caretheplanet-website"
+   - Name it something like "olerum-engineering-website"
 
 3. **Push to GitHub**:
    ```bash
-   git remote add origin https://github.com/YOUR_USERNAME/caretheplanet-website.git
+   git remote add origin https://github.com/YOUR_USERNAME/olerum-engineering-website.git
    git branch -M main
    git push -u origin main
    ```
@@ -35,7 +35,7 @@
 2. **New Site from Git**:
    - Click "New site from Git"
    - Choose GitHub as your Git provider
-   - Select your `caretheplanet-website` repository
+   - Select your `olerum-engineering-website` repository
 
 3. **Build Settings**:
    - **Build command**: `npm run build`
@@ -104,7 +104,7 @@ If you need environment variables:
 
 After deployment:
 - Admin panel: `https://your-site.netlify.app/admin`
-- Login: `admin` / `caretheplanet2024`
+- Login: `admin` / `olerum2024`
 
 ## Support
 

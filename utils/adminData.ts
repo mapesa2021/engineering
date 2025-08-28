@@ -91,7 +91,7 @@ export interface TeamMember {
 export const getBlogPosts = (): BlogPost[] => {
   if (typeof window === 'undefined') return [];
   
-  const stored = localStorage.getItem('caretheplanet_blog_posts');
+  const stored = localStorage.getItem('olerum_blog_posts');
   if (stored) {
     return JSON.parse(stored);
   }
@@ -170,13 +170,13 @@ export const getBlogPosts = (): BlogPost[] => {
            }
          ];
   
-  localStorage.setItem('caretheplanet_blog_posts', JSON.stringify(defaultPosts));
+  localStorage.setItem('olerum_blog_posts', JSON.stringify(defaultPosts));
   return defaultPosts;
 };
 
 export const saveBlogPosts = (posts: BlogPost[]): void => {
   if (typeof window === 'undefined') return;
-  localStorage.setItem('caretheplanet_blog_posts', JSON.stringify(posts));
+  localStorage.setItem('olerum_blog_posts', JSON.stringify(posts));
 };
 
 export const addBlogPost = (post: Omit<BlogPost, 'id' | 'createdAt' | 'updatedAt'>): BlogPost => {
@@ -223,7 +223,7 @@ export const deleteBlogPost = (id: number): boolean => {
 export const getHeroImages = (): HeroImage[] => {
   if (typeof window === 'undefined') return [];
   
-  const stored = localStorage.getItem('caretheplanet_hero_images');
+  const stored = localStorage.getItem('olerum_hero_images');
   if (stored) {
     return JSON.parse(stored);
   }
@@ -267,13 +267,13 @@ export const getHeroImages = (): HeroImage[] => {
     }
   ];
   
-  localStorage.setItem('caretheplanet_hero_images', JSON.stringify(defaultImages));
+  localStorage.setItem('olerum_hero_images', JSON.stringify(defaultImages));
   return defaultImages;
 };
 
 export const saveHeroImages = (images: HeroImage[]): void => {
   if (typeof window === 'undefined') return;
-  localStorage.setItem('caretheplanet_hero_images', JSON.stringify(images));
+  localStorage.setItem('olerum_hero_images', JSON.stringify(images));
 };
 
 export const updateHeroImage = (id: number, updates: Partial<HeroImage>): HeroImage | null => {
@@ -336,7 +336,7 @@ export const adminLogout = (): void => {
 export const getTestimonials = (): Testimonial[] => {
   if (typeof window === 'undefined') return [];
   
-  const stored = localStorage.getItem('caretheplanet_testimonials');
+  const stored = localStorage.getItem('olerum_testimonials');
   if (stored) {
     return JSON.parse(stored);
   }
@@ -347,7 +347,7 @@ export const getTestimonials = (): Testimonial[] => {
       id: 1,
       name: "David Chen",
       role: "Environmental Advocate",
-      content: "I've been supporting CareThePlanet for over two years now, and I'm amazed by the impact they've made. Their tree planting initiatives have transformed barren lands into thriving forests. It's incredible to see the difference we can make together.",
+      content: "I've been working with Olerum Engineering for over two years now, and I'm amazed by the impact they've made. Their environmental engineering solutions have transformed challenging projects into sustainable successes. It's incredible to see the difference they've made in our industry.",
       avatar: "👨‍💼",
       order: 1
     },
@@ -355,7 +355,7 @@ export const getTestimonials = (): Testimonial[] => {
       id: 2,
       name: "Sarah Johnson",
       role: "Climate Scientist",
-      content: "As a climate scientist, I'm impressed by CareThePlanet's data-driven approach to environmental conservation. Their projects are not just well-intentioned but scientifically sound. They're making real, measurable progress in the fight against climate change.",
+      content: "As an environmental scientist, I'm impressed by Olerum Engineering's data-driven approach to sustainable engineering. Their projects are not just well-intentioned but scientifically sound. They're making real, measurable progress in environmental protection.",
       avatar: "👩‍🔬",
       order: 2
     },
@@ -363,19 +363,19 @@ export const getTestimonials = (): Testimonial[] => {
       id: 3,
       name: "Miguel Rodriguez",
       role: "Local Farmer",
-      content: "CareThePlanet didn't just plant trees on my land—they taught me sustainable farming practices that have improved my crop yields while protecting the environment. Their community-focused approach has made all the difference.",
+      content: "Olerum Engineering didn't just provide engineering solutions—they taught us sustainable practices that have improved our operations while protecting the environment. Their community-focused approach has made all the difference.",
       avatar: "👨‍🌾",
       order: 3
     }
   ];
   
-  localStorage.setItem('caretheplanet_testimonials', JSON.stringify(defaultTestimonials));
+  localStorage.setItem('olerum_testimonials', JSON.stringify(defaultTestimonials));
   return defaultTestimonials;
 };
 
 export const saveTestimonials = (testimonials: Testimonial[]): void => {
   if (typeof window === 'undefined') return;
-  localStorage.setItem('caretheplanet_testimonials', JSON.stringify(testimonials));
+  localStorage.setItem('olerum_testimonials', JSON.stringify(testimonials));
 };
 
 export const updateTestimonial = (id: number, updates: Partial<Testimonial>): Testimonial | null => {
@@ -419,7 +419,7 @@ export const deleteTestimonial = (id: number): boolean => {
 export const getTreePackages = (): TreePackage[] => {
   if (typeof window === 'undefined') return [];
   
-  const stored = localStorage.getItem('caretheplanet_tree_packages');
+  const stored = localStorage.getItem('olerum_tree_packages');
   if (stored) {
     return JSON.parse(stored);
   }
@@ -482,13 +482,13 @@ export const getTreePackages = (): TreePackage[] => {
     }
   ];
   
-  localStorage.setItem('caretheplanet_tree_packages', JSON.stringify(defaultPackages));
+  localStorage.setItem('olerum_tree_packages', JSON.stringify(defaultPackages));
   return defaultPackages;
 };
 
 export const saveTreePackages = (packages: TreePackage[]): void => {
   if (typeof window === 'undefined') return;
-  localStorage.setItem('caretheplanet_tree_packages', JSON.stringify(packages));
+  localStorage.setItem('olerum_tree_packages', JSON.stringify(packages));
 };
 
 export const updateTreePackage = (id: number, updates: Partial<TreePackage>): TreePackage | null => {
@@ -771,7 +771,7 @@ export const getTeamMembers = (): TeamMember[] => {
         position: 'Executive Director',
         bio: 'Environmental scientist with 15+ years of experience in conservation and sustainability.',
         avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
-        email: 'sarah.green@caretheplanet.org',
+        email: 'sarah.green@olerum-engineering.org',
         linkedin: 'https://linkedin.com/in/sarah-green',
         twitter: 'https://twitter.com/sarahgreen',
         order: 1,
@@ -783,7 +783,7 @@ export const getTeamMembers = (): TeamMember[] => {
         position: 'Head of Research',
         bio: 'Climate scientist leading our research initiatives and data-driven conservation strategies.',
         avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
-        email: 'michael.chen@caretheplanet.org',
+        email: 'michael.chen@olerum-engineering.org',
         linkedin: 'https://linkedin.com/in/michael-chen',
         twitter: 'https://twitter.com/michaelchen',
         order: 2,
@@ -795,7 +795,7 @@ export const getTeamMembers = (): TeamMember[] => {
         position: 'Field Operations',
         bio: 'Conservation specialist managing our on-the-ground projects and community partnerships.',
         avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
-        email: 'maria.rodriguez@caretheplanet.org',
+        email: 'maria.rodriguez@olerum-engineering.org',
         linkedin: 'https://linkedin.com/in/maria-rodriguez',
         twitter: 'https://twitter.com/mariarodriguez',
         order: 3,

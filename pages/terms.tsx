@@ -104,7 +104,7 @@ export default function Terms() {
 							<div>
 								<h2 className="text-2xl font-bold text-white mb-4">11. Contact Information</h2>
 								<p className="text-white/80 leading-relaxed">
-									If you have any questions about these Terms of Service, please contact us at legal@qplay.app
+									If you have any questions about these Terms of Service, please contact us at legal@oleum.co.tz
 								</p>
 							</div>
 						</div>

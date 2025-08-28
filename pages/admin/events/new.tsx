@@ -85,7 +85,7 @@ const CreateEvent = () => {
     e.preventDefault();
     
     // Get existing events
-    const stored = localStorage.getItem('caretheplanet_events');
+    const stored = localStorage.getItem('olerum_events');
     const existingEvents = stored ? JSON.parse(stored) : [];
     
     // Create new event
@@ -98,7 +98,7 @@ const CreateEvent = () => {
     
     // Save to localStorage
     const updatedEvents = [...existingEvents, newEvent];
-    localStorage.setItem('caretheplanet_events', JSON.stringify(updatedEvents));
+    localStorage.setItem('olerum_events', JSON.stringify(updatedEvents));
     
     // Redirect to events management
     router.push('/admin/events');
