@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next build && next export && echo 'Static export completed. Files are in the out/ directory.'"
+    "export": "next build && echo 'Static export completed. Files are in the out/ directory.'"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.55.0",
