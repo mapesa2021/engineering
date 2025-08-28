@@ -85,7 +85,7 @@ export default function Home() {
 
   // Initialize counting animations
   const projectsCount = useCountUp(50, 2000);
-  const engineersCount = useCountUp(3, 1500);
+  const engineersCount = useCountUp(10, 1500);
   const yearsCount = useCountUp(4, 1800);
   const satisfactionCount = useCountUp(100, 2500);
 
