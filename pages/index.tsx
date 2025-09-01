@@ -502,7 +502,7 @@ export default function Home() {
                       <div className="p-6">
                         <h3 className="text-xl font-bold text-oleum-navy mb-3">Medical & Laboratory</h3>
                         <p className="text-oleum-navy/70 text-sm mb-4">
-                          Specialized equipment and batteries for hospitals, laboratories, and medical facilities.
+                          supply of distilled water
                         </p>
                         <a href="#" className="text-oleum-navy font-semibold text-sm hover:text-oleum-navy-dark transition-colors duration-200">
                           Learn More →
