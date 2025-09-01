@@ -311,6 +311,12 @@ export default function Home() {
                         </div>
                         <span className="text-oleum-navy text-sm">Industrial automation</span>
                       </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
+                          <span className="text-oleum-black text-xs">✓</span>
+                        </div>
+                        <span className="text-oleum-navy text-sm">Installation of small to medium process plants</span>
+                      </div>
 
                     </div>
                     
@@ -426,20 +432,10 @@ export default function Home() {
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Environmental audits & impact assessments</span>
+                        <span className="text-oleum-navy text-sm">Environmental audits</span>
                       </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
-                          <span className="text-oleum-black text-xs">✓</span>
-                        </div>
-                        <span className="text-oleum-navy text-sm">Pollution control & waste management</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
-                          <span className="text-oleum-black text-xs">✓</span>
-                        </div>
-                        <span className="text-oleum-navy text-sm">Installation of small to medium plants</span>
-                      </div>
+
+
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
