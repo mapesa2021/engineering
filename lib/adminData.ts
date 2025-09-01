@@ -181,17 +181,7 @@ const defaultHeroSlides: HeroSlide[] = [
     isActive: true,
     order: 4
   },
-  {
-    id: '5',
-    title: 'Infrastructure Development',
-    subtitle: 'Building Africa\'s Future',
-    description: 'Comprehensive infrastructure solutions for sustainable development across the continent.',
-    image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1200&h=600&fit=crop',
-    buttonText: 'Learn More',
-    buttonLink: '/projects',
-    isActive: true,
-    order: 5
-  }
+
 ];
 
 const defaultBlogPosts: BlogPost[] = [
