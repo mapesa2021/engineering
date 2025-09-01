@@ -7,6 +7,7 @@ import Link from 'next/link';
 import TeamSection from '../components/TeamSection';
 import ProjectsSection from '../components/ProjectsSection';
 import Testimonials from '../components/Testimonials';
+import Footer from '../components/Footer';
 import { addNewsletterSubscriber } from '../lib/adminData';
 import { useState, useEffect, useRef } from 'react';
 
@@ -818,7 +819,7 @@ export default function Home() {
           subtitle="Our experienced professionals are dedicated to delivering exceptional engineering solutions across Tanzania."
           maxMembers={3}
           showExpertise={true}
-          showContact={false}
+          showContact={true}
         />
 
         {/* Testimonials Section */}
@@ -992,148 +993,7 @@ export default function Home() {
           </div>
         </div>
 
-      {/* Footer */}
-        <footer className="bg-oleum-navy text-white relative shadow-2xl">
-          {/* Top border accent */}
-          <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-oleum-yellow via-oleum-navy to-oleum-yellow"></div>
-          {/* Main Footer Content */}
-          <div className="container-custom py-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              
-              {/* Company Information */}
-              <div className="space-y-4">
-                                     <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-12 h-12 bg-oleum-yellow rounded-lg flex items-center justify-center text-2xl font-bold text-oleum-black">
-                    O
-                  </div>
-                  <h3 className="text-xl font-bold">Oleum Company Limited</h3>
-                </div>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  Your trusted partner in engineering solutions. Providing comprehensive technical services, industrial automation, and professional guidance to help you achieve your engineering goals with confidence.
-                </p>
-                <div className="flex space-x-4">
-                  <a href="#" className="social-icon">
-                    📧
-                  </a>
-                  <a href="#" className="social-icon">
-                    📱
-                  </a>
-                  <a href="#" className="social-icon">
-                    💬
-                  </a>
-                </div>
-              </div>
-
-              {/* Contact Information */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-bold mb-4">Contact</h3>
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-3">
-                    <div className="footer-icon">
-                      📞
-                    </div>
-                                            <span className="text-gray-300 text-sm">+255 674 685 062</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="footer-icon">
-                      📧
-                    </div>
-                    <span className="text-gray-300 text-sm">info@oleum.co.tz</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="footer-icon">
-                      📍
-                    </div>
-                    <span className="text-gray-300 text-sm">Ubungo, Dar es Salaam, Tanzania</span>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="footer-icon mt-1">
-                      🕒
-                    </div>
-                    <div className="text-gray-300 text-sm">
-                      <div>Monday - Friday: 8:00 AM - 6:00 PM</div>
-                      <div>Saturday: 9:00 AM - 3:00 PM</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Company Links */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-bold mb-4">Company</h3>
-                <div className="space-y-3">
-                  <Link href="/about" className="block text-gray-300 text-sm hover:text-oleum-yellow transition-colors duration-300">
-                    About Us
-                  </Link>
-                  <Link href="/services" className="block text-gray-300 text-sm hover:text-oleum-yellow transition-colors duration-300">
-                    Our Services
-                  </Link>
-                  <Link href="/projects" className="block text-gray-300 text-sm hover:text-oleum-yellow transition-colors duration-300">
-                    Projects
-                  </Link>
-                  <Link href="/contact" className="block text-gray-300 text-sm hover:text-oleum-yellow transition-colors duration-300">
-                    Contact
-                  </Link>
-                  <Link href="/careers" className="block text-gray-300 text-sm hover:text-oleum-yellow transition-colors duration-300">
-                    Careers
-                  </Link>
-                </div>
-              </div>
-              
-              {/* Services */}
-              <Link href="/services" className="block">
-                <div className="space-y-4 hover:opacity-80 transition-opacity duration-300">
-                  <h3 className="text-lg font-bold mb-4">Services</h3>
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-6 h-6 bg-oleum-yellow rounded-full flex items-center justify-center text-xs text-oleum-black">
-                        ⚡
-                      </div>
-                      <span className="text-gray-300 text-sm">Electrical Systems</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-6 h-6 bg-oleum-yellow rounded-full flex items-center justify-center text-xs text-oleum-black">
-                        🏭
-                      </div>
-                      <span className="text-gray-300 text-sm">Industrial Automation</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-6 h-6 bg-oleum-yellow rounded-full flex items-center justify-center text-xs text-oleum-black">
-                        🌊
-                      </div>
-                      <span className="text-gray-300 text-sm">Water Treatment</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-6 h-6 bg-oleum-yellow rounded-full flex items-center justify-center text-xs text-oleum-black">
-                        🧪
-                      </div>
-                      <span className="text-gray-300 text-sm">Chemical Supply</span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-              </div>
-            </div>
-            
-          {/* Bottom Footer */}
-          <div className="border-t border-oleum-navy-light">
-            <div className="container-custom py-6">
-              <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                <div className="text-gray-300 text-sm">
-                  © 2025 Oleum Company Limited. All rights reserved. Made with ❤️ for engineering excellence.
-                </div>
-                <div className="flex items-center space-x-6">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-4 h-4 bg-oleum-yellow rounded-full flex items-center justify-center text-xs text-oleum-black">
-                      ✓
-                    </div>
-                    <span className="text-gray-300 text-sm">Licensed</span>
-                  </div>
-                </div>
-                     </div>
-            </div>
-          </div>
-        </footer>
+      <Footer />
       </main>
     </>
   );

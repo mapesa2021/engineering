@@ -131,14 +131,59 @@ export default function TeamSection({
                 
                 <h3 className="text-2xl font-bold text-oleum-navy mb-2 text-center">{member.name}</h3>
                 <p className="text-oleum-yellow font-semibold mb-3 text-center">{member.position}</p>
-                <p className="text-oleum-navy/80 text-sm text-center mb-4">
-                  {member.bio}
-                </p>
+                <div className="mb-3">
+                  <p 
+                    id={`short-bio-${member.id}`}
+                    className="text-oleum-navy/80 text-sm text-left leading-relaxed"
+                  >
+                    {member.bio.split(' ').slice(0, 10).join(' ')}
+                    {member.bio.split(' ').length > 10 && (
+                      <span className="text-oleum-navy/60">...</span>
+                    )}
+                  </p>
+                  {member.bio.split(' ').length > 10 && (
+                    <div className="text-center mt-2">
+                      <button 
+                        className="text-oleum-yellow hover:text-oleum-yellow-dark text-xs font-semibold transition-colors duration-200"
+                        onClick={() => {
+                          const fullBio = document.getElementById(`bio-${member.id}`);
+                          const shortBio = document.getElementById(`short-bio-${member.id}`);
+                          const readMoreBtn = document.getElementById(`read-more-${member.id}`);
+                          
+                          if (fullBio && shortBio && readMoreBtn) {
+                            if (fullBio.style.display === 'none' || fullBio.style.display === '') {
+                              fullBio.style.display = 'block';
+                              shortBio.style.display = 'none';
+                              readMoreBtn.textContent = 'Read Less';
+                            } else {
+                              fullBio.style.display = 'none';
+                              shortBio.style.display = 'block';
+                              readMoreBtn.textContent = 'Read More';
+                            }
+                          }
+                        }}
+                        id={`read-more-${member.id}`}
+                      >
+                        Read More
+                      </button>
+                    </div>
+                  )}
+                  <div 
+                    id={`bio-${member.id}`} 
+                    className="text-oleum-navy/80 text-sm text-left leading-relaxed"
+                    style={{ display: 'none' }}
+                  >
+                    {member.bio}
+                  </div>
+                </div>
                 
                 {showExpertise && member.expertise && member.expertise.length > 0 && (
                   <div className="mb-4">
                     <p className="text-oleum-navy/60 text-xs text-center mb-2">Expertise:</p>
-                    <div className="flex flex-wrap justify-center gap-1">
+                    <div 
+                      id={`short-expertise-${member.id}`}
+                      className="flex flex-wrap justify-center gap-1"
+                    >
                       {member.expertise.slice(0, 3).map((skill, skillIndex) => (
                         <span 
                           key={skillIndex}
@@ -148,9 +193,47 @@ export default function TeamSection({
                         </span>
                       ))}
                       {member.expertise.length > 3 && (
-                        <span className="text-oleum-navy/60 text-xs">+{member.expertise.length - 3} more</span>
+                        <button 
+                          className="text-oleum-navy/60 text-xs hover:text-oleum-yellow transition-colors duration-200 cursor-pointer"
+                          onClick={() => {
+                            const fullExpertise = document.getElementById(`full-expertise-${member.id}`);
+                            const shortExpertise = document.getElementById(`short-expertise-${member.id}`);
+                            const expandBtn = document.getElementById(`expand-expertise-${member.id}`);
+                            
+                            if (fullExpertise && shortExpertise && expandBtn) {
+                              if (fullExpertise.style.display === 'none' || fullExpertise.style.display === '') {
+                                fullExpertise.style.display = 'block';
+                                shortExpertise.style.display = 'none';
+                                expandBtn.textContent = 'Show Less';
+                              } else {
+                                fullExpertise.style.display = 'none';
+                                shortExpertise.style.display = 'block';
+                                expandBtn.textContent = `+${member.expertise.length - 3} more`;
+                              }
+                            }
+                          }}
+                          id={`expand-expertise-${member.id}`}
+                        >
+                          +{member.expertise.length - 3} more
+                        </button>
                       )}
                     </div>
+                    {member.expertise.length > 3 && (
+                      <div 
+                        id={`full-expertise-${member.id}`} 
+                        className="flex flex-wrap justify-center gap-1 mt-2"
+                        style={{ display: 'none' }}
+                      >
+                        {member.expertise.map((skill, skillIndex) => (
+                          <span 
+                            key={skillIndex}
+                            className="bg-oleum-yellow/20 text-oleum-navy text-xs px-2 py-1 rounded-full"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
                 

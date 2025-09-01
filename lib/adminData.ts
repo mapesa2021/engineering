@@ -589,46 +589,46 @@ const defaultTestimonials: Testimonial[] = [
 
 const defaultTeamMembers: TeamMember[] = [
   {
-    id: '1',
-    name: 'F. Moshi',
-    position: 'Process Engineer',
-    department: 'Engineering',
-    email: 'freewind@oleum.co.tz',
-    phone: '+255757554767',
-    image: 'https://i.postimg.cc/65WTXDB6/Freewind-Godson-Moshi-project-manager.jpg',
-    bio: 'Process Engineer with a strong background in Chemical and Process Engineering, experienced in operations and field duties across the oil & gas sector. Skilled in cement plant operation, process optimization, troubleshooting, equipment inspections, and safety compliance.',
-    expertise: ['Chemical Engineering', 'Process Engineering', 'Cement Plant Operation', 'Process Optimization', 'Troubleshooting', 'Equipment Inspections', 'Safety Compliance'],
-    linkedin: 'https://linkedin.com/in/freewindmoshi',
-    isActive: true,
-    joinDate: '2020-01-15'
-  },
-  {
     id: '2',
-    name: 'Bahati Nsolo',
-    position: 'Chemical and Process Engineer',
+    name: 'Bahati Nelson Nsolo',
+    position: 'Managing Director',
     department: 'Engineering',
-    email: 'bahati@oleum.co.tz',
+    email: 'bahatinsolo@oleum.co.tz',
     phone: '+255 674 685 062',
     image: 'https://i.postimg.cc/ZncRNLxh/Bahati-Nelson-Nsolo-managing-director.jpg',
-    bio: 'Chemical and Process Engineer with a strong experience across beverage, cement, sugar, fertilizer, food, and chemical industries. Expertise in management, process optimization, quality control and assurance, research and design, sustainable engineering solutions.',
-    expertise: ['Chemical Engineering', 'Process Engineering', 'Management', 'Process Optimization', 'Quality Control', 'Quality Assurance', 'Research and Design', 'Sustainable Engineering'],
+    bio: 'Managing Director with a strong experience across beverage, cement, sugar, fertilizer, food, and chemical industries.',
+    expertise: ['Chemical Engineering', 'Process Engineering', 'Management', 'Process Optimization', 'Quality Control', 'Quality Assurance', 'Research and Design', 'Sustainable Engineering', 'Business Leadership'],
     linkedin: 'https://linkedin.com/in/bahatinelson',
     isActive: true,
     joinDate: '2021-03-20'
   },
   {
     id: '3',
-    name: 'Ombeni Nziku',
-    position: 'Process Engineer',
+    name: 'Ombeni Habibu Nziku',
+    position: 'Technical Director',
     department: 'Engineering',
-    email: 'ombeni@oleum.co.tz',
+    email: 'ombeninziku@oleum.co.tz',
     phone: '+255788028584',
-    image: 'https://i.postimg.cc/xjyqB0DF/Ombeni-Habibu-Nziku-Techinical-director.jpg',
-    bio: 'Process Engineer with a solid background in Chemical and Process Engineering, bringing hands-on experience in operations, field duties, and technical support across the oil & gas, lubricant blending, and beverage manufacturing industries. Expertise in lubricant oil blending plant operation, process optimization, root cause analysis, water treatment, troubleshooting, P&ID interpretation, HSE compliance.',
-    expertise: ['Chemical Engineering', 'Process Engineering', 'Lubricant Oil Blending', 'Process Optimization', 'Root Cause Analysis', 'Water Treatment', 'Troubleshooting', 'P&ID Interpretation', 'HSE Compliance'],
+          image: 'https://i.postimg.cc/h4VjCDys/Untitled-design-8.jpg',
+    bio: 'Technical Director with a solid background in Chemical and Process Engineering, bringing hands-on experience in operations, field duties, and technical support across the oil & gas, lubricant blending, and beverage manufacturing industries.',
+    expertise: ['Chemical Engineering', 'Process Engineering', 'Lubricant Oil Blending', 'Process Optimization', 'Root Cause Analysis', 'Water Treatment', 'Troubleshooting', 'P&ID Interpretation', 'HSE Compliance', 'Technical Leadership'],
     linkedin: 'https://linkedin.com/in/ombeninziku',
     isActive: true,
     joinDate: '2021-06-10'
+  },
+  {
+    id: '1',
+    name: 'Freewind Godson Moshi',
+    position: 'Project Manager',
+    department: 'Engineering',
+    email: 'freewindmoshi@oleum.co.tz',
+    phone: '+255757554767',
+    image: 'https://i.postimg.cc/65WTXDB6/Freewind-Godson-Moshi-project-manager.jpg',
+    bio: 'Project Manager with a strong background in Chemical and Process Engineering, experienced in operations and field duties across the oil & gas sector.',
+    expertise: ['Chemical Engineering', 'Process Engineering', 'Cement Plant Operation', 'Process Optimization', 'Troubleshooting', 'Equipment Inspections', 'Safety Compliance', 'Project Management'],
+    linkedin: 'https://linkedin.com/in/freewindmoshi',
+    isActive: true,
+    joinDate: '2020-01-15'
   }
 ];
 
