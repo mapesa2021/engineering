@@ -303,7 +303,7 @@ export default function Home() {
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Auditing & safety audits</span>
+                        <span className="text-oleum-navy text-sm">process Auditing & safety audits</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
