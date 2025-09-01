@@ -449,12 +449,6 @@ export default function About() {
                     <div className="w-4 h-4 bg-oleum-yellow rounded-full flex items-center justify-center text-xs text-oleum-black">
                       ✓
                     </div>
-                    <span className="text-gray-300 text-sm">ISO Certified</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-4 h-4 bg-oleum-yellow rounded-full flex items-center justify-center text-xs text-oleum-black">
-                      ✓
-                    </div>
                     <span className="text-gray-300 text-sm">Licensed</span>
                   </div>
                 </div>

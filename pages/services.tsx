@@ -47,11 +47,77 @@ export default function Services() {
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {/* Engineering & Technical Solutions */}
+                {/* Supplies & Materials */}
                 <AnimatedCard delay={0.1}>
                   <div className="bg-white border-2 border-oleum-gray rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 relative">
                     <div className="text-center mb-6">
                       <div className="w-16 h-16 bg-oleum-yellow rounded-lg flex items-center justify-center mx-auto mb-4 text-2xl text-oleum-black">
+                        📦
+                      </div>
+                      <h3 className="text-2xl font-bold text-oleum-navy mb-2">Supplies & Materials</h3>
+                      <p className="text-oleum-navy/80 text-sm">Comprehensive supply of equipment, chemicals, and materials</p>
+                    </div>
+                    
+                    <div className="space-y-4 mb-8">
+
+                      <div className="flex items-center space-x-3">
+                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
+                          <span className="text-oleum-black text-xs">✓</span>
+                        </div>
+                        <span className="text-oleum-navy text-sm">Water treatment equipment</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
+                          <span className="text-oleum-black text-xs">✓</span>
+                        </div>
+                        <span className="text-oleum-navy text-sm">Water treatment chemicals</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
+                          <span className="text-oleum-black text-xs">✓</span>
+                        </div>
+                        <span className="text-oleum-navy text-sm">Swimming pool chemicals</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
+                          <span className="text-oleum-black text-xs">✓</span>
+                        </div>
+                        <span className="text-oleum-navy text-sm">Distilled water (hospitals, labs, cars, batteries)</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
+                          <span className="text-oleum-black text-xs">✓</span>
+                        </div>
+                        <span className="text-oleum-navy text-sm">Construction materials (cement, gravel, sand)</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
+                          <span className="text-oleum-black text-xs">✓</span>
+                        </div>
+                        <span className="text-oleum-navy text-sm">Office & event supplies</span>
+                      </div>
+                    </div>
+                    
+                    <Link href="/services">
+                      <button className="w-full bg-oleum-navy hover:bg-oleum-navy-dark text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105">
+                        Learn More
+                      </button>
+                    </Link>
+                  </div>
+                </AnimatedCard>
+
+                {/* Engineering & Technical Solutions */}
+                <AnimatedCard delay={0.2}>
+                  <div className="bg-white border-2 border-oleum-yellow rounded-lg p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 relative">
+                    {/* Most Popular Badge */}
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <div className="bg-oleum-yellow text-oleum-black px-4 py-1 rounded-full text-sm font-bold">
+                        Most Popular
+                      </div>
+                    </div>
+                    
+                    <div className="text-center mb-6">
+                      <div className="w-16 h-16 bg-oleum-navy rounded-lg flex items-center justify-center mx-auto mb-4 text-2xl text-white">
                         ⚙️
                       </div>
                       <h3 className="text-2xl font-bold text-oleum-navy mb-2">Engineering & Technical Solutions</h3>
@@ -101,76 +167,68 @@ export default function Services() {
                         </div>
                         <span className="text-oleum-navy text-sm">Installation of small to medium process plants</span>
                       </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
+                          <span className="text-oleum-black text-xs">✓</span>
+                        </div>
+                        <span className="text-oleum-navy text-sm">AC and Refrigeration systems (Supply, installation and maintenance)</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
+                          <span className="text-oleum-black text-xs">✓</span>
+                        </div>
+                        <span className="text-oleum-navy text-sm">Solar system and solar devices (Supply, installation and maintenance)</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
+                          <span className="text-oleum-black text-xs">✓</span>
+                        </div>
+                        <span className="text-oleum-navy text-sm">Electronic devices (Supply, installation and Maintenance)</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
+                          <span className="text-oleum-black text-xs">✓</span>
+                        </div>
+                        <span className="text-oleum-navy text-sm">Kiln refractory installation</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
+                          <span className="text-oleum-black text-xs">✓</span>
+                        </div>
+                        <span className="text-oleum-navy text-sm">Non-destructive testing in pipelines, pressure vessels, etc</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
+                          <span className="text-oleum-black text-xs">✓</span>
+                        </div>
+                        <span className="text-oleum-navy text-sm">Calibration and testing of instruments like gas detectors and analysers, PSV, transmitters and flow meters</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
+                          <span className="text-oleum-black text-xs">✓</span>
+                        </div>
+                        <span className="text-oleum-navy text-sm">Process plant design and PID development</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
+                          <span className="text-oleum-black text-xs">✓</span>
+                        </div>
+                        <span className="text-oleum-navy text-sm">Cathodic protection</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
+                          <span className="text-oleum-black text-xs">✓</span>
+                        </div>
+                        <span className="text-oleum-navy text-sm">De-rusting and painting</span>
+                      </div>
 
                     </div>
                     
-                    <button className="w-full bg-oleum-navy hover:bg-oleum-navy-dark text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105">
-                      Learn More
-                    </button>
-                  </div>
-                </AnimatedCard>
-
-                {/* Supplies & Materials */}
-                <AnimatedCard delay={0.2}>
-                  <div className="bg-white border-2 border-oleum-yellow rounded-lg p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 relative">
-                    {/* Most Popular Badge */}
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <div className="bg-oleum-yellow text-oleum-black px-4 py-1 rounded-full text-sm font-bold">
-                        Most Popular
-                      </div>
-                    </div>
-                    
-                    <div className="text-center mb-6">
-                      <div className="w-16 h-16 bg-oleum-navy rounded-lg flex items-center justify-center mx-auto mb-4 text-2xl text-white">
-                        📦
-                      </div>
-                      <h3 className="text-2xl font-bold text-oleum-navy mb-2">Supplies & Materials</h3>
-                      <p className="text-oleum-navy/80 text-sm">Comprehensive supply of equipment, chemicals, and materials</p>
-                    </div>
-                    
-                    <div className="space-y-4 mb-8">
-
-                      <div className="flex items-center space-x-3">
-                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
-                          <span className="text-oleum-black text-xs">✓</span>
-                        </div>
-                        <span className="text-oleum-navy text-sm">Water treatment equipment</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
-                          <span className="text-oleum-black text-xs">✓</span>
-                        </div>
-                        <span className="text-oleum-navy text-sm">Water treatment chemicals</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
-                          <span className="text-oleum-black text-xs">✓</span>
-                        </div>
-                        <span className="text-oleum-navy text-sm">Swimming pool chemicals</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
-                          <span className="text-oleum-black text-xs">✓</span>
-                        </div>
-                        <span className="text-oleum-navy text-sm">Distilled water (hospitals, labs, cars, batteries)</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
-                          <span className="text-oleum-black text-xs">✓</span>
-                        </div>
-                        <span className="text-oleum-navy text-sm">Construction materials (cement, gravel, sand)</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
-                          <span className="text-oleum-black text-xs">✓</span>
-                        </div>
-                        <span className="text-oleum-navy text-sm">Office & event supplies</span>
-                      </div>
-                    </div>
-                    
-                    <button className="w-full bg-oleum-yellow hover:bg-oleum-yellow-dark text-oleum-black font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105">
-                      Learn More
-                    </button>
+                    <Link href="/services">
+                      <button className="w-full bg-oleum-yellow hover:bg-oleum-yellow-dark text-oleum-black font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105">
+                        Learn More
+                      </button>
+                    </Link>
                   </div>
                 </AnimatedCard>
 
@@ -226,9 +284,11 @@ export default function Services() {
                       </div>
                     </div>
                     
-                    <button className="w-full bg-oleum-navy hover:bg-oleum-navy-dark text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105">
-                      Learn More
-                    </button>
+                    <Link href="/services">
+                      <button className="w-full bg-oleum-navy hover:bg-oleum-navy-dark text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105">
+                        Learn More
+                      </button>
+                    </Link>
                   </div>
                 </AnimatedCard>
               </div>
