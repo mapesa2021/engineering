@@ -159,7 +159,7 @@ export default function Home() {
                                 <AnimatedCard delay={0.1}>
                   <div className="stats-card text-center hover:animate-pulse-gentle transition-all duration-300">
                     <div className="text-4xl md:text-5xl font-black text-oleum-navy mb-2 animate-bounce-subtle">{projectsCount}+</div>
-                    <div className="text-oleum-navy font-semibold">5</div>
+                    <div className="text-oleum-navy font-semibold">Projects Completed</div>
                   </div>
                 </AnimatedCard>
                 
