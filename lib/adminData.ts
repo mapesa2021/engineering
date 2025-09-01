@@ -153,7 +153,7 @@ const defaultHeroSlides: HeroSlide[] = [
     title: 'Industrial Automation Solutions',
     subtitle: 'Smart Solutions for Africa',
     description: 'Advanced automation systems that optimize your operations and boost productivity across the continent.',
-    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1200&h=600&fit=crop',
+    image: 'https://i.postimg.cc/2SGXZWWC/PXL-20240212-063559150.jpg',
     buttonText: 'Learn More',
     buttonLink: '/projects',
     isActive: true,
