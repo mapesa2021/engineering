@@ -123,12 +123,7 @@ export default function Services() {
                     </div>
                     
                     <div className="space-y-4 mb-8">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
-                          <span className="text-oleum-black text-xs">✓</span>
-                        </div>
-                        <span className="text-oleum-navy text-sm">Electrical equipment</span>
-                      </div>
+
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
