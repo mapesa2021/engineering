@@ -10,6 +10,13 @@ import Testimonials from '../components/Testimonials';
 import { addNewsletterSubscriber } from '../lib/adminData';
 import { useState, useEffect, useRef } from 'react';
 
+// Force dynamic rendering to ensure fresh data from Supabase
+export const getServerSideProps = async () => {
+  return {
+    props: {}
+  };
+};
+
 export default function Home() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [email, setEmail] = useState('');
@@ -365,7 +372,12 @@ export default function Home() {
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
                         <span className="text-oleum-navy text-sm">Environmental compliance</span>
-                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
+                          <span className="text-oleum-black text-xs">✓</span>
+                        </div>
+                        <span className="text-oleum-navy text-sm">Environmental impact assessment</span>
+                      </div>                      </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
@@ -430,7 +442,6 @@ export default function Home() {
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Environmental impact assessment</span>
                       </div>
                     </div>
                     
