@@ -11,7 +11,7 @@ export default function About() {
     <>
       <Head>
         <title>About Us - Oleum Company Limited | Engineering Solutions in Tanzania</title>
-        <meta name="description" content="Learn about Oleum Company Limited, a leading Tanzanian engineering company providing comprehensive technical solutions since 2019." />
+        <meta name="description" content="Learn about Oleum Company Limited, a leading Tanzanian engineering company providing comprehensive technical solutions since 2023." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -28,7 +28,7 @@ export default function About() {
                   About Oleum Company Limited
                 </h1>
                 <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-body">
-                  Delivering innovative engineering solutions across Tanzania since 2019
+                  Delivering innovative engineering solutions across Tanzania since 2023
                 </p>
               </div>
             </div>
@@ -45,10 +45,10 @@ export default function About() {
                     <span className="text-oleum-navy">Our Story</span>
                   </h2>
                   <p className="text-lg text-oleum-navy/80 mb-6 leading-relaxed">
-                    Founded in 2019, Oleum Company Limited emerged from a vision to provide comprehensive engineering solutions that drive Tanzania's industrial and infrastructure development. What started as a small team of three passionate engineers has grown into a trusted partner for businesses across the country.
+                    Founded in 2023, Oleum Company Limited emerged from a vision to provide comprehensive engineering solutions that drive Tanzania's industrial and infrastructure development. What started as a small team of three passionate engineers has grown into a trusted partner for businesses across the country.
                   </p>
                   <p className="text-lg text-oleum-navy/80 mb-6 leading-relaxed">
-                    Based in Dar Ubungo, we've successfully completed over 50 projects, serving clients in manufacturing, construction, environmental management, and various industrial sectors. Our commitment to excellence and innovation has made us a preferred choice for engineering solutions across Tanzania.
+                    Based in Dar Ubungo, we've successfully completed 5 projects, serving clients in manufacturing, construction, environmental management, and various industrial sectors. Our commitment to excellence and innovation has made us a preferred choice for engineering solutions across Tanzania.
                   </p>
                   <p className="text-lg text-oleum-navy/80 mb-6 leading-relaxed">
                     We believe in building lasting relationships with our clients through transparent communication, reliable service delivery, and continuous improvement in our technical capabilities.
@@ -144,60 +144,12 @@ export default function About() {
                 <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-oleum-yellow h-full"></div>
                 
                 <div className="space-y-12">
-                  {/* 2019 */}
-                  <div className="flex items-center">
-                    <div className="w-1/2 pr-8 text-right">
-                      <div className="bg-oleum-navy text-white p-6 rounded-lg shadow-lg">
-                        <h3 className="text-2xl font-bold mb-2">2019</h3>
-                        <p className="text-white/90">Company founded in Dar Ubungo with 3 engineers</p>
-                      </div>
-                    </div>
-                    <div className="w-4 h-4 bg-oleum-yellow rounded-full border-4 border-white shadow-lg"></div>
-                    <div className="w-1/2 pl-8"></div>
-                  </div>
-
-                  {/* 2020 */}
-                  <div className="flex items-center">
-                    <div className="w-1/2 pr-8"></div>
-                    <div className="w-4 h-4 bg-oleum-yellow rounded-full border-4 border-white shadow-lg"></div>
-                    <div className="w-1/2 pl-8">
-                      <div className="bg-oleum-yellow text-oleum-black p-6 rounded-lg shadow-lg">
-                        <h3 className="text-2xl font-bold mb-2">2020</h3>
-                        <p className="text-oleum-black/90">Completed first 10 projects and expanded service portfolio</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* 2021 */}
-                  <div className="flex items-center">
-                    <div className="w-1/2 pr-8 text-right">
-                      <div className="bg-oleum-navy text-white p-6 rounded-lg shadow-lg">
-                        <h3 className="text-2xl font-bold mb-2">2021</h3>
-                        <p className="text-white/90">Reached 25+ projects and established nationwide presence</p>
-                      </div>
-                    </div>
-                    <div className="w-4 h-4 bg-oleum-yellow rounded-full border-4 border-white shadow-lg"></div>
-                    <div className="w-1/2 pl-8"></div>
-                  </div>
-
-                  {/* 2022 */}
-                  <div className="flex items-center">
-                    <div className="w-1/2 pr-8"></div>
-                    <div className="w-4 h-4 bg-oleum-yellow rounded-full border-4 border-white shadow-lg"></div>
-                    <div className="w-1/2 pl-8">
-                      <div className="bg-oleum-yellow text-oleum-black p-6 rounded-lg shadow-lg">
-                        <h3 className="text-2xl font-bold mb-2">2022</h3>
-                        <p className="text-oleum-black/90">Launched environmental consulting division</p>
-                      </div>
-                    </div>
-                  </div>
-
                   {/* 2023 */}
                   <div className="flex items-center">
                     <div className="w-1/2 pr-8 text-right">
                       <div className="bg-oleum-navy text-white p-6 rounded-lg shadow-lg">
                         <h3 className="text-2xl font-bold mb-2">2023</h3>
-                        <p className="text-white/90">Achieved 50+ projects milestone and expanded team</p>
+                        <p className="text-white/90">Company founded in Dar Ubungo with 3 engineers</p>
                       </div>
                     </div>
                     <div className="w-4 h-4 bg-oleum-yellow rounded-full border-4 border-white shadow-lg"></div>
@@ -211,6 +163,54 @@ export default function About() {
                     <div className="w-1/2 pl-8">
                       <div className="bg-oleum-yellow text-oleum-black p-6 rounded-lg shadow-lg">
                         <h3 className="text-2xl font-bold mb-2">2024</h3>
+                        <p className="text-oleum-black/90">Completed first 5 projects and expanded service portfolio</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 2025 */}
+                  <div className="flex items-center">
+                    <div className="w-1/2 pr-8 text-right">
+                      <div className="bg-oleum-navy text-white p-6 rounded-lg shadow-lg">
+                        <h3 className="text-2xl font-bold mb-2">2025</h3>
+                        <p className="text-white/90">Reached 5+ projects and established nationwide presence</p>
+                      </div>
+                    </div>
+                    <div className="w-4 h-4 bg-oleum-yellow rounded-full border-4 border-white shadow-lg"></div>
+                    <div className="w-1/2 pl-8"></div>
+                  </div>
+
+                  {/* 2026 */}
+                  <div className="flex items-center">
+                    <div className="w-1/2 pr-8"></div>
+                    <div className="w-4 h-4 bg-oleum-yellow rounded-full border-4 border-white shadow-lg"></div>
+                    <div className="w-1/2 pl-8">
+                      <div className="bg-oleum-yellow text-oleum-black p-6 rounded-lg shadow-lg">
+                        <h3 className="text-2xl font-bold mb-2">2026</h3>
+                        <p className="text-oleum-black/90">Launched environmental consulting division</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 2027 */}
+                  <div className="flex items-center">
+                    <div className="w-1/2 pr-8 text-right">
+                      <div className="bg-oleum-navy text-white p-6 rounded-lg shadow-lg">
+                        <h3 className="text-2xl font-bold mb-2">2027</h3>
+                        <p className="text-white/90">Achieved 5+ projects milestone and expanded team</p>
+                      </div>
+                    </div>
+                    <div className="w-4 h-4 bg-oleum-yellow rounded-full border-4 border-white shadow-lg"></div>
+                    <div className="w-1/2 pl-8"></div>
+                  </div>
+
+                  {/* 2028 */}
+                  <div className="flex items-center">
+                    <div className="w-1/2 pr-8"></div>
+                    <div className="w-4 h-4 bg-oleum-yellow rounded-full border-4 border-white shadow-lg"></div>
+                    <div className="w-1/2 pl-8">
+                      <div className="bg-oleum-yellow text-oleum-black p-6 rounded-lg shadow-lg">
+                        <h3 className="text-2xl font-bold mb-2">2028</h3>
                         <p className="text-oleum-black/90">Leading engineering solutions provider across Tanzania</p>
                       </div>
                     </div>

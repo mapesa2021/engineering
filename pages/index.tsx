@@ -84,9 +84,9 @@ export default function Home() {
   }, [hasAnimated]);
 
   // Initialize counting animations
-  const projectsCount = useCountUp(50, 2000);
+  const projectsCount = useCountUp(5, 2000);
   const engineersCount = useCountUp(10, 1500);
-  const yearsCount = useCountUp(4, 1800);
+  const yearsCount = useCountUp(1, 1800);
   const satisfactionCount = useCountUp(100, 2500);
 
   const toggleFaq = (index: number) => {
@@ -159,7 +159,7 @@ export default function Home() {
                                 <AnimatedCard delay={0.1}>
                   <div className="stats-card text-center hover:animate-pulse-gentle transition-all duration-300">
                     <div className="text-4xl md:text-5xl font-black text-oleum-navy mb-2 animate-bounce-subtle">{projectsCount}+</div>
-                    <div className="text-oleum-navy font-semibold">Projects Completed</div>
+                    <div className="text-oleum-navy font-semibold">5</div>
                   </div>
                 </AnimatedCard>
                 
@@ -197,7 +197,7 @@ export default function Home() {
                   <span className="text-white">About Oleum Company Limited</span>
                 </h2>
                 <p className="text-xl text-white/90 max-w-3xl mx-auto font-body">
-                  Founded in 2019 in Dar Ubungo, we are a leading Tanzanian engineering company delivering comprehensive technical solutions across multiple sectors with our team of 3 experienced professionals.
+                  Founded in 2023 in Dar Ubungo, we are a leading Tanzanian engineering company delivering comprehensive technical solutions across multiple sectors with our team of 3 experienced professionals.
                 </p>
               </div>
               
@@ -914,7 +914,7 @@ export default function Home() {
                       </div>
                       <span className="text-white font-semibold">Proven Results</span>
                     </div>
-                    <p className="text-white/80 text-sm">50+ successful projects completed</p>
+                                            <p className="text-white/80 text-sm">5 successful projects completed</p>
                   </div>
                 </div>
               </div>
