@@ -442,6 +442,12 @@ export default function Home() {
                         </div>
                         <span className="text-oleum-navy text-sm">Environmental Impact Assessment (EIA)</span>
                       </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
+                          <span className="text-oleum-black text-xs">✓</span>
+                        </div>
+                        <span className="text-oleum-navy text-sm">Chemical disposal</span>
+                      </div>
                     </div>
                     
                     <button className="w-full bg-oleum-navy hover:bg-oleum-navy-dark text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105">
