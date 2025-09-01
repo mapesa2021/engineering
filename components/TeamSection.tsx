@@ -156,7 +156,6 @@ export default function TeamSection({
                 
                 {showContact && (
                   <div className="text-center">
-                    <p className="text-oleum-navy/60 text-xs">Department: {member.department}</p>
                     {member.email && (
                       <p className="text-oleum-navy/60 text-xs">Email: {member.email}</p>
                     )}

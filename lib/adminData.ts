@@ -636,8 +636,8 @@ const defaultSiteSettings: SiteSettings = {
   companyName: 'Oleum Company Limited',
   phone: '+255 674 685 062',
   email: 'info@oleum.co.tz',
-  address: 'Dar Ubungo, Tanzania',
-  workingHours: 'Mon-Fri: 8AM-6PM',
+      address: 'Ubungo, Dar es Salaam, Tanzania',
+      workingHours: 'Monday - Friday: 8:00 AM - 6:00 PM\nSaturday: 9:00 AM - 3:00 PM',
   socialLinks: {
     facebook: 'https://facebook.com/oleumcompany',
     linkedin: 'https://linkedin.com/company/oleum'

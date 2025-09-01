@@ -48,7 +48,7 @@ export default function About() {
                     Founded in 2023, Oleum Company Limited emerged from a vision to provide comprehensive engineering solutions that drive Tanzania's industrial and infrastructure development. What started as a small team of three passionate engineers has grown into a trusted partner for businesses across the country.
                   </p>
                   <p className="text-lg text-oleum-navy/80 mb-6 leading-relaxed">
-                    Based in Dar Ubungo, we've successfully completed 5 projects, serving clients in manufacturing, construction, environmental management, and various industrial sectors. Our commitment to excellence and innovation has made us a preferred choice for engineering solutions across Tanzania.
+                    Based in Ubungo, we've successfully completed 5 projects, serving clients in manufacturing, construction, environmental management, and various industrial sectors. Our commitment to excellence and innovation has made us a preferred choice for engineering solutions across Tanzania.
                   </p>
                   <p className="text-lg text-oleum-navy/80 mb-6 leading-relaxed">
                     We believe in building lasting relationships with our clients through transparent communication, reliable service delivery, and continuous improvement in our technical capabilities.
@@ -149,7 +149,7 @@ export default function About() {
                     <div className="w-1/2 pr-8 text-right">
                       <div className="bg-oleum-navy text-white p-6 rounded-lg shadow-lg">
                         <h3 className="text-2xl font-bold mb-2">2023</h3>
-                        <p className="text-white/90">Company founded in Dar Ubungo with 3 engineers</p>
+                        <p className="text-white/90">Company founded in Ubungo with 3 engineers</p>
                       </div>
                     </div>
                     <div className="w-4 h-4 bg-oleum-yellow rounded-full border-4 border-white shadow-lg"></div>
@@ -206,7 +206,7 @@ export default function About() {
                   <span className="text-oleum-navy">Visit Our Office</span>
                 </h2>
                 <p className="text-xl text-oleum-navy/80 max-w-3xl mx-auto font-body">
-                  Located in the heart of Dar Ubungo, our office is easily accessible and ready to welcome you.
+                  Located in the heart of Ubungo, our office is easily accessible and ready to welcome you.
                 </p>
               </div>
               
@@ -221,7 +221,7 @@ export default function About() {
                         </div>
                         <div>
                           <p className="font-semibold">Address</p>
-                          <p className="text-white/80">Dar Ubungo, Dar es Salaam, Tanzania</p>
+                          <p className="text-white/80">Ubungo, Dar es Salaam, Tanzania</p>
                         </div>
                       </div>
                       <div className="flex items-center space-x-4">
@@ -368,13 +368,16 @@ export default function About() {
                     <div className="footer-icon">
                       📍
                     </div>
-                    <span className="text-gray-300 text-sm">Dar Ubungo, Tanzania</span>
+                    <span className="text-gray-300 text-sm">Ubungo, Dar es Salaam, Tanzania</span>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="footer-icon">
+                  <div className="flex items-start space-x-3">
+                    <div className="footer-icon mt-1">
                       🕒
                     </div>
-                    <span className="text-gray-300 text-sm">Mon-Fri: 8AM-6PM</span>
+                    <div className="text-gray-300 text-sm">
+                      <div>Monday - Friday: 8:00 AM - 6:00 PM</div>
+                      <div>Saturday: 9:00 AM - 3:00 PM</div>
+                    </div>
                   </div>
                 </div>
               </div>

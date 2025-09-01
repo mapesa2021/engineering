@@ -122,7 +122,7 @@ export default function Home() {
     },
     {
       question: "Do you serve clients outside of Dar es Salaam?",
-      answer: "Yes, we serve clients across Tanzania. While we're based in Dar Ubungo, we provide our services nationwide."
+              answer: "Yes, we serve clients across Tanzania. While we're based in Ubungo, we provide our services nationwide."
     },
     {
       question: "How long does a typical project take?",
@@ -197,7 +197,7 @@ export default function Home() {
                   <span className="text-white">About Oleum Company Limited</span>
                 </h2>
                 <p className="text-xl text-white/90 max-w-3xl mx-auto font-body">
-                  Founded in 2023 in Dar Ubungo, we are a leading Tanzanian engineering company delivering comprehensive technical solutions across multiple sectors with our team of 3 experienced professionals.
+                  Founded in 2023 in Ubungo, we are a leading Tanzanian engineering company delivering comprehensive technical solutions across multiple sectors with our team of 3 experienced professionals.
                 </p>
               </div>
               
@@ -236,7 +236,7 @@ export default function Home() {
                 </div>
                     <h3 className="text-2xl font-bold text-oleum-navy mb-4">Serving Tanzania</h3>
                     <p className="text-oleum-navy/80 leading-relaxed">
-                      Based in Dar Ubungo, we serve clients across Tanzania with reliable, professional engineering services.
+                      Based in Ubungo, we serve clients across Tanzania with reliable, professional engineering services.
                     </p>
                 </div>
                 </AnimatedCard>
@@ -984,13 +984,16 @@ export default function Home() {
                     <div className="footer-icon">
                       📍
                     </div>
-                    <span className="text-gray-300 text-sm">Dar Ubungo, Tanzania</span>
+                    <span className="text-gray-300 text-sm">Ubungo, Dar es Salaam, Tanzania</span>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="footer-icon">
+                  <div className="flex items-start space-x-3">
+                    <div className="footer-icon mt-1">
                       🕒
                     </div>
-                    <span className="text-gray-300 text-sm">Mon-Fri: 8AM-6PM</span>
+                    <div className="text-gray-300 text-sm">
+                      <div>Monday - Friday: 8:00 AM - 6:00 PM</div>
+                      <div>Saturday: 9:00 AM - 3:00 PM</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1058,12 +1061,6 @@ export default function Home() {
                   © 2025 Oleum Company Limited. All rights reserved. Made with ❤️ for engineering excellence.
                 </div>
                 <div className="flex items-center space-x-6">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-4 h-4 bg-oleum-yellow rounded-full flex items-center justify-center text-xs text-oleum-black">
-                      ✓
-                    </div>
-                    <span className="text-gray-300 text-sm">ISO Certified</span>
-                  </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-4 h-4 bg-oleum-yellow rounded-full flex items-center justify-center text-xs text-oleum-black">
                       ✓

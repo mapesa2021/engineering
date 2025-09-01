@@ -400,13 +400,16 @@ export default function Services() {
                     <div className="footer-icon">
                       📍
                     </div>
-                    <span className="text-gray-300 text-sm">Dar Ubungo, Tanzania</span>
+                    <span className="text-gray-300 text-sm">Ubungo, Dar es Salaam, Tanzania</span>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="footer-icon">
+                  <div className="flex items-start space-x-3">
+                    <div className="footer-icon mt-1">
                       🕒
                     </div>
-                    <span className="text-gray-300 text-sm">Mon-Fri: 8AM-6PM</span>
+                    <div className="text-gray-300 text-sm">
+                      <div>Monday - Friday: 8:00 AM - 6:00 PM</div>
+                      <div>Saturday: 9:00 AM - 3:00 PM</div>
+                    </div>
                   </div>
                 </div>
               </div>
