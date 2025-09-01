@@ -58,7 +58,7 @@ export default function About() {
                   <div className="bg-gradient-to-br from-oleum-yellow/20 to-oleum-navy/20 rounded-2xl p-8 border border-oleum-yellow/30">
                     <div className="text-center">
                       <div className="w-24 h-24 bg-gradient-to-r from-oleum-yellow to-oleum-navy rounded-full flex items-center justify-center mx-auto mb-6 text-3xl text-white font-bold">
-                        🏗️
+                        💧
                       </div>
                       <h3 className="text-2xl font-bold text-oleum-navy mb-4">Our Mission</h3>
                       <p className="text-oleum-navy/80 leading-relaxed">
@@ -163,7 +163,7 @@ export default function About() {
                     <div className="w-1/2 pl-8">
                       <div className="bg-oleum-yellow text-oleum-black p-6 rounded-lg shadow-lg">
                         <h3 className="text-2xl font-bold mb-2">2024</h3>
-                        <p className="text-oleum-black/90">Completed first 5 projects and expanded service portfolio</p>
+                        <p className="text-oleum-black/90">Completed first 5 projects and established client base</p>
                       </div>
                     </div>
                   </div>
@@ -173,47 +173,11 @@ export default function About() {
                     <div className="w-1/2 pr-8 text-right">
                       <div className="bg-oleum-navy text-white p-6 rounded-lg shadow-lg">
                         <h3 className="text-2xl font-bold mb-2">2025</h3>
-                        <p className="text-white/90">Reached 5+ projects and established nationwide presence</p>
+                        <p className="text-white/90">Expanding services and building strong partnerships</p>
                       </div>
                     </div>
                     <div className="w-4 h-4 bg-oleum-yellow rounded-full border-4 border-white shadow-lg"></div>
                     <div className="w-1/2 pl-8"></div>
-                  </div>
-
-                  {/* 2026 */}
-                  <div className="flex items-center">
-                    <div className="w-1/2 pr-8"></div>
-                    <div className="w-4 h-4 bg-oleum-yellow rounded-full border-4 border-white shadow-lg"></div>
-                    <div className="w-1/2 pl-8">
-                      <div className="bg-oleum-yellow text-oleum-black p-6 rounded-lg shadow-lg">
-                        <h3 className="text-2xl font-bold mb-2">2026</h3>
-                        <p className="text-oleum-black/90">Launched environmental consulting division</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* 2027 */}
-                  <div className="flex items-center">
-                    <div className="w-1/2 pr-8 text-right">
-                      <div className="bg-oleum-navy text-white p-6 rounded-lg shadow-lg">
-                        <h3 className="text-2xl font-bold mb-2">2027</h3>
-                        <p className="text-white/90">Achieved 5+ projects milestone and expanded team</p>
-                      </div>
-                    </div>
-                    <div className="w-4 h-4 bg-oleum-yellow rounded-full border-4 border-white shadow-lg"></div>
-                    <div className="w-1/2 pl-8"></div>
-                  </div>
-
-                  {/* 2028 */}
-                  <div className="flex items-center">
-                    <div className="w-1/2 pr-8"></div>
-                    <div className="w-4 h-4 bg-oleum-yellow rounded-full border-4 border-white shadow-lg"></div>
-                    <div className="w-1/2 pl-8">
-                      <div className="bg-oleum-yellow text-oleum-black p-6 rounded-lg shadow-lg">
-                        <h3 className="text-2xl font-bold mb-2">2028</h3>
-                        <p className="text-oleum-black/90">Leading engineering solutions provider across Tanzania</p>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
