@@ -288,3 +288,6 @@ CREATE POLICY "Authenticated users full access" ON events FOR ALL USING (true);
 SELECT 'Olerum Engineering database setup completed successfully!' as status;
 
 
+
+
+

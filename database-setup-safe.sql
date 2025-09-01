@@ -156,3 +156,6 @@ GRANT ALL ON ALL TABLES IN SCHEMA public TO anon, authenticated;
 
 SELECT 'Database setup completed successfully!' as status;
 
+
+
+
