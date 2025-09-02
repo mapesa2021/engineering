@@ -337,9 +337,9 @@ export default function Services() {
                     </div>
                     <div className="p-6">
                       <h3 className="text-xl font-bold text-oleum-navy mb-3">Medical & Laboratory</h3>
-                                              <p className="text-oleum-navy/70 text-sm mb-4">
-                          supply of distilled water
-                        </p>
+                      <p className="text-oleum-navy/70 text-sm mb-4">
+                        Supply of Distilled Water
+                      </p>
                       <a href="#" className="text-oleum-navy font-semibold text-sm hover:text-oleum-navy-dark transition-colors duration-200">
                         Learn More →
                       </a>
