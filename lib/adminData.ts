@@ -597,7 +597,7 @@ const defaultTeamMembers: TeamMember[] = [
     phone: '+255 674 685 062',
     image: 'https://i.postimg.cc/ZncRNLxh/Bahati-Nelson-Nsolo-managing-director.jpg',
     bio: 'Chemical and Process Engineer with a strong experience across beverage, cement, sugar, fertilizer, food, and chemical industries.',
-    expertise: ['Management', 'Process Optimization', 'Quality Control & Assurance', 'Research & Design', 'Sustainable Engineering Solutions'],
+    expertise: ['Management', 'Process Optimization', 'Quality Control & Assurance', 'Research & Design', 'Sustainable Engineering Solutions', 'Business Leadership'],
     linkedin: 'https://linkedin.com/in/bahatinelson',
     isActive: true,
     joinDate: '2021-03-20'
