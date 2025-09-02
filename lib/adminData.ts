@@ -611,7 +611,7 @@ const defaultTeamMembers: TeamMember[] = [
     phone: '+255788028584',
           image: 'https://i.postimg.cc/h4VjCDys/Untitled-design-8.jpg',
     bio: 'Process Engineer with a solid background in Chemical and Process Engineering, bringing hands-on experience in operations, field duties, and technical support across the oil & gas, lubricant blending, and beverage manufacturing industries.',
-    expertise: ['Lubricant Oil Blending', 'Plant Operation', 'Process Optimization', 'Root Cause Analysis', 'Water Treatment', 'Troubleshooting', 'P&ID Interpretation', 'HSE Compliance'],
+    expertise: ['Lubricant Oil Blending', 'Plant Operation', 'Process Optimization', 'Root Cause Analysis', 'Water Treatment', 'Troubleshooting', 'P&ID Interpretation', 'HSE Compliance', 'Technical Leadership'],
     linkedin: 'https://linkedin.com/in/ombeninziku',
     isActive: true,
     joinDate: '2021-06-10'
@@ -625,7 +625,7 @@ const defaultTeamMembers: TeamMember[] = [
     phone: '+255757554767',
     image: 'https://i.postimg.cc/65WTXDB6/Freewind-Godson-Moshi-project-manager.jpg',
     bio: 'Process Engineer with a strong background in Chemical and Process Engineering, experienced in operations and field duties across the oil & gas sector.',
-    expertise: ['Cement Plant Operation', 'Process Optimization', 'Troubleshooting', 'Equipment Inspections', 'Safety Compliance'],
+    expertise: ['Cement Plant Operation', 'Process Optimization', 'Troubleshooting', 'Equipment Inspections', 'Safety Compliance', 'Project Management'],
     linkedin: 'https://linkedin.com/in/freewindmoshi',
     isActive: true,
     joinDate: '2020-01-15'
