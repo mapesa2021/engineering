@@ -597,7 +597,7 @@ const defaultTeamMembers: TeamMember[] = [
     phone: '+255 674 685 062',
     image: 'https://i.postimg.cc/ZncRNLxh/Bahati-Nelson-Nsolo-managing-director.jpg',
     bio: 'with a strong experience across beverage, cement, sugar, fertilizer, food, and chemical industries.',
-    expertise: ['Chemical Engineering', 'Process Engineering', 'Management', 'Process Optimization', 'Quality Control', 'Quality Assurance', 'Research and Design', 'Sustainable Engineering', 'Business Leadership'],
+    expertise: ['Management', 'Process Optimization', 'Quality Control & Assurance', 'Research & Design', 'Sustainable Engineering Solutions'],
     linkedin: 'https://linkedin.com/in/bahatinelson',
     isActive: true,
     joinDate: '2021-03-20'
@@ -611,7 +611,7 @@ const defaultTeamMembers: TeamMember[] = [
     phone: '+255788028584',
           image: 'https://i.postimg.cc/h4VjCDys/Untitled-design-8.jpg',
     bio: 'with a solid background in Chemical and Process Engineering, bringing hands-on experience in operations, field duties, and technical support across the oil & gas, lubricant blending, and beverage manufacturing industries.',
-    expertise: ['Chemical Engineering', 'Process Engineering', 'Lubricant Oil Blending', 'Process Optimization', 'Root Cause Analysis', 'Water Treatment', 'Troubleshooting', 'P&ID Interpretation', 'HSE Compliance', 'Technical Leadership'],
+    expertise: ['Lubricant Oil Blending', 'Plant Operation', 'Process Optimization', 'Root Cause Analysis', 'Water Treatment', 'Troubleshooting', 'P&ID Interpretation', 'HSE Compliance'],
     linkedin: 'https://linkedin.com/in/ombeninziku',
     isActive: true,
     joinDate: '2021-06-10'
@@ -625,7 +625,7 @@ const defaultTeamMembers: TeamMember[] = [
     phone: '+255757554767',
     image: 'https://i.postimg.cc/65WTXDB6/Freewind-Godson-Moshi-project-manager.jpg',
     bio: 'with a strong background in Chemical and Process Engineering, experienced in operations and field duties across the oil & gas sector.',
-    expertise: ['Chemical Engineering', 'Process Engineering', 'Cement Plant Operation', 'Process Optimization', 'Troubleshooting', 'Equipment Inspections', 'Safety Compliance', 'Project Management'],
+    expertise: ['Cement Plant Operation', 'Process Optimization', 'Troubleshooting', 'Equipment Inspections', 'Safety Compliance'],
     linkedin: 'https://linkedin.com/in/freewindmoshi',
     isActive: true,
     joinDate: '2020-01-15'
