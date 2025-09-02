@@ -65,37 +65,37 @@ export default function Services() {
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Water treatment equipment</span>
+                        <span className="text-oleum-navy text-sm">Water Treatment Equipment</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Water treatment chemicals</span>
+                        <span className="text-oleum-navy text-sm">Water Treatment Chemicals</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Swimming pool chemicals</span>
+                        <span className="text-oleum-navy text-sm">Swimming Pool Chemicals</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Distilled water (hospitals, labs, cars, batteries)</span>
+                        <span className="text-oleum-navy text-sm">Distilled Water (Hospitals, Labs, Cars, Batteries)</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Construction materials (cement, gravel, sand)</span>
+                        <span className="text-oleum-navy text-sm">Construction Materials (Cement, Gravel, Sand)</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Office & event supplies</span>
+                        <span className="text-oleum-navy text-sm">Office & Event Supplies</span>
                       </div>
                     </div>
                     
@@ -130,97 +130,97 @@ export default function Services() {
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Electrical equipment (supply, installation, maintenance)</span>
+                        <span className="text-oleum-navy text-sm">Electrical Equipment (Supply, Installation, Maintenance)</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Water treatment plants (supply, installation, maintenance)</span>
+                        <span className="text-oleum-navy text-sm">Water Treatment Plants (Supply, Installation, Maintenance)</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Drip irrigation systems</span>
+                        <span className="text-oleum-navy text-sm">Drip Irrigation Systems</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Process optimization & design</span>
+                        <span className="text-oleum-navy text-sm">Process Optimization & Design</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">process Auditing & safety audits</span>
+                        <span className="text-oleum-navy text-sm">Process Auditing & Safety Audits</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Industrial automation</span>
+                        <span className="text-oleum-navy text-sm">Industrial Automation</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Installation of small to medium process plants</span>
+                        <span className="text-oleum-navy text-sm">Installation of Small to Medium Process Plants</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">AC and Refrigeration systems (Supply, installation and maintenance)</span>
+                        <span className="text-oleum-navy text-sm">AC and Refrigeration Systems (Supply, Installation and Maintenance)</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Solar system and solar devices (Supply, installation and maintenance)</span>
+                        <span className="text-oleum-navy text-sm">Solar System and Solar Devices (Supply, Installation and Maintenance)</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Electronic devices (Supply, installation and Maintenance)</span>
+                        <span className="text-oleum-navy text-sm">Electronic Devices (Supply, Installation and Maintenance)</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Kiln refractory installation</span>
+                        <span className="text-oleum-navy text-sm">Kiln Refractory Installation</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Non-destructive testing in pipelines, pressure vessels, etc</span>
+                        <span className="text-oleum-navy text-sm">Non-Destructive Testing in Pipelines, Pressure Vessels, etc</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Calibration and testing of instruments like gas detectors and analysers, PSV, transmitters and flow meters</span>
+                        <span className="text-oleum-navy text-sm">Calibration and Testing of Instruments Like Gas Detectors and Analysers, PSV, Transmitters and Flow Meters</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Process plant design and PID development</span>
+                        <span className="text-oleum-navy text-sm">Process Plant Design and P&ID Development</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Cathodic protection</span>
+                        <span className="text-oleum-navy text-sm">Cathodic Protection</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">De-rusting and painting</span>
+                        <span className="text-oleum-navy text-sm">De-Rusting and Painting</span>
                       </div>
 
                     </div>
@@ -249,25 +249,25 @@ export default function Services() {
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Industrial pollution control</span>
+                        <span className="text-oleum-navy text-sm">Industrial Pollution Control</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Waste management</span>
+                        <span className="text-oleum-navy text-sm">Waste Management</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Environmental protection & energy conservation</span>
+                        <span className="text-oleum-navy text-sm">Environmental Protection & Energy Conservation</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Environmental audits</span>
+                        <span className="text-oleum-navy text-sm">Environmental Audits</span>
                       </div>
 
 
@@ -281,7 +281,7 @@ export default function Services() {
                         <div className="w-5 h-5 bg-oleum-yellow rounded-full flex items-center justify-center">
                           <span className="text-oleum-black text-xs">✓</span>
                         </div>
-                        <span className="text-oleum-navy text-sm">Chemical disposal</span>
+                        <span className="text-oleum-navy text-sm">Chemical Disposal</span>
                       </div>
                     </div>
                     
