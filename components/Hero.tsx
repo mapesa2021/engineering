@@ -122,7 +122,7 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://nuwater.com/wp-content/uploads/Untitled-design-35.png"
+          src="https://i.postimg.cc/htNYFcm2/industrial-water-treatment-plant.jpg"
             alt="Loading..."
           fill
           className="object-cover"
