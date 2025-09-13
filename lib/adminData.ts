@@ -164,7 +164,7 @@ const defaultHeroSlides: HeroSlide[] = [
     title: 'Water Treatment Excellence',
     subtitle: 'Clean Solutions for Africa',
     description: 'Professional water treatment systems for sustainable and efficient operations across Tanzania.',
-    image: 'https://i.postimg.cc/WzfC1NMd/veolia-partenaire-ivoirien-africa-usines-production-eau-potable-1084x610.jpg',
+    image: 'https://i.postimg.cc/htNYFcm2/industrial-water-treatment-plant.jpg',
     buttonText: 'Get Quote',
     buttonLink: '/contact',
     isActive: true,
